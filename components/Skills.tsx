@@ -25,7 +25,7 @@ const Skills = () => {
                     {data.skills.backend.map((s) => (
                         <span key={s.name} className="flex items-center gap-3 border border-slate-700/50 rounded-full px-5 py-3 text-sm bg-slate-800/50 text-slate-200 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-700 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-900/20 cursor-pointer"> 
                             {/* Logo placeholder - the user can add the real logos to data.ts later */}
-                            <div className="w-6 h-6 rounded-full bg-slate-700 flex-shrink-0"></div>
+                            <img src={s.logo} alt={s.name}  className="w-6 h-6 flex-shrink-0" />
                             <span className="font-medium">{s.name}</span> 
                         </span>
                     ))}
@@ -39,7 +39,7 @@ const Skills = () => {
                     {data.skills.herramientas.map((s) => (
                         <span key={s.name} className="flex items-center gap-3 border border-slate-700/50 rounded-full px-5 py-3 text-sm bg-slate-800/50 text-slate-200 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-700 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-900/20 cursor-pointer"> 
                             {/* Logo placeholder */}
-                            <div className="w-6 h-6 rounded-full bg-slate-700 flex-shrink-0"></div>
+                            <img src={s.logo} alt={s.name}  className="w-6 h-6 flex-shrink-0" />
                             <span className="font-medium">{s.name}</span> 
                         </span>
                     ))}

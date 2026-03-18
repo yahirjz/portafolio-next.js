@@ -1,7 +1,7 @@
 export const data = {
     name: "Jaime Jair",
     role: "Full stack Developer",
-    about: "Desarrollador web en formación y estudiante de Ingeniería en Sistemas, apasionado por JavaScript y el desarrollo de aplicaciones modernas. Trabajo principalmente con React, TypeScript y Node.js, y me enfoco en construir proyectos prácticos que fortalezcan mis habilidades en desarrollo full-stack, manejo de estado, APIs y bases de datos como MySQL.",
+    about: "Soy desarrollador en formación en Ingeniería en Sistemas, enfocado en el desarrollo web moderno. Me especializo en JavaScript y tecnologías como React, y actualmente estoy ampliando mis conocimientos hacia el backend con Node.js y bases de datos como MySQL. Me gusta aprender de forma práctica, construyendo proyectos propios y analizando ejemplos para entender cómo funcionan realmente las cosas. Disfruto mejorar constantemente mi código y aplicar buenas prácticas en cada proyecto que desarrollo. Actualmente estoy enfocado en fortalecer mi perfil como desarrollador full-stack, creando proyectos completos y preparándome para integrarme a un entorno profesional donde pueda seguir creciendo y aportando valor.",
     social: {
         github: "https://github.com/yahirjz/",
         linkedin: "https://www.linkedin.com/in/jaime-jair-rodriguez-juarez-82494b317/", // <-- falta completar
@@ -20,21 +20,21 @@ export const data = {
         ],
         
         backend: [
-            { name: "Node.js"},
-            { name: "Express"},
-            { name: "Python"},
-            { name: "FatAPI"},
-            { name: "PostgreSQL"},
-            { name: "Sequelize"},
+            { name: "Node.js", logo:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"},
+            { name: "Express", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg"},
+            { name: "Python", logo:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"},
+            { name: "FatAPI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg"},
+            { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"},
+            { name: "Sequelize", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg"},
         ],
         
          herramientas: [
-            {name: "Postman"},
-            {name: "Git"},
-            { name: "GitHub"},
-            { name: "Vercel" },
-            { name: "Firebase"},
-            {name: "Supabase"},
+            {name: "Postman", logo:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"},
+            {name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"},
+            { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"},
+            { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original-wordmark.svg"},
+            { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"},
+            {name: "Supabase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"},
         ]
     },
 

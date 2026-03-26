@@ -1,7 +1,7 @@
 export const data = {
     name: "Jaime Jair",
     role: "Full stack Developer",
-    about: "Soy desarrollador en formación en Ingeniería en Sistemas, enfocado en el desarrollo web moderno. Me especializo en JavaScript y tecnologías como React, y actualmente estoy ampliando mis conocimientos hacia el backend con Node.js y bases de datos como MySQL. Me gusta aprender de forma práctica, construyendo proyectos propios y analizando ejemplos para entender cómo funcionan realmente las cosas. Disfruto mejorar constantemente mi código y aplicar buenas prácticas en cada proyecto que desarrollo. Actualmente estoy enfocado en fortalecer mi perfil como desarrollador full-stack, creando proyectos completos y preparándome para integrarme a un entorno profesional donde pueda seguir creciendo y aportando valor.",
+    about: "Soy desarrollador enfocado en el desarrollo web moderno. Me especializo en JavaScript y tecnologías como React, y actualmente estoy ampliando mis conocimientos hacia el backend con Node.js y bases de datos como MySQL. Me gusta aprender de forma práctica, construyendo proyectos propios y analizando ejemplos para entender cómo funcionan realmente las cosas. Disfruto mejorar constantemente mi código y aplicar buenas prácticas en cada proyecto que desarrollo. Actualmente estoy enfocado en fortalecer mi perfil como desarrollador full-stack, creando proyectos completos y preparándome para integrarme a un entorno profesional donde pueda seguir creciendo y aportando valor.",
     social: {
         github: "https://github.com/yahirjz/",
         linkedin: "https://www.linkedin.com/in/jaime-jair-rodriguez-juarez-82494b317/", // <-- falta completar
@@ -37,42 +37,21 @@ export const data = {
             {name: "Supabase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"},
             {name: "Algolia", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/algolia/algolia-original.svg"},
             {name: "Mapbox", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Mapbox_logo_2019.svg"},
-            {name: "Render", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/render/render-line.svg"}
+            {name: "railway", logo: "https://cdn.simpleicons.org/railway/white"}
         ]
     },
 
     // <--- PROYECTOS   
     projects: [
         {
-            img: "https://res.cloudinary.com/deyjebm1c/image/upload/v1773261821/Top_Full_Stack_Developer_Services_in_Sunnyvale_ebfcxz.jpg",
-            title: "Mi primer poyecto",
-            description: " Buscador utilizando componentes de React", // <-- falta poner la descripción aqui
-           
-            github: "https://github.com/",
-            live: "#"
+            img: "https://res.cloudinary.com/deyjebm1c/image/upload/v1774497463/Captura_de_pantalla_2026-03-25_a_la_s_9.57.30_p.m._nxqccf.png",
+            title: "Social app",
+            description: "Una aplicación social completa con arquitectura cliente-servidor (REST API). " +
+             "Frontend: React 19, TypeScript, Vite y Tailwind CSS. " +
+             "Backend: Node.js, Express y PostgreSQL con autenticación JWT y seguridad mediante Bcrypt.",
+            github: "https://github.com/yahirjz/social-app-frontend", 
+            githubBackend: "https://github.com/yahirjz/social-app-backend", 
+            live: "https://social-app-frontend-mocha.vercel.app/"
         },
-        {
-            img: "https://res.cloudinary.com/deyjebm1c/image/upload/v1773261821/Top_Full_Stack_Developer_Services_in_Sunnyvale_ebfcxz.jpg",
-            title: "Juego de piedra papel o tijera",
-            description: " Un juego clasico de piedra papel o tijer", 
-        
-            github: "https://github.com/",
-            live: "#"
-        },
-        {
-            img: "https://res.cloudinary.com/deyjebm1c/image/upload/v1773261821/Top_Full_Stack_Developer_Services_in_Sunnyvale_ebfcxz.jpg",
-            title: "Buscador de Mascotas",
-            description: "App, para encontra mascotas perdidas mas cerca", 
-           
-            github: "https://github.com/",
-            live: "#"
-        },
-        {
-            img: "https://res.cloudinary.com/deyjebm1c/image/upload/v1773261821/Top_Full_Stack_Developer_Services_in_Sunnyvale_ebfcxz.jpg",
-            title: "Mi segundo proyecto",
-            description: " Buscador utilizando componentes de React", // <-- falta poner la descripción aqui
-            github: "https://github.com/",
-            live: "#"
-        }
     ]
 }

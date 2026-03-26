@@ -14,6 +14,7 @@ const Projects = () => {
                     title={p.title}
                     description={p.description}
                     github={p.github}
+                    githubBackend={(p as any).githubBackend}
                     live={p.live}
                 />
                 ))

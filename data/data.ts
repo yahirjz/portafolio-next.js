@@ -46,12 +46,40 @@ export const data = {
         {
             img: "https://res.cloudinary.com/deyjebm1c/image/upload/v1774497463/Captura_de_pantalla_2026-03-25_a_la_s_9.57.30_p.m._nxqccf.png",
             title: "Social app",
-            description: "Una aplicación social completa con arquitectura cliente-servidor (REST API). " +
-             "Frontend: React 19, TypeScript, Vite y Tailwind CSS. " +
-             "Backend: Node.js, Express y PostgreSQL con autenticación JWT y seguridad mediante Bcrypt.",
+            description: "Red social fullstack construida con React, TypeScript y Node.js + Express." +
+                "Implementa autenticación JWT desde cero con bcryptjs para el manejo seguro de contraseñas, sistema de seguimiento entre usuarios y feed personalizado basado en las conexiones del usuario." +
+                "El backend sigue arquitectura MVC con rutas protegidas mediante middleware de autenticación. La base de datos PostgreSQL es gestionada con Sequelize ORM con relaciones entre entidades." +
+                "El frontend consume la API REST propia con axios, manejo de estado con React Hooks y navegación con React Router." +
+                "Stack: React · TypeScript · Node.js · Express · PostgreSQL · Sequelize · JWT · Tailwind CSS",
             github: "https://github.com/yahirjz/social-app-frontend", 
             githubBackend: "https://github.com/yahirjz/social-app-backend", 
             live: "https://social-app-frontend-mocha.vercel.app/"
+        },
+        {
+            img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1775230193/Captura_de_pantalla_2026-04-02_a_la_s_11.43.20_p.m._yxcsbt.png",
+            title: "Dashboard de Análisis Crypto",
+            description: "Red social fullstack construida con React, TypeScript y Node.js" + 
+                "Express. Implementa autenticación JWT desde cero con bcryptjs para el manejo seguro de contraseñas, sistema de seguimiento entre usuarios y feed personalizado basado en las conexiones del usuario." +
+                "El backend sigue arquitectura MVC con rutas protegidas mediante middleware de autenticación." +
+                "La base de datos PostgreSQL es gestionada con Sequelize ORM con relaciones entre entidades." + 
+                "El frontend consume la API REST propia con axios, manejo de estado con React Hooks y navegación con React Router." +
+                "Stack: React · TypeScript · Node.js · Express · PostgreSQL · Sequelize · JWT · Tailwind CSS",
+
+            github: "https://github.com/yahirjz/crypto-dashboard-frontend", 
+            githubBackend: "https://github.com/yahirjz/crypto-dashboard-backend", 
+            live: "https://crypto-dashboard-frontend-tau.vercel.app/"
+        },
+        {
+            img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1775230193/Captura_de_pantalla_2026-04-02_a_la_s_11.52.24_p.m._bzzera.png",
+            title: "Porfolio",
+            description: "Plataforma web personal interactiva construida con Next.js 16, React 19 y TypeScript." + 
+                "Diseñada con un enfoque moderno y responsivo utilizando Tailwind CSS v4 para una experiencia de usuario fluida." + 
+                "Incluye una integración eficiente con la API de Resend para proveer un canal de contacto directo y confiable." +
+                "El proyecto aplica buenas prácticas de UI/UX, arquitectura basada en componentes reutilizables y tipado fuerte para asegurar escalabilidad." +
+                "Stack: Next.js · React · TypeScript · Tailwind CSS · Resend.",
+            github: "https://github.com/yahirjz/portafolio-next.js", 
+            githubBackend: "", 
+            live: ""
         },
     ]
 }

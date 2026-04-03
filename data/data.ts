@@ -58,12 +58,11 @@ export const data = {
         {
             img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1775230193/Captura_de_pantalla_2026-04-02_a_la_s_11.43.20_p.m._yxcsbt.png",
             title: "Dashboard de Análisis Crypto",
-            description: "Red social fullstack construida con React, TypeScript y Node.js" + 
-                "Express. Implementa autenticación JWT desde cero con bcryptjs para el manejo seguro de contraseñas, sistema de seguimiento entre usuarios y feed personalizado basado en las conexiones del usuario." +
-                "El backend sigue arquitectura MVC con rutas protegidas mediante middleware de autenticación." +
-                "La base de datos PostgreSQL es gestionada con Sequelize ORM con relaciones entre entidades." + 
-                "El frontend consume la API REST propia con axios, manejo de estado con React Hooks y navegación con React Router." +
-                "Stack: React · TypeScript · Node.js · Express · PostgreSQL · Sequelize · JWT · Tailwind CSS",
+            description: "Panel interactivo de criptomonedas en tiempo real construido con React, TypeScript y FastAPI." +
+                "Consume la API pública de CoinGecko para mostrar precios, tendencias y historial de mercado con visualizaciones dinámicas mediante Recharts." + 
+                "El backend implementa un sistema de caché con SQLAlchemy para optimizar las peticiones y reducir la latencia." +
+                "Incluye filtros por activo y rango de tiempo, tipado estricto en TypeScript y arquitectura limpia con separación de responsabilidades entre routers y services."+
+                "Stack: React · TypeScript · FastAPI · SQLAlchemy · Recharts · Python",
 
             github: "https://github.com/yahirjz/crypto-dashboard-frontend", 
             githubBackend: "https://github.com/yahirjz/crypto-dashboard-backend", 
@@ -75,7 +74,7 @@ export const data = {
             description: "Plataforma web personal interactiva construida con Next.js 16, React 19 y TypeScript." + 
                 "Diseñada con un enfoque moderno y responsivo utilizando Tailwind CSS v4 para una experiencia de usuario fluida." + 
                 "Incluye una integración eficiente con la API de Resend para proveer un canal de contacto directo y confiable." +
-                "El proyecto aplica buenas prácticas de UI/UX, arquitectura basada en componentes reutilizables y tipado fuerte para asegurar escalabilidad." +
+                "Arquitectura basada en componentes reutilizables y tipado fuerte para asegurar escalabilidad." +
                 "Stack: Next.js · React · TypeScript · Tailwind CSS · Resend.",
             github: "https://github.com/yahirjz/portafolio-next.js", 
             githubBackend: "", 

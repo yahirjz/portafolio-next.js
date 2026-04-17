@@ -80,5 +80,17 @@ export const data = {
             githubBackend: "", 
             live: ""
         },
+        {
+            img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1776461350/Captura_de_pantalla_2026-04-17_a_la_s_3.10.17_p.m._zsuwkj.png",
+            title: "Sistema de reportes TISAX",
+            description: "Plataforma Integral de Reportes TISAX. " +
+                "Proyecto final de carrera diseñado para resolver la eficiencia operativa mediante una arquitectura moderna. " +
+                "Esta plataforma permite la gestión dinámica de información con una experiencia de usuario fluida y segura. " +
+                "Destaca por su tipado fuerte en todo el flujo de datos y un diseño minimalista optimizado para dispositivos móviles y escritorio. " +
+                "Stack: Next.js · React · TypeScript · Tailwind CSS · Supabase",
+            github: "https://github.com/yahirjz/reportes", 
+            githubBackend: "", 
+            live: "https://reportes-ebon.vercel.app/"
+        },
     ]
 }

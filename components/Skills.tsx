@@ -45,6 +45,19 @@ const Skills = () => {
                     ))}
                 </div>
             </div>
+
+            {/** Cloud */}
+            <div className="w-full max-w-4xl mx-auto">
+                <h2 className="text-slate-300 border-b border-slate-700/50 pb-2 mb-6 font-semibold uppercase tracking-widest text-sm"> Cloud </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {data.skills.cloud.map((s) => (
+                        <span key={s.name} className="flex items-center gap-3 border border-slate-700/50 rounded-full px-5 py-3 text-sm bg-slate-800/50 text-slate-200 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-700 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-900/20 cursor-pointer">
+                            <img src={s.logo} alt={s.name} className="w-6 h-6 flex-shrink-0" />
+                            <span  className="font-medium"> {s.name}</span>
+                        </span>
+                    ))}
+                </div>
+            </div>
         </section>
     )
 }

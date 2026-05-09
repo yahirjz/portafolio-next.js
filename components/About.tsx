@@ -23,8 +23,8 @@ const About = () => {
                 {/* Botón Descargar CV centrado en About */}
                 <div className="flex justify-center w-full">
                     <a 
-                        href="/Jaime_Jair_CV.pdf" 
-                        download="Jaime_Jair_CV.pdf" 
+                        href="/Cv-Jaime-Jair.pdf" 
+                        download="Cv-Jaime-Jair.pdf" 
                         className="inline-flex items-center gap-2 bg-violet-600/90 hover:bg-violet-500 text-white px-8 py-3 rounded-xl font-medium transition-colors shadow-lg shadow-violet-900/20 group"
                     >
                         Descargar Currículum

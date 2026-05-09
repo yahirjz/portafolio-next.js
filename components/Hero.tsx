@@ -22,8 +22,8 @@ const Hero = () => {
                     </a>
                     {/* Botón de Descargar CV reemplazado aquí */}
                     <a 
-                        href="/Jaime_Jair_CV.pdf" 
-                        download="Jaime_Jair_CV.pdf" 
+                        href="/Cv-Jaime-Jair.pdf" 
+                        download="Cv-Jaime-Jair.pdf" 
                         className="flex items-center gap-2 bg-slate-800/80 hover:bg-slate-700 text-white px-8 py-3 rounded-xl font-medium transition-colors border border-slate-700 hover:border-violet-500/50 group"
                     >
                         Descargar CV

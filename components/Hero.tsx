@@ -61,7 +61,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-                    className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center justify-center"
+                    className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 w-full items-center justify-center"
                 >
                     <motion.a 
                         whileHover={{ scale: 1.05 }}
@@ -75,6 +75,18 @@ const Hero = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                         </span>
                     </motion.a>
+
+                    <motion.a 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        href="/cv.pdf" 
+                        download="Mi_CV.pdf"
+                        className="px-8 py-4 rounded-full glass-panel border border-brand-500/20 text-brand-300 font-medium hover:bg-brand-500/10 hover:border-brand-500/40 transition-colors flex items-center justify-center gap-2"
+                    >
+                        Descargar CV
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    </motion.a>
+
                     <motion.a 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}

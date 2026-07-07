@@ -52,7 +52,7 @@ const About = () => {
                         <div className="absolute bottom-0 right-0 w-32 h-32 bg-accent-sky/20 rounded-full blur-[40px] pointer-events-none"></div>
                         <div className="p-8 h-full flex flex-col justify-center relative z-10">
                             <span className="text-slate-400 text-sm font-medium uppercase tracking-wider mb-2">Experiencia</span>
-                            <span className="text-6xl font-sans font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-500">3+<span className="text-3xl">años</span></span>
+                            <span className="text-6xl font-sans font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-500">2+<span className="text-3xl">años</span></span>
                         </div>
                     </motion.div>
 

@@ -1,52 +1,92 @@
-import { data } from "@/data/data"
+"use client"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef } from "react"
+
 const Hero = () => {
-    return(
-        <div className="flex flex-col md:flex-row items-center justify-between py-20 px-6 max-w-7xl mx-auto w-full gap-12">
-            <div className="max-w-xl flex flex-col items-center text-center md:items-start md:text-left">
-                <span className="text-violet-400 font-medium tracking-wider uppercase text-sm mb-4 bg-violet-900/30 px-4 py-1.5 rounded-full border border-violet-500/30">
-                    👋 Bienvenido a mi portafolio
-                </span>
-                <h1 className="text-white font-bold text-5xl md:text-6xl lg:text-7xl pb-2 tracking-tight">
-                    Hola, soy <br/> 
-                    <span className="text-white">{data.name}</span>
-                </h1>
-                <h2 className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent font-bold text-4xl md:text-5xl lg:text-6xl pb-4"> 
-                    {data.role} 
-                </h2>
-                <p className="text-slate-400 text-lg md:text-xl max-w-lg mt-4 leading-relaxed">
-                    Transformando ideas en experiencias digitales excepcionales con código limpio y diseños modernos.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
-                    <a href="#proyectos" className="bg-violet-600 hover:bg-violet-500 text-white px-8 py-3 rounded-xl font-medium transition-colors shadow-lg shadow-violet-900/20">
-                        Ver Proyectos
-                    </a>
-                    {/* Botón de Descargar CV reemplazado aquí */}
-                    <a 
-                        href="/Cv-Jaime-Jair.pdf" 
-                        download="Cv-Jaime-Jair.pdf" 
-                        className="flex items-center gap-2 bg-slate-800/80 hover:bg-slate-700 text-white px-8 py-3 rounded-xl font-medium transition-colors border border-slate-700 hover:border-violet-500/50 group"
-                    >
-                        Descargar CV
-                        {/* Icono de descarga SVG animado */}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-y-1 transition-transform">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"]
+    });
+
+    // Parallax values
+    const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+    return (
+        <section ref={ref} className="relative w-full min-h-screen flex flex-col items-center justify-center z-10 px-6 pt-20">
             
-            {/* Contenedor de la Imagen con efecto "Glow" */}
-            <div className="relative flex justify-center mt-10 md:mt-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-600 to-cyan-500 blur-3xl opacity-20 rounded-full"></div>
-                <img 
-                    src="https://res.cloudinary.com/deyjebm1c/image/upload/v1773791494/A9760D88-9575-4F07-AABD-E813866585CF_keojbh.png" 
-                    alt="Foto de perfil o Código" 
-                    className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full border-2 border-slate-700/50 shadow-2xl z-10"
-                />
-            </div>
-        </div>
+            {/* Main Content */}
+            <motion.div 
+                style={{ opacity }}
+                className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center"
+            >
+                {/* Tech Badge */}
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.9, y: -20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
+                    className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel"
+                >
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-500"></span>
+                    </span>
+                    <span className="text-slate-300 text-sm font-medium tracking-wide">Available for hire</span>
+                </motion.div>
+
+                {/* Animated Gradient Text */}
+                <motion.h1 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                    className="text-slate-50 font-sans font-extrabold text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-6 leading-[1.1] max-w-4xl"
+                >
+                    Transformando ideas en{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-accent-sky to-accent-pink">
+                        experiencias digitales.
+                    </span>
+                </motion.h1>
+
+                <motion.p 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                    className="text-slate-400 text-lg md:text-xl font-sans max-w-2xl leading-relaxed mb-12 font-light"
+                >
+                    Hola, soy Jaime Jair. <strong className="text-white font-medium">Software Engineer</strong> especializado en crear arquitecturas escalables, APIs robustas e interfaces con <strong className="text-white font-medium">rendimiento excepcional</strong>.
+                </motion.p>
+
+                {/* Action Buttons */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+                    className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto items-center justify-center"
+                >
+                    <motion.a 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        href="#proyectos" 
+                        className="relative group px-8 py-4 rounded-full bg-white text-dark-bg font-semibold hover:bg-slate-100 transition-colors flex items-center justify-center gap-2 overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-r from-brand-300 to-accent-pink opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                        <span className="relative z-10 flex items-center gap-2">
+                            Explorar Proyectos
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </span>
+                    </motion.a>
+                    <motion.a 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        href="#contacto" 
+                        className="px-8 py-4 rounded-full glass-panel text-white font-medium hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
+                    >
+                        Contactar
+                    </motion.a>
+                </motion.div>
+            </motion.div>
+
+        </section>
     )
 }
 

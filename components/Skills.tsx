@@ -1,62 +1,72 @@
+"use client"
 import { data } from "@/data/data";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: { staggerChildren: 0.1 }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.9 },
+    show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", bounce: 0.4 } }
+};
+
+const SkillBadge = ({ name, logo }: { name: string, logo: string }) => (
+    <motion.div variants={itemVariants} className="group relative flex items-center gap-3 bg-white/[0.02] border border-white/[0.05] px-5 py-3 rounded-xl hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300 shadow-lg overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-500/0 via-brand-500/10 to-accent-pink/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <img src={logo} alt={name} className="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 relative z-10 filter grayscale group-hover:grayscale-0" />
+        <span className="font-sans text-sm font-medium text-slate-400 group-hover:text-white transition-colors relative z-10">{name}</span>
+    </motion.div>
+);
+
+const SkillCategory = ({ title, skills, delay }: { title: string, skills: any[], delay: number }) => (
+    <motion.div 
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{
+            hidden: { opacity: 0, x: -30 },
+            show: { opacity: 1, x: 0, transition: { duration: 0.6, delay, when: "beforeChildren", staggerChildren: 0.05 } }
+        }}
+        className="flex flex-col gap-6 p-8 rounded-3xl glass-panel relative overflow-hidden group hover:border-brand-500/30 transition-colors duration-500"
+    >
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:bg-brand-500/10 transition-colors duration-500"></div>
+        <div className="flex items-center gap-3 relative z-10">
+            <h4 className="text-white font-sans text-xl font-semibold tracking-tight">{title}</h4>
+        </div>
+        <div className="flex flex-wrap gap-3 relative z-10">
+            {skills.map((s, idx) => (
+                <SkillBadge key={`${s.name}-${idx}`} name={s.name} logo={s.logo} />
+            ))}
+        </div>
+    </motion.div>
+);
 
 const Skills = () => {
     return (
-        <section id="habilidaes" className="flex flex-col items-center gap-10 py-16 px-6 w-full max-w-7xl mx-auto">
-            <h2 className="text-white font-bold text-3xl mb-4 text-center w-full"> Habilidades </h2>
+        <section id="habilidades" className="py-32 px-6 w-full max-w-6xl mx-auto relative z-10">
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="w-full mb-16 flex flex-col items-center text-center"
+            >
+                <span className="text-brand-400 font-medium text-sm tracking-widest uppercase mb-3">Arsenal</span>
+                <h2 className="text-slate-50 font-sans font-bold text-4xl md:text-5xl tracking-tight"> 
+                    Tecnologías
+                </h2>
+            </motion.div>
 
-            {/** Front */}
-            <div className="w-full max-w-4xl mx-auto" >
-                <h2 className="text-slate-300 border-b border-slate-700/50 pb-2 mb-6 font-semibold uppercase tracking-widest text-sm"> Frontend </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {data.skills.frontend.map((s) => (
-                        <span key={s.name} className="flex items-center gap-3 border border-slate-700/50 rounded-full px-5 py-3 text-sm bg-slate-800/50 text-slate-200 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-700 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-900/20 cursor-pointer"> 
-                            <img src={s.logo} alt={s.name}  className="w-6 h-6 flex-shrink-0" />
-                            <span className="font-medium">{s.name}</span> 
-                        </span>
-                    ))}
-                </div>
-            </div>
-
-            {/** Backend */}
-            <div className="w-full max-w-4xl mx-auto">
-                <h2 className="text-slate-300 border-b border-slate-700/50 pb-2 mb-6 font-semibold uppercase tracking-widest text-sm"> Backend </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {data.skills.backend.map((s) => (
-                        <span key={s.name} className="flex items-center gap-3 border border-slate-700/50 rounded-full px-5 py-3 text-sm bg-slate-800/50 text-slate-200 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-700 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-900/20 cursor-pointer"> 
-                            {/* Logo placeholder - the user can add the real logos to data.ts later */}
-                            <img src={s.logo} alt={s.name}  className="w-6 h-6 flex-shrink-0" />
-                            <span className="font-medium">{s.name}</span> 
-                        </span>
-                    ))}
-                </div>
-            </div>
-
-            {/** Herramientas */}
-            <div className="w-full max-w-4xl mx-auto">
-                <h2 className="text-slate-300 border-b border-slate-700/50 pb-2 mb-6 font-semibold uppercase tracking-widest text-sm"> Herramientas </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {data.skills.herramientas.map((s) => (
-                        <span key={s.name} className="flex items-center gap-3 border border-slate-700/50 rounded-full px-5 py-3 text-sm bg-slate-800/50 text-slate-200 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-700 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-900/20 cursor-pointer"> 
-                            {/* Logo placeholder */}
-                            <img src={s.logo} alt={s.name}  className="w-6 h-6 flex-shrink-0" />
-                            <span className="font-medium">{s.name}</span> 
-                        </span>
-                    ))}
-                </div>
-            </div>
-
-            {/** Cloud */}
-            <div className="w-full max-w-4xl mx-auto">
-                <h2 className="text-slate-300 border-b border-slate-700/50 pb-2 mb-6 font-semibold uppercase tracking-widest text-sm"> Cloud </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {data.skills.cloud.map((s) => (
-                        <span key={s.name} className="flex items-center gap-3 border border-slate-700/50 rounded-full px-5 py-3 text-sm bg-slate-800/50 text-slate-200 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-700 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-900/20 cursor-pointer">
-                            <img src={s.logo} alt={s.name} className="w-6 h-6 flex-shrink-0" />
-                            <span  className="font-medium"> {s.name}</span>
-                        </span>
-                    ))}
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <SkillCategory title="Frontend Development" skills={data.skills.frontend} delay={0.1} />
+                <SkillCategory title="Backend & APIs" skills={data.skills.backend} delay={0.2} />
+                <SkillCategory title="Tools & DevOps" skills={data.skills.herramientas} delay={0.3} />
+                <SkillCategory title="Cloud Services" skills={data.skills.cloud} delay={0.4} />
             </div>
         </section>
     )

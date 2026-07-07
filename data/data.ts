@@ -10,51 +10,56 @@ export const data = {
     //<-- HABILIDADES 
     skills: {
         frontend: [
-            { name: "HTML", logo:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"},
-            { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
-            { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"},
-            { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
-            { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"  },
-            {name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original-wordmark.svg"},
-            {name: "Tailwind", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" }
+            { name: "HTML5", logo: "https://cdn.simpleicons.org/html5/white" },
+            { name: "CSS3", logo: "https://cdn.simpleicons.org/css3/white" },
+            { name: "JavaScript", logo: "https://cdn.simpleicons.org/javascript/white" },
+            { name: "TypeScript", logo: "https://cdn.simpleicons.org/typescript/white" },
+            { name: "React", logo: "https://cdn.simpleicons.org/react/white" },
+            { name: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/white" },
+            { name: "Tailwind CSS", logo: "https://cdn.simpleicons.org/tailwindcss/white" }
         ],
-        
         backend: [
-            { name: "Node.js", logo:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"},
-            { name: "Express", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg"},
-            { name: "Python", logo:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"},
-            { name: "FatAPI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg"},
-            { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"},
-            { name: "Sequelize", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sequelize/sequelize-original.svg"},
+            { name: "Node.js", logo: "https://cdn.simpleicons.org/nodedotjs/white" },
+            { name: "Express", logo: "https://cdn.simpleicons.org/express/white" },
+            { name: "Python", logo: "https://cdn.simpleicons.org/python/white" },
+            { name: "FastAPI", logo: "https://cdn.simpleicons.org/fastapi/white" },
+            { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql/white" },
+            { name: "Sequelize", logo: "https://cdn.simpleicons.org/sequelize/white" },
+            { name: "MongoDB", logo: "https://cdn.simpleicons.org/mongodb/white" },
         ],
-        
         herramientas: [
-            {name: "Postman", logo:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"},
-            {name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"},
-            { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"},
-            { name: "Vercel", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original-wordmark.svg"},
-            { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"},
-            {name: "Supabase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"},
-            {name: "Algolia", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/algolia/algolia-original.svg"},
-            {name: "Mapbox", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Mapbox_logo_2019.svg"},
-            {name: "railway", logo: "https://cdn.simpleicons.org/railway/white"},
-            {name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"},
-            {name: "Kubernetes", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg"}
+            { name: "Postman", logo: "https://cdn.simpleicons.org/postman/white" },
+            { name: "Git", logo: "https://cdn.simpleicons.org/git/white" },
+            { name: "GitHub", logo: "https://cdn.simpleicons.org/github/white" },
+            { name: "Vercel", logo: "https://cdn.simpleicons.org/vercel/white" },
+            { name: "Firebase", logo: "https://cdn.simpleicons.org/firebase/white" },
+            { name: "Supabase", logo: "https://cdn.simpleicons.org/supabase/white" },
+            { name: "Docker", logo: "https://cdn.simpleicons.org/docker/white" }
         ],
-        cloud:[
-            {name: "AWS S3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"},
-            {name: "AWS Lambda", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"},
-            {name: "API Gateway", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"},
-            {name: "AWS SQS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"},
-            {name: "AWS SNS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"},
-            {name: "DynamoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"}
+        cloud: [
+            { name: "AWS", logo: "https://cdn.simpleicons.org/amazonaws/white" },
+            { name: "DynamoDB", logo: "https://cdn.simpleicons.org/amazondynamodb/white" },
+            { name: "Kubernetes", logo: "https://cdn.simpleicons.org/kubernetes/white" }
         ]
     },
 
     // <--- PROYECTOS   
     projects: [
         {
+            slug: "football-ai-analytics",
+            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+            gallery: [],
+            title: "Football AI Analytics",
+            description: "Plataforma de análisis de partidos de fútbol potenciada por Inteligencia Artificial. " +
+                "Integra múltiples APIs deportivas para la recopilación de estadísticas y cuenta con un sistema de respaldo (fallback) que rastrea datos históricos si las APIs fallan, garantizando un flujo de datos ininterrumpido. " +
+                "Arquitectura dividida: Servidor externo en Python diseñado específicamente para procesar y ejecutar análisis predictivos intensivos, enviando los resultados optimizados a la aplicación principal para no sobrecargar el modelo de IA base ni la UI de los usuarios. " +
+                "Stack: Python · IA/Machine Learning · React · Arquitectura Distribuida · APIs REST",
+            isPrivate: true
+        },
+        {
+            slug: "social-app",
             img: "https://res.cloudinary.com/deyjebm1c/image/upload/v1774497463/Captura_de_pantalla_2026-03-25_a_la_s_9.57.30_p.m._nxqccf.png",
+            gallery: [],
             title: "Social app",
             description: "Red social fullstack construida con React, TypeScript y Node.js + Express." +
                 "Implementa autenticación JWT desde cero con bcryptjs para el manejo seguro de contraseñas, sistema de seguimiento entre usuarios y feed personalizado basado en las conexiones del usuario." +
@@ -66,20 +71,23 @@ export const data = {
             live: "https://social-app-frontend-mocha.vercel.app/"
         },
         {
+            slug: "crypto-dashboard",
             img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1775230193/Captura_de_pantalla_2026-04-02_a_la_s_11.43.20_p.m._yxcsbt.png",
+            gallery: [],
             title: "Dashboard de Análisis Crypto",
             description: "Panel interactivo de criptomonedas en tiempo real construido con React, TypeScript y FastAPI." +
                 "Consume la API pública de CoinGecko para mostrar precios, tendencias y historial de mercado con visualizaciones dinámicas mediante Recharts." + 
                 "El backend implementa un sistema de caché con SQLAlchemy para optimizar las peticiones y reducir la latencia." +
                 "Incluye filtros por activo y rango de tiempo, tipado estricto en TypeScript y arquitectura limpia con separación de responsabilidades entre routers y services."+
                 "Stack: React · TypeScript · FastAPI · SQLAlchemy · Recharts · Python",
-
             github: "https://github.com/yahirjz/crypto-dashboard-frontend", 
             githubBackend: "https://github.com/yahirjz/crypto-dashboard-backend", 
             live: "https://crypto-dashboard-frontend-tau.vercel.app/"
         },
         {
+            slug: "portafolio-v1",
             img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1775230193/Captura_de_pantalla_2026-04-02_a_la_s_11.52.24_p.m._bzzera.png",
+            gallery: [],
             title: "Porfolio",
             description: "Plataforma web personal interactiva construida con Next.js 16, React 19 y TypeScript." + 
                 "Diseñada con un enfoque moderno y responsivo utilizando Tailwind CSS v4 para una experiencia de usuario fluida." + 
@@ -91,7 +99,9 @@ export const data = {
             live: ""
         },
         {
+            slug: "reportes-tisax",
             img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1776461350/Captura_de_pantalla_2026-04-17_a_la_s_3.10.17_p.m._zsuwkj.png",
+            gallery: [],
             title: "Sistema de reportes TISAX",
             description: "Plataforma Integral de Reportes TISAX. " +
                 "Proyecto final de carrera diseñado para resolver la eficiencia operativa mediante una arquitectura moderna. " +

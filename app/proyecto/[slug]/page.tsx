@@ -1,6 +1,7 @@
 import { data } from "@/data/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -74,7 +75,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </header>
 
             <div className="w-full aspect-video md:aspect-[21/9] bg-black rounded-3xl overflow-hidden mb-16 border border-white/10 shadow-2xl relative">
-                <img src={project.img} alt={project.title} className="w-full h-full object-cover opacity-80" />
+                <Image src={project.img} alt={project.title} fill priority sizes="100vw" className="object-cover opacity-80" />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-transparent to-transparent"></div>
             </div>
 
@@ -88,8 +89,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     <h2 className="text-3xl font-bold text-white mb-8">Galería de Imágenes</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {project.gallery.map((img, i) => (
-                            <div key={i} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 aspect-video shadow-lg hover:border-brand-500/50 transition-colors">
-                                <img src={img} alt={`${project.title} screenshot ${i+1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                            <div key={i} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 aspect-video shadow-lg hover:border-brand-500/50 transition-colors relative">
+                                <Image src={img} alt={`${project.title} screenshot ${i+1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover hover:scale-105 transition-transform duration-500" />
                             </div>
                         ))}
                     </div>

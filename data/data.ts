@@ -47,10 +47,10 @@ export const data = {
     projects: [
         {
             slug: "football-ai-analytics",
-            img: "https://res.cloudinary.com/deyjebm1c/image/upload/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.18_p.m._f8etcd.png",
+            img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto,f_auto/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.18_p.m._f8etcd.png",
             gallery: [
-                "https://res.cloudinary.com/deyjebm1c/image/upload/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.30_p.m._d6dlzq.png",
-                "https://res.cloudinary.com/deyjebm1c/image/upload/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.38_p.m._kd0vuo.png"
+                "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto,f_auto/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.30_p.m._d6dlzq.png",
+                "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto,f_auto/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.38_p.m._kd0vuo.png"
             ],
             title: "Football AI Analytics",
             description: "Plataforma de análisis de partidos de fútbol potenciada por Inteligencia Artificial. " +

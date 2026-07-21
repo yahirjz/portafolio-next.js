@@ -1,6 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 
 interface ProjectProps {
     slug: string;
@@ -28,10 +29,12 @@ const ProjectCard = ({ slug, title, description, img, github, githubBackend, liv
             >
                 {/* Image Section */}
                 <div className="w-full h-64 bg-black relative overflow-hidden">
-                    <img 
-                        src={img} 
-                        alt={title} 
-                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                    <Image
+                        src={img}
+                        alt={title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/90 via-dark-bg/40 to-transparent"></div>
                 </div>

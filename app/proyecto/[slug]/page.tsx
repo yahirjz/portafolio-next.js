@@ -4,6 +4,161 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 
+type DescriptionBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "callout"; text: string }
+  | { type: "steps"; items: string[] }
+  | { type: "bullets"; items: string[] }
+  | { type: "heading"; text: string }
+  | { type: "stats"; items: { icon: string; label: string; value: string }[] };
+
+const EMOJI_STAT = /^(\p{Emoji}️?)\s*(.+?):\s*(.+)$/u;
+
+// Turns the free-text project description into semantic blocks so numbered
+// steps, feature bullets and impact metrics each get their own treatment
+// instead of showing up as raw "**", "-" and "1." characters.
+function parseDescriptionBlocks(raw: string): DescriptionBlock[] {
+  const lines = raw.split("\n").map((l) => l.trim());
+  const blocks: DescriptionBlock[] = [];
+  let paragraphBuffer: string[] = [];
+
+  const flushParagraph = () => {
+    if (paragraphBuffer.length === 0) return;
+    const text = paragraphBuffer.join(" ");
+    
+    // Caja de enfasis (Callout)
+    blocks.push(/^[^:]+:/i.test(text) ? { type: "callout", text } : { type: "paragraph", text });
+    paragraphBuffer = [];
+  };
+
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+
+    if (line === "") {
+      flushParagraph();
+      i++;
+      continue;
+    }
+
+    const heading = line.match(/^\*\*(.+)\*\*$/);
+    if (heading) {
+      flushParagraph();
+      blocks.push({ type: "heading", text: heading[1] });
+      i++;
+      continue;
+    }
+
+    if (/^\d+\.\s+/.test(line)) {
+      flushParagraph();
+      const items: string[] = [];
+      while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^\d+\.\s+/, ""));
+        i++;
+      }
+      blocks.push({ type: "steps", items });
+      continue;
+    }
+
+    if (/^-\s+/.test(line)) {
+      flushParagraph();
+      const items: string[] = [];
+      while (i < lines.length && /^-\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^-\s+/, ""));
+        i++;
+      }
+      const matches = items.map((item) => item.match(EMOJI_STAT));
+      if (matches.every((m): m is RegExpMatchArray => m !== null)) {
+        blocks.push({ type: "stats", items: matches.map((m) => ({ icon: m[1], label: m[2], value: m[3] })) });
+      } else {
+        blocks.push({ type: "bullets", items });
+      }
+      continue;
+    }
+
+    paragraphBuffer.push(line);
+    i++;
+  }
+  flushParagraph();
+  return blocks;
+}
+
+// blocke de descripción
+function DescriptionBlocks({ blocks }: { blocks: DescriptionBlock[] }) {
+  return (
+    <div className="space-y-8">
+      {blocks.map((block, idx) => {
+        if (block.type === "paragraph") {
+          return (
+            <p key={idx} className="text-slate-300 font-light leading-relaxed">
+              {block.text}
+            </p>
+          );
+        }
+
+        if (block.type === "callout") {
+          return (
+            <p key={idx} className="border-l-2 border-accent-pink/50 bg-white/[0.02] rounded-r-lg pl-5 py-3 text-slate-300 italic">
+              {block.text}
+            </p>
+          );
+        }
+
+        if (block.type === "steps") {
+          return (
+            <ol key={idx} className="space-y-3">
+              {block.items.map((item, i) => (
+                <li key={i} className="flex gap-4 items-start">
+                  <span className="shrink-0 w-7 h-7 mt-0.5 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-xs font-heading font-semibold text-slate-500">
+                    {i + 1}
+                  </span>
+                  <span className="text-slate-400 font-light leading-relaxed pt-1">{item}</span>
+                </li>
+              ))}
+            </ol>
+          );
+        }
+
+        if (block.type === "bullets") {
+          return (
+            <ul key={idx} className="space-y-3">
+              {block.items.map((item, i) => (
+                <li key={i} className="flex gap-3 items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-1 text-brand-300">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  <span className="text-slate-300 font-light leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          );
+        }
+
+        if (block.type === "heading") {
+          return (
+            <div key={idx} className="flex items-center gap-3 pt-2">
+              <span className="w-8 h-px bg-brand-400/60" />
+              <h3 className="font-heading text-xs font-bold tracking-[0.2em] text-brand-300 uppercase">{block.text}</h3>
+            </div>
+          );
+        }
+
+        return (
+          <div key={idx} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {block.items.map((stat, i) => (
+              <div key={i} className="glass-panel rounded-2xl p-5 flex flex-col gap-2">
+                <span className="text-2xl">{stat.icon}</span>
+                <span className="font-heading text-lg font-bold text-white leading-snug">{stat.value}</span>
+                <span className="text-sm text-slate-400">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const project = data.projects.find((p) => p.slug === slug);
@@ -79,9 +234,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-transparent to-transparent"></div>
             </div>
 
-            <article className="prose prose-invert prose-lg max-w-none font-sans font-light leading-relaxed text-slate-300">
-                <h2 className="text-3xl font-bold text-white mb-6">Acerca del Proyecto</h2>
-                <p className="whitespace-pre-line">{mainDesc}</p>
+            <article className="max-w-none">
+                <h2 className="font-heading text-3xl font-bold text-white mb-8">Acerca del Proyecto</h2>
+                <DescriptionBlocks blocks={parseDescriptionBlocks(mainDesc)} />
             </article>
 
             {project.gallery && project.gallery.length > 0 && (

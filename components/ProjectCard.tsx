@@ -2,6 +2,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
+import { useReducedMotion } from "@/hooks/useReducedMotion"
 
 interface ProjectProps {
     slug: string;
@@ -15,17 +16,18 @@ interface ProjectProps {
 }
 
 const ProjectCard = ({ slug, title, description, img, github, githubBackend, live, isPrivate }: ProjectProps) => {
+    const prefersReducedMotion = useReducedMotion();
 
     return (
-        <motion.div 
-            initial={{ opacity: 0, y: 50 }}
+        <motion.div
+            initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.8, type: "spring", bounce: 0.3 }}
             className="group relative flex flex-col w-full h-full"
         >
             <div
-                className="relative overflow-hidden rounded-3xl glass-panel flex-grow flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(139,92,246,0.15)] hover:border-white/10"
+                className="relative overflow-hidden rounded-3xl glass-panel flex-grow flex flex-col transition-transform transition-shadow duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(139,92,246,0.15)] hover:border-white/10"
             >
                 {/* Image Section */}
                 <div className="w-full h-64 bg-black relative overflow-hidden">
@@ -34,7 +36,7 @@ const ProjectCard = ({ slug, title, description, img, github, githubBackend, liv
                         alt={title}
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                        className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-opacity transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/90 via-dark-bg/40 to-transparent"></div>
                 </div>

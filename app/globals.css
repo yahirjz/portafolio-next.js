@@ -65,18 +65,21 @@
 /* Glassmorphism Utilities */
 .glass-panel {
   background: var(--color-dark-card);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--color-dark-border);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transform: translateZ(0);
 }
 
 /* Aurora Background Utility */
 .aurora-bg {
   position: absolute;
-  filter: blur(120px);
+  filter: blur(80px);
   opacity: 0.4;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
+  transform: translateZ(0);
+  will-change: transform;
 }

@@ -1,16 +1,18 @@
 "use client"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
+import { useReducedMotion } from "@/hooks/useReducedMotion"
 
 const Hero = () => {
     const ref = useRef(null);
+    const prefersReducedMotion = useReducedMotion();
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end start"]
     });
 
-    // Parallax values
-    const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    // Parallax values (range collapses to a no-op if reduced motion preferred)
+    const opacity = useTransform(scrollYProgress, [0, 0.5], prefersReducedMotion ? [1, 1] : [1, 0]);
 
     return (
         <section ref={ref} className="relative w-full min-h-screen flex flex-col items-center justify-center z-10 px-6 pt-20">
@@ -27,10 +29,7 @@ const Hero = () => {
                     transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
                     className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel"
                 >
-                    <span className="relative flex h-2.5 w-2.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-500"></span>
-                    </span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-500"></span>
                     <span className="text-slate-300 text-sm font-medium tracking-wide">Available for hire</span>
                 </motion.div>
 

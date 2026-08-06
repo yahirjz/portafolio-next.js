@@ -159,6 +159,10 @@ function DescriptionBlocks({ blocks }: { blocks: DescriptionBlock[] }) {
   );
 }
 
+export function generateStaticParams() {
+  return data.projects.map((p) => ({ slug: p.slug }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const project = data.projects.find((p) => p.slug === slug);

@@ -17,15 +17,15 @@ const itemVariants: Variants = {
 };
 
 const SkillBadge = ({ name, logo }: { name: string, logo: string }) => (
-    <motion.div variants={itemVariants} className="group relative flex items-center gap-3 bg-white/[0.02] border border-white/[0.05] px-5 py-3 rounded-xl hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300 shadow-lg overflow-hidden">
+    <motion.div variants={itemVariants} className="group relative flex items-center gap-3 bg-white/[0.02] border border-white/[0.05] px-5 py-3 rounded-xl hover:bg-white/[0.05] hover:border-white/10 transition-colors duration-300 shadow-lg overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-500/0 via-brand-500/10 to-accent-pink/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-        <Image src={logo} alt={name} width={20} height={20} unoptimized className="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 relative z-10 filter grayscale group-hover:grayscale-0" />
-        <span className="font-sans text-sm font-medium text-slate-400 group-hover:text-white transition-colors relative z-10">{name}</span>
+        <Image src={logo} alt={name} width={20} height={20} unoptimized loading="lazy" className="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-opacity transition-transform duration-300 relative z-10" />
+        <span className="font-sans text-sm font-medium text-slate-400 group-hover:text-white transition-colors duration-300 relative z-10">{name}</span>
     </motion.div>
 );
 
 const SkillCategory = ({ title, skills, delay }: { title: string, skills: any[], delay: number }) => (
-    <motion.div 
+    <motion.div
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-100px" }}
@@ -35,7 +35,7 @@ const SkillCategory = ({ title, skills, delay }: { title: string, skills: any[],
         }}
         className="flex flex-col gap-6 p-8 rounded-3xl glass-panel relative overflow-hidden group hover:border-brand-500/30 transition-colors duration-500"
     >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:bg-brand-500/10 transition-colors duration-500"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:bg-brand-500/10 transition-colors duration-500"></div>
         <div className="flex items-center gap-3 relative z-10">
             <h4 className="text-white font-sans text-xl font-semibold tracking-tight">{title}</h4>
         </div>

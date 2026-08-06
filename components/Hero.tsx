@@ -30,7 +30,7 @@ const Hero = () => {
                     className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel"
                 >
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-500"></span>
-                    <span className="text-slate-300 text-sm font-medium tracking-wide">Available for hire</span>
+                    <span className="text-slate-300 text-sm font-medium tracking-wide">Disponible para trabajar</span>
                 </motion.div>
 
                 {/* Animated Gradient Text */}
@@ -38,11 +38,11 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-                    className="text-slate-50 font-sans font-extrabold text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-6 leading-[1.1] max-w-4xl"
+                    className="text-slate-50 font-sans font-extrabold text-4xl md:text-7xl lg:text-8xl tracking-tighter mb-6 leading-[1.1] max-w-4xl"
                 >
-                    Transformando ideas en{" "}
+                    Desarrollo aplicaciones modernas para {" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-accent-sky to-accent-pink">
-                        experiencias digitales.
+                    impulsar ideas.
                     </span>
                 </motion.h1>
 
@@ -52,7 +52,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                     className="text-slate-400 text-lg md:text-xl font-sans max-w-2xl leading-relaxed mb-12 font-light"
                 >
-                    Hola, soy Jaime Jair. <strong className="text-white font-medium">Software Engineer</strong> especializado en crear arquitecturas escalables, APIs robustas e interfaces con <strong className="text-white font-medium">rendimiento excepcional</strong>.
+                    Hola, soy Jaime Jair. <strong className="text-white font-medium">Desarrollador full stack</strong> enfocado en diseñar y construir productos digitales modernos, combinando frontend, backend y APIs para crear soluciones <strong className="text-white font-medium">eficientes y escalables</strong>.
                 </motion.p>
 
                 {/* Action Buttons */}

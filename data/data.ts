@@ -1,7 +1,8 @@
 export const data = {
     name: "Jaime Jair",
     role: "Full stack Developer",
-    about: `Construyo APIs y microservicios escalables con IA para startups.
+    about: `
+            Construyo APIs y microservicios escalables con IA para startups.
             Especializado en arquitecturas distribuidas que procesan datos 
             en tiempo real. Full-Stack: Next.js, 
             Node.js/Express, FastAPI, React.
@@ -13,7 +14,8 @@ export const data = {
             - Machine Learning integrado en producción
 
             Si necesitas un sistema que funcione sin downtime, construcción 
-            rápida de MVP, o arquitectura que crezca con tu startup: estoy disponible.`,
+            rápida de MVP, o arquitectura que crezca con tu startup: estoy disponible.
+            `,
     
     social: {
         github: "https://github.com/yahirjz/",

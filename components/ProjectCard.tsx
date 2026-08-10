@@ -30,13 +30,16 @@ const ProjectCard = ({ slug, title, description, img, github, githubBackend, liv
                 className="relative overflow-hidden rounded-3xl glass-panel flex-grow flex flex-col transition-transform transition-shadow duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(139,92,246,0.15)] hover:border-white/10"
             >
                 {/* Image Section */}
-                <div className="w-full h-64 bg-black relative overflow-hidden">
+                <div className={isPrivate ? "w-full aspect-[16/10] bg-slate-950 relative overflow-hidden" : "w-full h-64 bg-black relative overflow-hidden"}>
                     <Image
                         src={img}
-                        alt={title}
+                        alt={isPrivate ? "Vista general del panel de análisis de Sportixa" : title}
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-opacity transition-transform duration-700 ease-out"
+                        className={isPrivate
+                            ? "object-contain opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-opacity transition-transform duration-700 ease-out"
+                            : "object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-opacity transition-transform duration-700 ease-out"
+                        }
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/90 via-dark-bg/40 to-transparent"></div>
                 </div>

@@ -14,6 +14,19 @@ type DescriptionBlock =
 
 const EMOJI_STAT = /^(\p{Emoji}️?)\s*(.+?):\s*(.+)$/u;
 
+const SPORTIXA_SCREENSHOT_ALTS = [
+  "Mercados recomendados de Sportixa con probabilidades y umbral de confianza",
+  "Análisis contextual de un partido presentado en Sportixa",
+];
+
+const SPORTIXA_PIPELINE = [
+  { label: "Historial reciente", detail: "Datos y contexto disponibles" },
+  { label: "Agregación directa", detail: "Promedios de últimos partidos" },
+  { label: "Poisson + calibración", detail: "Modelo matemático y ajuste heurístico" },
+  { label: "Filtro ≥65%", detail: "filterRecommendedBets" },
+  { label: "Síntesis con Claude", detail: "Explicación contextual" },
+];
+
 // Turns the free-text project description into semantic blocks so numbered
 // steps, feature bullets and impact metrics each get their own treatment
 // instead of showing up as raw "**", "-" and "1." characters.
@@ -159,6 +172,49 @@ function DescriptionBlocks({ blocks }: { blocks: DescriptionBlock[] }) {
   );
 }
 
+function SportixaArchitecture() {
+  return (
+    <section aria-labelledby="sportixa-pipeline-title" className="mb-16">
+      <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-brand-300">Pipeline actual</p>
+          <h2 id="sportixa-pipeline-title" className="font-heading text-2xl font-bold text-white sm:text-3xl">De los datos a una explicación revisable</h2>
+        </div>
+        <p className="max-w-sm text-sm leading-relaxed text-slate-400">Cada etapa tiene una función limitada y visible; ninguna convierte la probabilidad en una garantía.</p>
+      </div>
+
+      <ol className="grid grid-cols-1 gap-3 md:grid-cols-5">
+        {SPORTIXA_PIPELINE.map((step, index) => (
+          <li key={step.label} className="relative min-w-0 rounded-2xl border border-white/10 bg-white/[0.03] p-4 md:p-5">
+            <span className="mb-4 flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-brand-500/10 font-mono text-xs font-bold text-brand-300">
+              {index + 1}
+            </span>
+            <p className="font-heading text-sm font-bold leading-snug text-white">{step.label}</p>
+            <p className="mt-2 text-xs leading-relaxed text-slate-400">{step.detail}</p>
+            {index < SPORTIXA_PIPELINE.length - 1 && (
+              <span aria-hidden="true" className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 text-brand-400 md:-right-2 md:bottom-auto md:left-auto md:top-1/2 md:translate-x-0 md:-translate-y-1/2">↓</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+function SportixaResponsibleUse() {
+  return (
+    <aside aria-labelledby="sportixa-responsible-use" className="mb-16 rounded-2xl border border-amber-300/20 bg-amber-300/[0.05] p-5 sm:p-6">
+      <div className="flex items-start gap-4">
+        <span aria-hidden="true" className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-amber-300/20 bg-amber-300/10 text-amber-200">!</span>
+        <div>
+          <h2 id="sportixa-responsible-use" className="font-heading text-base font-bold text-amber-100">Beta privada · Uso responsable</h2>
+          <p className="mt-2 text-sm leading-relaxed text-slate-300">Producto experimental en desarrollo. Las probabilidades y explicaciones ayudan a revisar información; no garantizan resultados, no son asesoría financiera y siempre deben interpretarse con criterio propio.</p>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
 export function generateStaticParams() {
   return data.projects.map((p) => ({ slug: p.slug }));
 }
@@ -234,9 +290,23 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </header>
 
             <div className="w-full aspect-video md:aspect-[21/9] bg-black rounded-3xl overflow-hidden mb-16 border border-white/10 shadow-2xl relative">
-                <Image src={project.img} alt={project.title} fill priority sizes="100vw" className="object-cover opacity-80" />
+                <Image
+                  src={project.img}
+                  alt={project.slug === "sportixa" ? "Vista general del panel de análisis de Sportixa" : project.title}
+                  fill
+                  priority
+                  sizes="100vw"
+                  className={project.slug === "sportixa" ? "object-contain opacity-90" : "object-cover opacity-80"}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-transparent to-transparent"></div>
             </div>
+
+            {project.slug === "sportixa" && (
+              <>
+                <SportixaArchitecture />
+                <SportixaResponsibleUse />
+              </>
+            )}
 
             <article className="max-w-none">
                 <h2 className="font-heading text-3xl font-bold text-white mb-8">Acerca del Proyecto</h2>
@@ -249,7 +319,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {project.gallery.map((img, i) => (
                             <div key={i} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 aspect-video shadow-lg hover:border-brand-500/50 transition-colors relative">
-                                <Image src={img} alt={`${project.title} screenshot ${i+1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover hover:scale-105 transition-transform duration-500" />
+                                <Image
+                                  src={img}
+                                  alt={project.slug === "sportixa" ? SPORTIXA_SCREENSHOT_ALTS[i] : `${project.title} screenshot ${i+1}`}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, 50vw"
+                                  className={project.slug === "sportixa" ? "object-contain hover:scale-[1.02] transition-transform duration-500" : "object-cover hover:scale-105 transition-transform duration-500"}
+                                />
                             </div>
                         ))}
                     </div>

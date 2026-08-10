@@ -65,17 +65,49 @@ export const data = {
         // PROYECTO DE ANALISIS DE PARTIDOS 
         {
             slug: "sportixa",
-            img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto,f_auto/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.18_p.m._f8etcd.png",
+            img: "/projects/sportixa/overview.png",
             gallery: [
-                "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto,f_auto/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.30_p.m._d6dlzq.png",
-                "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto,f_auto/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.38_p.m._kd0vuo.png"
+                "/projects/sportixa/recommended-markets.png",
+                "/projects/sportixa/analysis-context.png"
             ],
             title: "Sportixa",
             description: `
-                Sportixa es una beta privada en desarrollo para explorar contexto y datos de fútbol en una interfaz clara.
-                El producto no ofrece garantías ni resultados de apuestas; las capacidades de IA y aprendizaje automático permanecen en evaluación para fases futuras.
+                **El problema**
 
-                Estado: Beta privada · En desarrollo
+                Analizar un partido exige contrastar forma reciente, estadísticas y contexto en fuentes separadas. Sportixa reúne esas señales en una sola experiencia para que la persona usuaria pueda revisarlas con trazabilidad, sin presentar el análisis como una certeza.
+
+                **Flujo actual de la persona usuaria**
+
+                1. Selecciona un partido disponible.
+                2. Revisa los promedios directos de los últimos encuentros y el contexto de ambos equipos.
+                3. Consulta las probabilidades por mercado y distingue cuáles superaron el filtro de recomendación.
+                4. Lee una síntesis contextual y conserva el criterio final sobre cómo interpretar los datos.
+
+                **Metodología actual**
+
+                - Los promedios de los últimos partidos son una agregación directa del historial disponible.
+                - Poisson es el modelo matemático de probabilidad usado para estimar distintos mercados.
+                - La auto-calibración ajusta pesos con una heurística basada en resultados observados; no es un modelo de machine learning entrenado.
+
+                **Guardrails deterministas**
+
+                - filterRecommendedBets deja pasar como recomendados únicamente los mercados con una probabilidad calculada mayor o igual a 65%.
+                - El umbral es una regla determinista de presentación: no garantiza aciertos ni elimina la incertidumbre del deporte.
+
+                **Rol de Claude y stack**
+
+                - Claude sintetiza y explica el análisis contextual a partir de datos ya calculados; no sustituye el modelo de Poisson ni decide qué mercado supera el filtro.
+                - La experiencia conecta una interfaz en Next.js con un motor matemático en FastAPI y datos persistidos en Supabase.
+
+                **Estado actual: beta privada**
+
+                Sportixa está en desarrollo y se prueba con acceso limitado. Sus resultados son informativos y experimentales: no son asesoría financiera ni una promesa de resultados.
+
+                **Hoja de ruta de ML**
+
+                El aprendizaje supervisado es trabajo futuro. Solo se evaluará cuando exista un volumen suficiente de datos históricos etiquetados para entrenar, validar y comparar modelos de forma responsable.
+
+                Stack: Next.js · React · TypeScript · FastAPI · Python · Supabase · Claude API
                 `,
             isPrivate: true
         },

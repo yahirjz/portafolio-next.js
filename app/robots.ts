@@ -1,8 +1,21 @@
 import type { MetadataRoute } from "next";
 
-// NEXT_PUBLIC_SITE_URL must be set in deployment. Localhost is used only for
-// development metadata routes when a public deployment URL is unavailable.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+function getSiteUrl() {
+  const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+  if (configuredUrl) {
+    try {
+      const url = new URL(configuredUrl);
+      if (url.protocol === "https:") return url.origin;
+    } catch {
+      // An invalid deployment URL must not be emitted to crawlers.
+    }
+  }
+
+  return process.env.NODE_ENV === "development" ? "http://localhost:3000" : undefined;
+}
+
+const siteUrl = getSiteUrl();
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,6 +23,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${siteUrl}/sitemap.xml`,
+    ...(siteUrl ? { sitemap: `${siteUrl}/sitemap.xml` } : {}),
   };
 }

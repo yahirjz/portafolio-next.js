@@ -13,6 +13,12 @@ Set `NEXT_PUBLIC_SITE_URL` to the real, absolute production URL (for example, `h
 
 No production portfolio URL is configured in this repository, so none was invented. In local development only, `robots.txt` and `sitemap.xml` use `http://localhost:3000` as their absolute URL fallback.
 
+## Review correction: production crawler safety
+
+- `NEXT_PUBLIC_SITE_URL` is now accepted only when it is a valid HTTPS URL.
+- Without that value, production returns an empty sitemap and `robots.txt` omits its sitemap property completely.
+- The localhost fallback is limited to `NODE_ENV=development`, so it cannot be emitted from a production build.
+
 ## Verification
 
 - `npm run lint` completed successfully.

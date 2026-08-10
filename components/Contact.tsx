@@ -4,16 +4,23 @@ import { useState } from "react";
 import { data } from "@/data/data";
 import { motion } from "framer-motion";
 
+type Feedback =
+    | { status: "idle" }
+    | { status: "success"; message: string }
+    | { status: "error"; message: string };
+
 const Contact = () => {
     const [ nombre, setNombre ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ mensaje, setMensaje ] = useState("");
     const [ isSubmitting, setIsSubmitting ] = useState(false);
+    const [ feedback, setFeedback ] = useState<Feedback>({ status: "idle" });
     const URL_API = "/api/contacto";
 
     const sendForm = async (e: React.FormEvent) => {
         e.preventDefault()
         setIsSubmitting(true);
+        setFeedback({ status: "idle" });
         
         try {
             const respuesta = await fetch(URL_API , {
@@ -25,16 +32,21 @@ const Contact = () => {
             })
 
             if(!respuesta.ok){
-                alert("Error de envío. Status: 500");
+                setFeedback({
+                    status: "error",
+                    message: "No fue posible enviar el mensaje. Revisa los datos e inténtalo de nuevo.",
+                });
             } else {
-                alert("Mensaje enviado exitosamente.");
+                setFeedback({ status: "success", message: "Mensaje enviado exitosamente." });
                 setNombre("");
                 setEmail("");
                 setMensaje("");
             }
-        } catch (error) {
-            console.error("Submission error:", error);
-            alert("Excepción capturada en la petición HTTP.");
+        } catch {
+            setFeedback({
+                status: "error",
+                message: "No fue posible enviar el mensaje. Inténtalo de nuevo más tarde.",
+            });
         } finally {
             setIsSubmitting(false);
         }
@@ -110,6 +122,14 @@ const Contact = () => {
                                 onChange={(e) => setMensaje(e.target.value)}
                                 required
                             ></textarea>
+                        </div>
+
+                        <div aria-live="polite" className="min-h-6 text-sm" role="status">
+                            {feedback.status !== "idle" && (
+                                <p className={feedback.status === "success" ? "text-emerald-300" : "text-red-300"}>
+                                    {feedback.message}
+                                </p>
+                            )}
                         </div>
 
                         <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-white/10 pt-8">

@@ -64,40 +64,18 @@ export const data = {
 
         // PROYECTO DE ANALISIS DE PARTIDOS 
         {
-            slug: "football-ai-analytics",
+            slug: "sportixa",
             img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto,f_auto/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.18_p.m._f8etcd.png",
             gallery: [
                 "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto,f_auto/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.30_p.m._d6dlzq.png",
                 "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto,f_auto/v1783456294/Captura_de_pantalla_2026-07-07_a_la_s_1.00.38_p.m._kd0vuo.png"
             ],
-            title: "Football AI Analytics",
+            title: "Sportixa",
             description: `
-                Es una plataforma independiente que Utiliza analisis de datos usando ML y IA para mejoramiento del analisis.
-                Millones de personas que tienen curiosidad o interes por las casas de apuestas deportivas pero se encuentran con
+                Sportixa es una beta privada en desarrollo para explorar contexto y datos de fútbol en una interfaz clara.
+                El producto no ofrece garantías ni resultados de apuestas; las capacidades de IA y aprendizaje automático permanecen en evaluación para fases futuras.
 
-                1. No entender de fútbol ni equipos — Datos crudos de odds no significan nada
-                2. Análisis deportivos requieren expertise — Comparar form, H2H, lesiones es complejo
-                3. Información dispersa — Tienen que visitar múltiples sitios para datos
-                4. Predicciones manuales = subjetivas — Sin análisis profundo, es pura suerte
-
-                Se inplemento una plataforma que democratiza el analizis deportivo con ayuda de la IA
-
-                El usuario puede observar:
-               
-                - Predicciones claras con análisis explicado (no solo "probabilidad X%")
-                - Comparaciones de equipos automáticas (forma, goles, defensas)
-                - Análisis de IA + ML que interpreta datos complejos
-                - Interfaz accesible (hasta alguien sin conocimiento puede entender)
-
-                Procesos implementados:
-                - Integración de múltiples APIs (API-Football, odds APIs) con fallback automático
-                - Microservicio Python con ML models que generan predicciones
-                - RAG Pipeline que contextualiza datos históricos
-                - Backend Node.js que orquesta todo sin downtime
-                - Telegram Bot para acceso instant a predicciones
-
-            
-                
+                Estado: Beta privada · En desarrollo
                 `,
             isPrivate: true
         },

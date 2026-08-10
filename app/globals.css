@@ -44,6 +44,12 @@
   section[id], main[id] {
     scroll-margin-top: 6rem;
   }
+
+  @media (max-width: 639px) {
+    section[id], main[id] {
+      scroll-margin-top: 8rem;
+    }
+  }
 }
 
 .skip-link {

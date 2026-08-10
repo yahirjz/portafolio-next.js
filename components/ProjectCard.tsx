@@ -55,7 +55,7 @@ const ProjectCard = ({ slug, title, description, img, github, githubBackend, liv
                         {isPrivate && (
                             <div className="inline-flex w-fit items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 backdrop-blur-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-rose-400"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                <span className="text-rose-400 text-xs font-bold tracking-wider uppercase">Confidencial</span>
+                                <span className="text-rose-400 text-xs font-bold tracking-wider uppercase">Beta privada · En desarrollo</span>
                             </div>
                         )}
                     </div>

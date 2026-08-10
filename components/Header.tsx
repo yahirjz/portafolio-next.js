@@ -13,9 +13,9 @@ const Header = () => {
 
     return (
         <motion.header 
-            className={`fixed top-6 left-0 right-0 z-50 flex justify-center px-4`}
+            className="fixed top-3 left-0 right-0 z-50 flex justify-center px-4 sm:top-6"
         >
-            <nav className={`flex items-center gap-1 sm:gap-4 px-6 py-3 rounded-full transition-all duration-500 ${
+            <nav className={`grid w-full max-w-xs grid-cols-2 items-center gap-1 rounded-2xl px-2 py-2 transition-all duration-500 sm:flex sm:w-auto sm:max-w-none sm:gap-4 sm:rounded-full sm:px-6 sm:py-3 ${
                 scrolled 
                 ? 'glass-panel shadow-2xl shadow-brand-900/20' 
                 : 'bg-transparent border border-transparent'
@@ -31,7 +31,7 @@ const Header = () => {
 
 const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => {
     return (
-        <Link href={href} className="relative group rounded-full px-3 py-1.5 md:px-4 md:py-2">
+        <Link href={href} className="relative group flex justify-center rounded-full px-2 py-1.5 md:px-4 md:py-2">
             <span className="text-xs md:text-sm font-medium text-slate-300 group-hover:text-white transition-colors relative z-10">
                 {children}
             </span>

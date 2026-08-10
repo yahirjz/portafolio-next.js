@@ -40,7 +40,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
                     className="text-slate-50 font-sans font-extrabold text-4xl md:text-7xl lg:text-8xl tracking-tighter mb-6 leading-[1.1] max-w-4xl"
                 >
-                    Desarrollo aplicaciones modernas para {" "}
+                    Construyo productos digitales y APIs para {" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-accent-sky to-accent-pink">
                     impulsar ideas.
                     </span>
@@ -52,7 +52,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                     className="text-slate-400 text-lg md:text-xl font-sans max-w-2xl leading-relaxed mb-12 font-light"
                 >
-                    Hola, soy Jaime Jair. <strong className="text-white font-medium">Desarrollador full stack</strong> enfocado en diseñar y construir productos digitales modernos, combinando frontend, backend y APIs para crear soluciones <strong className="text-white font-medium">eficientes y escalables</strong>.
+                    Hola, soy Jaime Jair. <strong className="text-white font-medium">Full Stack Developer con más de 2 años de experiencia</strong> creando productos digitales y APIs. Actualmente profundizo en AWS e IA para seguir construyendo soluciones útiles y mantenibles.
                 </motion.p>
 
                 {/* Action Buttons */}
@@ -78,7 +78,7 @@ const Hero = () => {
                     <motion.a 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        href="/cv.pdf" 
+                        href="/CV_Jair_Formato_Base.pdf"
                         download="Mi_CV.pdf"
                         className="px-8 py-4 rounded-full glass-panel border border-brand-500/20 text-brand-300 font-medium hover:bg-brand-500/10 hover:border-brand-500/40 transition-colors flex items-center justify-center gap-2"
                     >

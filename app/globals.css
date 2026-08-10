@@ -35,6 +35,33 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand-300);
+    outline-offset: 4px;
+  }
+
+  section[id], main[id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 60;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: var(--color-dark-bg);
+  font-weight: 700;
+  transform: translateY(-200%);
+  transition: transform 150ms ease-out;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 /* Elegant Scrollbar */

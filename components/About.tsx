@@ -1,5 +1,4 @@
 "use client"
-import { data } from "@/data/data"
 import { motion } from "framer-motion"
 
 const About = () => {
@@ -35,7 +34,7 @@ const About = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
                         </div>
                         <p className="text-slate-300 text-lg md:text-xl leading-relaxed font-sans font-light">
-                            {data.about}
+                            Soy Full Stack Developer con más de 2 años de experiencia construyendo productos web y APIs. Trabajo con frontend y backend para convertir necesidades reales en experiencias claras y funcionales; actualmente sigo aprendiendo AWS e IA para aplicar esas herramientas con criterio en nuevos proyectos.
                         </p>
                     </div>
                 </motion.div>

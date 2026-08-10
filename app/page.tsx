@@ -4,10 +4,14 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default function Home() {
     return (
-        <main className="w-full min-h-screen bg-dark-bg relative overflow-hidden flex flex-col items-center selection:bg-brand-500/30 selection:text-white">
+        <>
+            <a className="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+            <Header />
+            <main id="contenido-principal" className="w-full min-h-screen bg-dark-bg relative overflow-hidden flex flex-col items-center selection:bg-brand-500/30 selection:text-white">
             {/* Aurora Background Effects */}
             <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
                 <div className="aurora-bg w-[50vw] h-[50vw] bg-violet-600/20 top-[-10%] left-[-10%]"></div>
@@ -24,6 +28,7 @@ export default function Home() {
                 <Contact />
                 <Footer />
             </div>
-        </main>
+            </main>
+        </>
     );
 }

@@ -3,12 +3,9 @@ import { data } from "@/data/data";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
-const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-        opacity: 1,
-        transition: { staggerChildren: 0.1 }
-    }
+type SkillItem = {
+    name: string;
+    logo: string;
 };
 
 const itemVariants: Variants = {
@@ -24,7 +21,7 @@ const SkillBadge = ({ name, logo }: { name: string, logo: string }) => (
     </motion.div>
 );
 
-const SkillCategory = ({ title, skills, delay }: { title: string, skills: any[], delay: number }) => (
+const SkillCategory = ({ title, skills, delay }: { title: string, skills: SkillItem[], delay: number }) => (
     <motion.div
         initial="hidden"
         whileInView="show"

@@ -1,31 +1,18 @@
 "use client"
 import Link from "next/link"
-import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useState } from "react";
 
 const Header = () => {
     const { scrollY } = useScroll();
-    const [hidden, setHidden] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
-        const previous = scrollY.getPrevious() ?? 0;
-        if (latest > previous && latest > 150) {
-            setHidden(true);
-        } else {
-            setHidden(false);
-        }
         setScrolled(latest > 20);
     });
 
     return (
         <motion.header 
-            variants={{
-                visible: { y: 0, opacity: 1 },
-                hidden: { y: "-100%", opacity: 0 }
-            }}
-            animate={hidden ? "hidden" : "visible"}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
             className={`fixed top-6 left-0 right-0 z-50 flex justify-center px-4`}
         >
             <nav className={`flex items-center gap-1 sm:gap-4 px-6 py-3 rounded-full transition-all duration-500 ${
@@ -44,7 +31,7 @@ const Header = () => {
 
 const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => {
     return (
-        <Link href={href} className="relative group px-3 py-1.5 md:px-4 md:py-2">
+        <Link href={href} className="relative group rounded-full px-3 py-1.5 md:px-4 md:py-2">
             <span className="text-xs md:text-sm font-medium text-slate-300 group-hover:text-white transition-colors relative z-10">
                 {children}
             </span>

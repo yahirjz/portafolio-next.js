@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import { getPublicSiteUrl } from "@/lib/public-site-url";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,7 +14,7 @@ const outfit = Outfit({
 });
 
 // Configure this in deployment so Next.js can generate absolute canonical URLs.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const siteUrl = getPublicSiteUrl();
 const portfolioDescription =
   "Portafolio de Jaime Jair, desarrollador Full Stack especializado en APIs, microservicios, inteligencia artificial y experiencias web escalables para startups.";
 

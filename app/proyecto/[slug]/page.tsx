@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
+import { getPublicSiteUrl } from "@/lib/public-site-url";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const siteUrl = getPublicSiteUrl();
 
 type DescriptionBlock =
   | { type: "paragraph"; text: string }

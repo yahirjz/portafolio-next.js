@@ -12,9 +12,31 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+// Configure this in deployment so Next.js can generate absolute canonical URLs.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const portfolioDescription =
+  "Portafolio de Jaime Jair, desarrollador Full Stack especializado en APIs, microservicios, inteligencia artificial y experiencias web escalables para startups.";
+
 export const metadata: Metadata = {
-  title: "Jaime Jair | Full Stack Developer",
-  description: "Portafolio de Jaime Jair, desarrollador Full Stack",
+  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
+  title: {
+    default: "Jaime Jair | Desarrollador Full Stack",
+    template: "%s | Jaime Jair",
+  },
+  description: portfolioDescription,
+  ...(siteUrl ? { alternates: { canonical: "/" } } : {}),
+  openGraph: {
+    type: "website",
+    locale: "es_MX",
+    title: "Jaime Jair | Desarrollador Full Stack",
+    description: portfolioDescription,
+    ...(siteUrl ? { url: "/" } : {}),
+  },
+  twitter: {
+    card: "summary",
+    title: "Jaime Jair | Desarrollador Full Stack",
+    description: portfolioDescription,
+  },
 };
 
 export default function RootLayout({

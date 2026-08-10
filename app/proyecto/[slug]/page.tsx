@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 type DescriptionBlock =
   | { type: "paragraph"; text: string }
   | { type: "callout"; text: string }
@@ -221,7 +223,32 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = data.projects.find((p) => p.slug === slug);
   if (!project) return { title: "Proyecto no encontrado" };
-  return { title: `${project.title} | Portafolio` };
+
+  const description = project.isPrivate
+    ? `${project.summary} Caso de estudio de una beta privada en desarrollo; su contenido es informativo y no constituye asesoría financiera.`
+    : project.summary;
+  const pathname = `/proyecto/${project.slug}`;
+
+  return {
+    title: project.title,
+    description,
+    ...(siteUrl ? { alternates: { canonical: pathname } } : {}),
+    openGraph: {
+      type: "article",
+      locale: "es_MX",
+      title: `${project.title} | Jaime Jair`,
+      description,
+      ...(siteUrl ? { url: pathname } : {}),
+    },
+    twitter: {
+      card: "summary",
+      title: `${project.title} | Jaime Jair`,
+      description,
+    },
+    robots: project.isPrivate
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
+  };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {

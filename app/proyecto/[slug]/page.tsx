@@ -14,17 +14,11 @@ type DescriptionBlock =
 
 const EMOJI_STAT = /^(\p{Emoji}️?)\s*(.+?):\s*(.+)$/u;
 
-const SPORTIXA_SCREENSHOT_ALTS = [
-  "Mercados recomendados de Sportixa con probabilidades y umbral de confianza",
-  "Análisis contextual de un partido presentado en Sportixa",
-];
-
-const SPORTIXA_PIPELINE = [
-  { label: "Historial reciente", detail: "Datos y contexto disponibles" },
-  { label: "Agregación directa", detail: "Promedios de últimos partidos" },
-  { label: "Poisson + calibración", detail: "Modelo matemático y ajuste heurístico" },
-  { label: "Filtro ≥65%", detail: "filterRecommendedBets" },
-  { label: "Síntesis con Claude", detail: "Explicación contextual" },
+const SPORTIXA_RECOMMENDATION_FLOW = [
+  { label: "Datos recientes", detail: "Historial y contexto disponibles" },
+  { label: "Motor matemático", detail: "Agregación directa, Poisson y calibración heurística producen probabilidades" },
+  { label: "Gate determinista ≥65%", detail: "filterRecommendedBets valida el umbral" },
+  { label: "Mercados recomendados", detail: "La interfaz muestra solo mercados que superan el gate" },
 ];
 
 // Turns the free-text project description into semantic blocks so numbered
@@ -178,25 +172,37 @@ function SportixaArchitecture() {
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-brand-300">Pipeline actual</p>
-          <h2 id="sportixa-pipeline-title" className="font-heading text-2xl font-bold text-white sm:text-3xl">De los datos a una explicación revisable</h2>
+          <h2 id="sportixa-pipeline-title" className="font-heading text-2xl font-bold text-white sm:text-3xl">Dos salidas, responsabilidades separadas</h2>
         </div>
-        <p className="max-w-sm text-sm leading-relaxed text-slate-400">Cada etapa tiene una función limitada y visible; ninguna convierte la probabilidad en una garantía.</p>
+        <p className="max-w-sm text-sm leading-relaxed text-slate-400">El motor produce probabilidades. El gate decide qué se presenta como recomendado; Claude solo explica el contexto recibido.</p>
       </div>
 
-      <ol className="grid grid-cols-1 gap-3 md:grid-cols-5">
-        {SPORTIXA_PIPELINE.map((step, index) => (
-          <li key={step.label} className="relative min-w-0 rounded-2xl border border-white/10 bg-white/[0.03] p-4 md:p-5">
-            <span className="mb-4 flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-brand-500/10 font-mono text-xs font-bold text-brand-300">
-              {index + 1}
-            </span>
-            <p className="font-heading text-sm font-bold leading-snug text-white">{step.label}</p>
-            <p className="mt-2 text-xs leading-relaxed text-slate-400">{step.detail}</p>
-            {index < SPORTIXA_PIPELINE.length - 1 && (
-              <span aria-hidden="true" className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 text-brand-400 md:-right-2 md:bottom-auto md:left-auto md:top-1/2 md:translate-x-0 md:-translate-y-1/2">↓</span>
-            )}
-          </li>
-        ))}
-      </ol>
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+        <div className="rounded-2xl border border-brand-400/20 bg-brand-500/[0.04] p-4 sm:p-5">
+          <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-300">Ruta de recomendación</p>
+          <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {SPORTIXA_RECOMMENDATION_FLOW.map((step, index) => (
+              <li key={step.label} className="relative min-w-0 rounded-xl border border-white/10 bg-dark-bg/70 p-4">
+                <span className="mb-3 flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-brand-500/10 font-mono text-xs font-bold text-brand-300">
+                  {index + 1}
+                </span>
+                <p className="font-heading text-sm font-bold leading-snug text-white">{step.label}</p>
+                <p className="mt-2 text-xs leading-relaxed text-slate-400">{step.detail}</p>
+                {index < SPORTIXA_RECOMMENDATION_FLOW.length - 1 && (
+                  <span aria-hidden="true" className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 text-brand-400 sm:hidden">↓</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <aside className="rounded-2xl border border-violet-400/20 bg-violet-400/[0.05] p-5">
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-violet-300">Rama explicativa desde datos + probabilidades</p>
+          <div className="my-4 h-px w-12 bg-violet-400/40" />
+          <h3 className="font-heading text-lg font-bold text-white">Claude sintetiza el contexto</h3>
+          <p className="mt-3 text-sm leading-relaxed text-slate-300">Recibe el contexto y las probabilidades producidas por el motor para explicarlos. No inventa cifras, no selecciona mercados y no puede saltarse el gate de 65%.</p>
+        </aside>
+      </div>
     </section>
   );
 }
@@ -292,11 +298,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <div className="w-full aspect-video md:aspect-[21/9] bg-black rounded-3xl overflow-hidden mb-16 border border-white/10 shadow-2xl relative">
                 <Image
                   src={project.img}
-                  alt={project.slug === "sportixa" ? "Vista general del panel de análisis de Sportixa" : project.title}
+                  alt={project.imageAlt}
                   fill
                   priority
                   sizes="100vw"
-                  className={project.slug === "sportixa" ? "object-contain opacity-90" : "object-cover opacity-80"}
+                  className={project.imageContain ? "object-contain opacity-90" : "object-cover opacity-80"}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-transparent to-transparent"></div>
             </div>
@@ -315,16 +321,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
             {project.gallery && project.gallery.length > 0 && (
                 <div className="mt-20">
-                    <h2 className="text-3xl font-bold text-white mb-8">Galería de Imágenes</h2>
+                    <h2 className="text-3xl font-bold text-white mb-3">{project.slug === "sportixa" ? "Evidencia visual disponible" : "Galería de Imágenes"}</h2>
+                    {project.slug === "sportixa" && (
+                      <p className="mb-8 max-w-2xl text-sm leading-relaxed text-slate-400">Esta vista documenta el análisis contextual. Solo se publica evidencia compatible con el guardrail vigente de 65% para mercados recomendados.</p>
+                    )}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {project.gallery.map((img, i) => (
                             <div key={i} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 aspect-video shadow-lg hover:border-brand-500/50 transition-colors relative">
                                 <Image
                                   src={img}
-                                  alt={project.slug === "sportixa" ? SPORTIXA_SCREENSHOT_ALTS[i] : `${project.title} screenshot ${i+1}`}
+                                  alt={project.galleryAlts[i] ?? `${project.title} screenshot ${i+1}`}
                                   fill
                                   sizes="(max-width: 768px) 100vw, 50vw"
-                                  className={project.slug === "sportixa" ? "object-contain hover:scale-[1.02] transition-transform duration-500" : "object-cover hover:scale-105 transition-transform duration-500"}
+                                  className={project.galleryContain ? "object-contain hover:scale-[1.02] transition-transform duration-500" : "object-cover hover:scale-105 transition-transform duration-500"}
                                 />
                             </div>
                         ))}

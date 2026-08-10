@@ -25,8 +25,10 @@ const Projects = () => {
                         key={index}
                         slug={p.slug}
                         title={p.title}
-                        description={p.description}
+                        summary={p.summary}
                         img={p.img}
+                        imageAlt={p.imageAlt}
+                        imageContain={p.imageContain}
                         github={p.github}
                         githubBackend={"githubBackend" in p ? String(p.githubBackend) : undefined}
                         live={p.live}

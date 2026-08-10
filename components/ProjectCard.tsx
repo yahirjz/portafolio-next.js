@@ -7,15 +7,17 @@ import { useReducedMotion } from "@/hooks/useReducedMotion"
 interface ProjectProps {
     slug: string;
     title: string;
-    description: string;
+    summary: string;
     img: string;
+    imageAlt: string;
+    imageContain: boolean;
     github?: string;
     githubBackend?: string;
     live?: string;
     isPrivate?: boolean;
 }
 
-const ProjectCard = ({ slug, title, description, img, github, githubBackend, live, isPrivate }: ProjectProps) => {
+const ProjectCard = ({ slug, title, summary, img, imageAlt, imageContain, github, githubBackend, live, isPrivate }: ProjectProps) => {
     const prefersReducedMotion = useReducedMotion();
 
     return (
@@ -30,13 +32,13 @@ const ProjectCard = ({ slug, title, description, img, github, githubBackend, liv
                 className="relative overflow-hidden rounded-3xl glass-panel flex-grow flex flex-col transition-transform transition-shadow duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(139,92,246,0.15)] hover:border-white/10"
             >
                 {/* Image Section */}
-                <div className={isPrivate ? "w-full aspect-[16/10] bg-slate-950 relative overflow-hidden" : "w-full h-64 bg-black relative overflow-hidden"}>
+                <div className={imageContain ? "w-full aspect-[16/10] bg-slate-950 relative overflow-hidden" : "w-full h-64 bg-black relative overflow-hidden"}>
                     <Image
                         src={img}
-                        alt={isPrivate ? "Vista general del panel de análisis de Sportixa" : title}
+                        alt={imageAlt}
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"
-                        className={isPrivate
+                        className={imageContain
                             ? "object-contain opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-opacity transition-transform duration-700 ease-out"
                             : "object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-opacity transition-transform duration-700 ease-out"
                         }
@@ -64,7 +66,7 @@ const ProjectCard = ({ slug, title, description, img, github, githubBackend, liv
                     </div>
                     
                     <p className="text-slate-400 text-base md:text-lg font-sans line-clamp-3 mb-8 leading-relaxed font-light">
-                        {description}
+                        {summary}
                     </p>
 
                     <div className="flex flex-wrap gap-3 mt-auto">

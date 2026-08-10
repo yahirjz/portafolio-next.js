@@ -66,11 +66,17 @@ export const data = {
         {
             slug: "sportixa",
             img: "/projects/sportixa/overview.png",
+            imageAlt: "Vista general del panel de análisis de Sportixa",
+            imageContain: true,
             gallery: [
-                "/projects/sportixa/recommended-markets.png",
                 "/projects/sportixa/analysis-context.png"
             ],
+            galleryAlts: [
+                "Análisis contextual de un partido presentado en Sportixa"
+            ],
+            galleryContain: true,
             title: "Sportixa",
+            summary: "Beta privada para revisar probabilidades matemáticas y contexto de partidos de fútbol con guardrails visibles.",
             description: `
                 **El problema**
 
@@ -96,7 +102,8 @@ export const data = {
 
                 **Rol de Claude y stack**
 
-                - Claude sintetiza y explica el análisis contextual a partir de datos ya calculados; no sustituye el modelo de Poisson ni decide qué mercado supera el filtro.
+                - El motor matemático produce las probabilidades que consume la experiencia; Claude no inventa esos números ni decide qué mercados se recomiendan.
+                - Claude recibe el contexto y las probabilidades ya calculadas para sintetizar y explicar el análisis en una rama separada.
                 - La experiencia conecta una interfaz en Next.js con un motor matemático en FastAPI y datos persistidos en Supabase.
 
                 **Estado actual: beta privada**
@@ -116,8 +123,13 @@ export const data = {
         {
             slug: "reportes-tisax",
             img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1776461350/Captura_de_pantalla_2026-04-17_a_la_s_3.10.17_p.m._zsuwkj.png",
+            imageAlt: "Vista del sistema de reportes TISAX",
+            imageContain: false,
             gallery: [],
+            galleryAlts: [],
+            galleryContain: false,
             title: "Sistema de reportes TISAX",
+            summary: "Plataforma que automatiza reportes TISAX, reemplaza el copiado manual y valida los datos en tiempo real.",
             description: 
                 `
                     La empresa manejaba **reportes TISAX complejos** que requerían múltiples validaciones 

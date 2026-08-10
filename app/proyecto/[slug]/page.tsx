@@ -15,10 +15,10 @@ type DescriptionBlock =
 const EMOJI_STAT = /^(\p{Emoji}️?)\s*(.+?):\s*(.+)$/u;
 
 const SPORTIXA_RECOMMENDATION_FLOW = [
-  { label: "Datos recientes", detail: "Historial y contexto disponibles" },
-  { label: "Motor matemático", detail: "Agregación directa, Poisson y calibración heurística producen probabilidades" },
-  { label: "Gate determinista ≥65%", detail: "filterRecommendedBets valida el umbral" },
-  { label: "Mercados recomendados", detail: "La interfaz muestra solo mercados que superan el gate" },
+  { label: "Entradas estadísticas y matemáticas", detail: "Promedios directos, Poisson y calibración heurística forman el contexto" },
+  { label: "Análisis estructurado con Claude", detail: "Emite mercados, probabilidades y razones candidatas, condicionadas por las entradas recibidas" },
+  { label: "Post-filtro determinista ≥65%", detail: "filterRecommendedBets evalúa cada candidato después de Claude" },
+  { label: "UI de mercados recomendados", detail: "La interfaz presenta solo candidatos que superan el post-filtro" },
 ];
 
 // Turns the free-text project description into semantic blocks so numbered
@@ -172,36 +172,28 @@ function SportixaArchitecture() {
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-brand-300">Pipeline actual</p>
-          <h2 id="sportixa-pipeline-title" className="font-heading text-2xl font-bold text-white sm:text-3xl">Dos salidas, responsabilidades separadas</h2>
+          <h2 id="sportixa-pipeline-title" className="font-heading text-2xl font-bold text-white sm:text-3xl">De candidatos estructurados a recomendaciones</h2>
         </div>
-        <p className="max-w-sm text-sm leading-relaxed text-slate-400">El motor produce probabilidades. El gate decide qué se presenta como recomendado; Claude solo explica el contexto recibido.</p>
+        <p className="max-w-sm text-sm leading-relaxed text-slate-400">Claude propone candidatos dentro del contexto suministrado. El código aplica después el umbral que decide qué llega a la interfaz de recomendados.</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-        <div className="rounded-2xl border border-brand-400/20 bg-brand-500/[0.04] p-4 sm:p-5">
-          <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-300">Ruta de recomendación</p>
-          <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {SPORTIXA_RECOMMENDATION_FLOW.map((step, index) => (
-              <li key={step.label} className="relative min-w-0 rounded-xl border border-white/10 bg-dark-bg/70 p-4">
-                <span className="mb-3 flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-brand-500/10 font-mono text-xs font-bold text-brand-300">
-                  {index + 1}
-                </span>
-                <p className="font-heading text-sm font-bold leading-snug text-white">{step.label}</p>
-                <p className="mt-2 text-xs leading-relaxed text-slate-400">{step.detail}</p>
-                {index < SPORTIXA_RECOMMENDATION_FLOW.length - 1 && (
-                  <span aria-hidden="true" className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 text-brand-400 sm:hidden">↓</span>
-                )}
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <aside className="rounded-2xl border border-violet-400/20 bg-violet-400/[0.05] p-5">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-violet-300">Rama explicativa desde datos + probabilidades</p>
-          <div className="my-4 h-px w-12 bg-violet-400/40" />
-          <h3 className="font-heading text-lg font-bold text-white">Claude sintetiza el contexto</h3>
-          <p className="mt-3 text-sm leading-relaxed text-slate-300">Recibe el contexto y las probabilidades producidas por el motor para explicarlos. No inventa cifras, no selecciona mercados y no puede saltarse el gate de 65%.</p>
-        </aside>
+      <div className="rounded-2xl border border-brand-400/20 bg-brand-500/[0.04] p-4 sm:p-5">
+        <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-300">Secuencia de recomendación</p>
+        <ol className="grid grid-cols-1 gap-3 lg:grid-cols-4">
+          {SPORTIXA_RECOMMENDATION_FLOW.map((step, index) => (
+            <li key={step.label} className="relative min-w-0 rounded-xl border border-white/10 bg-dark-bg/70 p-4">
+              <span className="mb-3 flex h-7 w-7 items-center justify-center rounded-full border border-brand-400/40 bg-brand-500/10 font-mono text-xs font-bold text-brand-300">
+                {index + 1}
+              </span>
+              <p className="font-heading text-sm font-bold leading-snug text-white">{step.label}</p>
+              <p className="mt-2 text-xs leading-relaxed text-slate-400">{step.detail}</p>
+              {index < SPORTIXA_RECOMMENDATION_FLOW.length - 1 && (
+                <span aria-hidden="true" className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 text-brand-400 lg:-right-2 lg:bottom-auto lg:left-auto lg:top-1/2 lg:translate-x-0 lg:-translate-y-1/2">↓</span>
+              )}
+            </li>
+          ))}
+        </ol>
+        <p className="mt-4 text-xs leading-relaxed text-slate-400"><strong className="text-slate-200">Límite explícito:</strong> un candidato emitido por Claude no aparece como mercado recomendado si su probabilidad no alcanza 65%.</p>
       </div>
     </section>
   );

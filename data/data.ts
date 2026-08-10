@@ -95,16 +95,20 @@ export const data = {
                 - Poisson es el modelo matemático de probabilidad usado para estimar distintos mercados.
                 - La auto-calibración ajusta pesos con una heurística basada en resultados observados; no es un modelo de machine learning entrenado.
 
+                **Análisis estructurado con Claude**
+
+                - Claude recibe estadísticas, contexto y señales matemáticas ya calculadas para producir un análisis estructurado.
+                - Dentro de esa estructura emite mercados candidatos, probabilidades candidatas y razones. Estas salidas están condicionadas por el contexto suministrado, pero todavía no son recomendaciones visibles.
+
                 **Guardrails deterministas**
 
-                - filterRecommendedBets deja pasar como recomendados únicamente los mercados con una probabilidad calculada mayor o igual a 65%.
-                - El umbral es una regla determinista de presentación: no garantiza aciertos ni elimina la incertidumbre del deporte.
+                - Después del análisis estructurado, filterRecommendedBets aplica un post-filtro y deja pasar a la interfaz de recomendados únicamente los candidatos con probabilidad mayor o igual a 65%.
+                - Claude no puede saltarse esa comparación determinista. El umbral controla la presentación, pero no garantiza aciertos ni elimina la incertidumbre del deporte.
 
-                **Rol de Claude y stack**
+                **Rol y stack**
 
-                - El motor matemático produce las probabilidades que consume la experiencia; Claude no inventa esos números ni decide qué mercados se recomiendan.
-                - Claude recibe el contexto y las probabilidades ya calculadas para sintetizar y explicar el análisis en una rama separada.
-                - La experiencia conecta una interfaz en Next.js con un motor matemático en FastAPI y datos persistidos en Supabase.
+                - Claude sintetiza el contexto recibido y genera candidatos estructurados; el código de la aplicación decide cuáles se presentan finalmente como recomendados.
+                - La experiencia conecta una interfaz en Next.js con un motor matemático en FastAPI, datos persistidos en Supabase y la salida estructurada de Claude.
 
                 **Estado actual: beta privada**
 

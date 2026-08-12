@@ -3,11 +3,17 @@
 import { useState } from "react";   
 import { data } from "@/data/data";
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 type Feedback =
     | { status: "idle" }
     | { status: "success"; message: string }
     | { status: "error"; message: string };
+
+const socialIcons = {
+    github: FaGithub,
+    linkedin: FaLinkedin,
+} as const;
 
 const Contact = () => {
     const [ nombre, setNombre ] = useState("");
@@ -134,12 +140,24 @@ const Contact = () => {
 
                         <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-white/10 pt-8">
                             <div className="flex gap-6">
-                                {Object.entries(data.social).map(([key, value]) =>(
-                                    <motion.a whileHover={{ scale: 1.1, y: -2 }} key={key} href={value} target="_blank" className="text-slate-400 hover:text-white transition-colors text-sm font-medium capitalize flex items-center gap-1.5">
-                                        {key}
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 11-1 9"></path><path d="m19 11-4-7"></path><path d="M2 11h20"></path><path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"></path><path d="M4.5 15.5h15"></path><path d="m5 11 4-7"></path><path d="m9 11 1 9"></path></svg>
-                                    </motion.a>   
-                                ))}
+                                {Object.entries(data.social).map(([key, value]) => {
+                                    const Icon = socialIcons[key as keyof typeof socialIcons];
+
+                                    return (
+                                        <motion.a
+                                            whileHover={{ scale: 1.1, y: -2 }}
+                                            key={key}
+                                            href={value}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            aria-label={`Abrir ${key} en una nueva pestaña`}
+                                            className="text-slate-400 hover:text-white transition-colors text-sm font-medium capitalize flex items-center gap-2"
+                                        >
+                                            <Icon aria-hidden="true" size={18} />
+                                            {key}
+                                        </motion.a>
+                                    );
+                                })}
                             </div>
 
                             <motion.button 

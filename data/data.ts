@@ -53,8 +53,6 @@ export const data = {
             { name: "Docker", logo: "https://cdn.simpleicons.org/docker/white" }
         ],
         cloud: [
-            { name: "AWS", logo: "https://cdn.simpleicons.org/amazonaws/white" },
-            { name: "DynamoDB", logo: "https://cdn.simpleicons.org/amazondynamodb/white" },
             { name: "Kubernetes", logo: "https://cdn.simpleicons.org/kubernetes/white" }
         ]
     },

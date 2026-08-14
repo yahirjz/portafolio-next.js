@@ -8,17 +8,17 @@ const Header = () => {
     const [scrolled, setScrolled] = useState(false);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
-        setScrolled(latest > 20);
+        setScrolled(latest > 30);
     });
 
     return (
         <motion.header 
             className="fixed top-3 left-0 right-0 z-50 flex justify-center px-4 sm:top-6"
         >
-            <nav className={`grid w-full max-w-xs grid-cols-2 items-center gap-1 rounded-2xl px-2 py-2 transition-all duration-500 sm:flex sm:w-auto sm:max-w-none sm:gap-4 sm:rounded-full sm:px-6 sm:py-3 ${
+            <nav className={`grid w-full max-w-xs grid-cols-2 items-center gap-1 rounded-2xl border px-2 py-2 transition-all duration-300 sm:flex sm:w-auto sm:max-w-none sm:gap-4 sm:rounded-full sm:px-6 sm:py-3 ${
                 scrolled 
-                ? 'glass-panel shadow-2xl shadow-brand-900/20' 
-                : 'bg-transparent border border-transparent'
+                ? 'border-white/10 bg-[#030303]/80 shadow-lg shadow-brand-900/10 backdrop-blur-xl'
+                : 'border-transparent bg-transparent'
             }`}>
                 <NavLink href="#sobre-mi">Sobre mí</NavLink>
                 <NavLink href="#proyectos">Proyectos</NavLink>

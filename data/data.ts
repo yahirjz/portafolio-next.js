@@ -67,10 +67,14 @@ export const data = {
             imageAlt: "Vista general del panel de análisis de Sportixa",
             imageContain: true,
             gallery: [
-                "/projects/sportixa/analysis-context.png"
+                "/projects/sportixa/analysis-context.png",
+                "/projects/sportixa/recommended-markets.png",
+                "/projects/sportixa/overview2.png"
             ],
             galleryAlts: [
-                "Análisis contextual de un partido presentado en Sportixa"
+                "Análisis contextual de un partido presentado en Sportixa",
+                "Mercados recomendados y probabilidades en Sportixa",
+                "Vista general adicional del panel de Sportixa"
             ],
             galleryContain: true,
             title: "Sportixa",

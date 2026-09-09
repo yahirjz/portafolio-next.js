@@ -302,6 +302,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 )}
 
                 <div className="flex flex-wrap gap-4">
+                    {project.detailUrl && (
+                        <a href={project.detailUrl} target="_blank" rel="noreferrer" aria-label={`Abrir ${project.title} en una nueva pestaña`} className="px-6 py-3 bg-brand-500 text-dark-bg font-bold rounded-xl hover:bg-brand-400 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(20,184,166,0.3)]">
+                            Ver {project.title} <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </a>
+                    )}
                     {project.live && (
                         <a href={project.live} target="_blank" rel="noreferrer" className="px-6 py-3 bg-brand-500 text-dark-bg font-bold rounded-xl hover:bg-brand-400 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(20,184,166,0.3)]">
                             Ver Proyecto <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>

@@ -79,6 +79,7 @@ export const data = {
             galleryContain: true,
             title: "Sportixa",
             summary: "Beta privada para revisar probabilidades matemáticas y contexto de partidos de fútbol con guardrails visibles.",
+            detailUrl: "https://www.sportixa.com.mx/",
             description: `
                 **El problema**
 

@@ -5,6 +5,7 @@ import { data as es } from "./data";
 export const dataEn: typeof es = {
     ...es,
     location: "Mexico",
+    cv: "/cv/Jaime_Jair_Rodriguez_CV_EN.pdf",
     experience: "2+ years",
 
     stack: [

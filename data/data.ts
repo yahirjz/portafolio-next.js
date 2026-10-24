@@ -149,7 +149,7 @@ export const data = {
     role: "Full Stack Developer",
     location: "México",
     experience: "2+ años",
-    cv: "/CV_Jair_Formato_Base.pdf",
+    cv: "/cv/Jaime_Jair_Rodriguez_CV_ES.pdf",
 
     social: {
         github: "https://github.com/yahirjz/",

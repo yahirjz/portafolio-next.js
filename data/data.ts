@@ -1,7 +1,7 @@
 export const data = {
     name: "Jaime Jair",
     role: "Full Stack Developer",
-    location: "Xalapa, Veracruz, México",
+    location: "México",
     experience: "2+ años",
     cv: "/CV_Jair_Formato_Base.pdf",
 

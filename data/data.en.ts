@@ -121,34 +121,31 @@ export const dataEn: typeof es = {
             imageAlt: "TISAX reporting system screen",
             title: "TISAX reporting system",
             tag: "Case study",
-            metric: { value: "30 → 2 min", label: "per report" },
-            result: "Replaced manual copying from Excel to Word with automatic reports, with no data-entry errors.",
+            metric: { value: "0", label: "manual Excel-to-Word transcription" },
+            result: "Eliminated manual transcription between Excel and Word and the data loss it caused.",
             technical: "TypeScript-typed form with real-time validation. Next.js + Supabase.",
-            summary: "Platform that automates TISAX reports, replaces manual copy-pasting and validates data in real time.",
+            summary: "Platform that automates TISAX compliance reports, eliminates manual Excel-to-Word transcription and validates data in real time.",
             description: `
-                    The company handled **complex TISAX reports** that required multiple security and maturity validations. These reports are critical for audits.
+                The company handled **TISAX compliance reports**, which require multiple security and maturity validations and are critical for audits.
 
-                    The manual process was:
+                The manual process was:
 
-                    1. Fill in data in Excel (maturity scores, points to validate)
-                    2. Copy it by hand into a Word template
-                    3. High risk of human error: typos, wrong numbers, inconsistencies
-                    4. Inconsistent output: the same data could look different across reports
+                1. Enter the data in Excel (maturity levels, points to validate)
+                2. Transcribe it into a Word template, switching back and forth between both programs
+                3. Repeat it for every report, with the risk of losing data along the way
+                4. The same data sometimes ended up different from one report to another
 
-                    Result: every report took 30+ minutes and was prone to mistakes.
+                Result: a slow, difficult process in which data was sometimes lost.
 
-                    The solution was a platform that automates the whole flow, making it possible to produce several reports in the time it used to take to produce one.
+                The solution was a platform that automates the whole flow: data is entered once, validated, and the report is generated automatically.
 
-                    - Integrated form (replaces Excel + Word)
-                    - Data is stored with types (no inconsistencies)
-                    - Reports are generated automatically with the right format
-                    - TypeScript ensures numbers and text can't be entered incorrectly
+                - Integrated form that replaces the back-and-forth between Excel and Word
+                - Data stored with types, with no inconsistencies between reports
+                - Reports generated automatically in the right format
+                - Real-time validation with TypeScript to prevent bad data entry
+                - Relational model in PostgreSQL/Supabase with Row Level Security to protect audit data
 
-                    - ⏱️ Report time: 30 min → 2 min (93% faster)
-                    - ✅ Human errors: Eliminated (real-time validation)
-                    - 🎯 Reliability: 100% (no manual copy/paste)
-
-                    Stack: Next.js · React · TypeScript · Tailwind CSS · Supabase · Vercel
+                Stack: Next.js · React · TypeScript · Tailwind CSS · Supabase · Vercel
                 `,
         },
     ],

@@ -103,39 +103,32 @@ const projects: Project[] = [
         galleryContain: false,
         title: "Sistema de reportes TISAX",
         tag: "Caso de estudio",
-        metric: { value: "30 → 2 min", label: "por reporte" },
-        result: "Reemplazó el copiado manual de Excel a Word por reportes automáticos, sin errores de captura.",
+        metric: { value: "0", label: "transcripción manual entre Excel y Word" },
+        result: "Eliminó la transcripción manual entre Excel y Word y la pérdida de datos que ocurría en ese proceso.",
         technical: "Formulario tipado con TypeScript y validación en tiempo real. Next.js + Supabase.",
-        summary: "Plataforma que automatiza reportes TISAX, reemplaza el copiado manual y valida los datos en tiempo real.",
-        description: 
-            `
-                La empresa manejaba **reportes TISAX complejos** que requerían múltiples validaciones 
-                de seguridad y maduración. Estos reportes son críticos para auditoría.
-                
+        summary: "Plataforma que automatiza los reportes de cumplimiento TISAX, elimina la transcripción manual entre Excel y Word y valida los datos en tiempo real.",
+        description: `
+                La empresa manejaba **reportes de cumplimiento TISAX**, que requieren múltiples validaciones de seguridad y madurez y son críticos para las auditorías.
+
                 El proceso manual era:
 
-                1. Completar datos en Excel (números de maduración, puntos a validar)
-                2. Copiaban manualmente a plantilla en Word
-                3. Alto riesgo de errores humanos: tipográficos, números incorrectos, inconsistencias
-                4. Inconsistencias, los mismos datos podian verse diferente entre reportes
+                1. Capturar los datos en Excel (niveles de madurez, puntos a validar)
+                2. Transcribirlos a una plantilla de Word, yendo y viniendo entre los dos programas
+                3. Repetirlo en cada reporte, con riesgo de perder datos en la transcripción
+                4. Los mismos datos a veces quedaban distintos entre un reporte y otro
 
-                Resultado: Cada reporte tomaba 30+ minutos tenía riesgo de fallos.
+                Resultado: un proceso lento y difícil, en el que a veces se perdían datos.
 
-                La solucion fue construí una plataforma que automatizara el proceso con un flujo completo para el mejoramiento de los reportes. Genarando mas reportes en el mismo tiempo que se gueneraba antes 1 solo.
-                
-                - Formulario integrado (reemplaza Excel + Word)
-                - Datos se guardan tipados (zero inconsistencias)
-                - Reportes se generan automáticamente con formato correcto
-                - TypeScript ensures que números y textos no pueden ser mal ingresados
+                La solución fue una plataforma que automatiza todo el flujo: los datos se capturan una sola vez, se validan y el reporte se genera solo.
 
-                - ⏱️ Tiempo reporte: 30 min → 2 min (93% más rápido)
-                - ✅ Errores humanos: Eliminados (validación en tiempo real)
-                - 🎯 Confiabilidad: 100% (sin copiar/pegar manual)
+                - Formulario integrado que reemplaza el ir y venir entre Excel y Word
+                - Datos guardados con tipos, sin inconsistencias entre reportes
+                - Reportes generados automáticamente con el formato correcto
+                - Validación en tiempo real con TypeScript para evitar datos mal capturados
+                - Modelo relacional en PostgreSQL/Supabase con Row Level Security para proteger los datos de auditoría
 
                 Stack: Next.js · React · TypeScript · Tailwind CSS · Supabase · Vercel
-
-
-            `,
+                `,
         github: "https://github.com/yahirjz/reportes", 
         githubBackend: "", 
         live: "https://reportes-ebon.vercel.app/"

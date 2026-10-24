@@ -1,8 +1,7 @@
 "use client"
 
-import { useState } from "react";   
+import { useState } from "react";
 import { data } from "@/data/data";
-import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 type Feedback =
@@ -10,40 +9,47 @@ type Feedback =
     | { status: "success"; message: string }
     | { status: "error"; message: string };
 
-const socialIcons = {
-    github: FaGithub,
-    linkedin: FaLinkedin,
-} as const;
+const motivos = [
+    { value: "proyecto", label: "Tengo un proyecto" },
+    { value: "vacante", label: "Tengo una vacante" },
+    { value: "saludo", label: "Solo saludar" },
+] as const;
+
+type Motivo = (typeof motivos)[number]["value"];
+
+const fieldClass =
+    "w-full rounded-xl border-2 border-sand-line bg-cream px-3.5 py-3 text-base font-normal text-ink transition-[border-color,box-shadow] placeholder:text-ink-muted focus:border-terra focus:shadow-[0_0_0_4px_rgba(194,65,12,0.18)] focus:outline-none";
+
+const linkClass =
+    "lift flex items-center gap-3 rounded-[14px] bg-white/[0.14] px-4 py-3 font-bold text-white hover:bg-white/20";
 
 const Contact = () => {
-    const [ nombre, setNombre ] = useState("");
-    const [ email, setEmail ] = useState("");
-    const [ mensaje, setMensaje ] = useState("");
-    const [ isSubmitting, setIsSubmitting ] = useState(false);
-    const [ feedback, setFeedback ] = useState<Feedback>({ status: "idle" });
-    const URL_API = "/api/contacto";
+    const [motivo, setMotivo] = useState<Motivo>("proyecto");
+    const [nombre, setNombre] = useState("");
+    const [email, setEmail] = useState("");
+    const [mensaje, setMensaje] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [feedback, setFeedback] = useState<Feedback>({ status: "idle" });
 
     const sendForm = async (e: React.FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
         setIsSubmitting(true);
         setFeedback({ status: "idle" });
-        
-        try {
-            const respuesta = await fetch(URL_API , {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ nombre, email, mensaje })
-            })
 
-            if(!respuesta.ok){
+        try {
+            const respuesta = await fetch("/api/contacto", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nombre, email, mensaje, motivo }),
+            });
+
+            if (!respuesta.ok) {
                 setFeedback({
                     status: "error",
                     message: "No fue posible enviar el mensaje. Revisa los datos e inténtalo de nuevo.",
                 });
             } else {
-                setFeedback({ status: "success", message: "Mensaje enviado exitosamente." });
+                setFeedback({ status: "success", message: "¡Mensaje enviado! Te respondo pronto." });
                 setNombre("");
                 setEmail("");
                 setMensaje("");
@@ -56,128 +62,98 @@ const Contact = () => {
         } finally {
             setIsSubmitting(false);
         }
-    }
+    };
 
     return (
-        <section id="contacto" className="py-32 px-6 w-full relative z-10 bg-transparent">
-            <div className="max-w-4xl mx-auto flex flex-col items-center">
-                
-                <motion.div 
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="w-full mb-16 flex flex-col items-center text-center"
-                >
-                    <span className="text-brand-400 font-medium text-sm tracking-widest uppercase mb-3">Conexión</span>
-                    <h2 className="text-slate-50 font-sans font-bold text-4xl md:text-5xl tracking-tight mb-4"> 
-                        Iniciemos una conversación
-                    </h2>
-                    <p className="text-slate-400 text-lg font-sans max-w-lg mx-auto font-light">
-                        Ya sea para una oportunidad laboral, un proyecto colaborativo o simplemente para saludar.
+        <section id="contacto" className="mx-auto max-w-[1200px] px-4 pb-24 pt-[72px] sm:px-6">
+            <div className="relative flex flex-wrap items-start gap-12 overflow-hidden rounded-[32px] bg-terra p-[clamp(24px,5vw,64px)] text-white">
+                <div aria-hidden="true" className="spin-slow absolute -bottom-40 -left-36 h-80 w-80 rounded-full border-[48px] border-dashed border-white opacity-[0.08]" />
+
+                <div className="relative flex min-w-0 flex-[1_1_360px] flex-col gap-5">
+                    <p className="m-0 font-mono text-sm text-terra-tint">04 — Contacto</p>
+                    <h2 className="m-0 font-heading text-[clamp(36px,5vw,56px)] font-extrabold leading-[1.05]">¿Tienes un proyecto o una vacante? Platiquemos.</h2>
+                    <p className="m-0 max-w-[440px] text-lg text-terra-tint">
+                        Cuéntame qué necesitas y te respondo con una propuesta clara. Trabajo remoto desde Xalapa (UTC-6).
                     </p>
-                </motion.div>
+                    <div className="flex flex-col gap-2.5 pt-2">
+                        <a href={data.social.linkedin} target="_blank" rel="noreferrer" className={linkClass}>
+                            <FaLinkedin aria-hidden="true" size={20} />
+                            <span className="flex-1">LinkedIn</span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                        <a href={data.social.github} target="_blank" rel="noreferrer" className={linkClass}>
+                            <FaGithub aria-hidden="true" size={20} />
+                            <span className="flex-1">GitHub</span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                        <a href={data.cv} target="_blank" rel="noreferrer" className="lift flex items-center gap-3 rounded-[14px] bg-white px-4 py-3 font-bold text-ink">
+                            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12" /><path d="m7 10 5 5 5-5" /><path d="M5 21h14" /></svg>
+                            <span className="flex-1">Descargar CV</span>
+                            <span className="font-mono text-xs text-ink-soft">PDF</span>
+                        </a>
+                    </div>
+                </div>
 
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.95, y: 40 }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.2 }}
-                    className="w-full glass-panel rounded-3xl relative overflow-hidden group hover:border-brand-500/30 transition-colors duration-500"
+                <form
+                    onSubmit={sendForm}
+                    className="relative flex min-w-0 flex-[999_1_420px] flex-col gap-[18px] rounded-3xl bg-white p-[clamp(20px,3vw,36px)] text-ink shadow-[0_30px_60px_-24px_rgba(41,37,36,0.45)]"
                 >
-                    {/* Glowing Accent */}
-                    <div className="absolute top-[-50px] right-[-50px] w-64 h-64 bg-accent-pink/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-accent-pink/20 transition-colors duration-500"></div>
-
-                    <form onSubmit={sendForm} className="w-full flex flex-col gap-8 relative z-10 p-8 md:p-12">
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="flex flex-col gap-2 group/input">
-                                <label htmlFor="nombre" className="text-sm font-medium text-slate-400 group-focus-within/input:text-white transition-colors">Nombre completo</label>
-                                <input 
-                                    type="text" 
-                                    id="nombre"
-                                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-400 focus:bg-white/[0.05] transition-all text-white font-sans text-base"
-                                    placeholder="Jane Doe"
-                                    value={nombre}
-                                    onChange={(e) => setNombre(e.target.value)}
-                                    required
-                                />
-                            </div>
-
-                            <div className="flex flex-col gap-2 group/input">
-                                <label htmlFor="email" className="text-sm font-medium text-slate-400 group-focus-within/input:text-white transition-colors">Correo electrónico</label>
-                                <input 
-                                    type="email" 
-                                    id="email"
-                                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-400 focus:bg-white/[0.05] transition-all text-white font-sans text-base"
-                                    placeholder="jane@example.com"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
-                            </div>
+                    <fieldset className="m-0 flex flex-col gap-2.5 border-0 p-0">
+                        <legend className="mb-2.5 p-0 text-[15px] font-bold">¿Qué te trae por aquí?</legend>
+                        <div className="flex flex-wrap gap-2.5">
+                            {motivos.map((m) => (
+                                <label key={m.value} className="relative cursor-pointer">
+                                    <input
+                                        type="radio"
+                                        name="motivo"
+                                        value={m.value}
+                                        checked={motivo === m.value}
+                                        onChange={() => setMotivo(m.value)}
+                                        className="peer absolute h-px w-px opacity-0"
+                                    />
+                                    <span className="inline-block rounded-full border-2 border-sand-line bg-cream px-4 py-2.5 text-[15px] font-medium transition-colors hover:border-code-key peer-checked:border-ink peer-checked:bg-ink peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-[3px] peer-focus-visible:outline-offset-2 peer-focus-visible:outline-terra-soft">
+                                        {m.label}
+                                    </span>
+                                </label>
+                            ))}
                         </div>
+                    </fieldset>
 
-                        <div className="flex flex-col gap-2 group/input">
-                            <label htmlFor="mensaje" className="text-sm font-medium text-slate-400 group-focus-within/input:text-white transition-colors">Tu mensaje</label>
-                            <textarea 
-                                id="mensaje"
-                                className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-400 focus:bg-white/[0.05] transition-all text-white font-sans text-base min-h-[140px] resize-none"
-                                placeholder="Escribe tu mensaje aquí..."
-                                value={mensaje}
-                                onChange={(e) => setMensaje(e.target.value)}
-                                required
-                            ></textarea>
-                        </div>
+                    <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
+                        <label className="flex flex-col gap-1.5 text-[15px] font-bold">
+                            Nombre
+                            <input type="text" name="nombre" autoComplete="name" required maxLength={100} placeholder="¿Cómo te llamas?" value={nombre} onChange={(e) => setNombre(e.target.value)} className={fieldClass} />
+                        </label>
+                        <label className="flex flex-col gap-1.5 text-[15px] font-bold">
+                            Correo
+                            <input type="email" name="email" autoComplete="email" required maxLength={254} placeholder="tu@correo.com" value={email} onChange={(e) => setEmail(e.target.value)} className={fieldClass} />
+                        </label>
+                    </div>
+                    <label className="flex flex-col gap-1.5 text-[15px] font-bold">
+                        Mensaje
+                        <textarea name="mensaje" rows={5} required maxLength={5000} placeholder="Cuéntame qué necesitas resolver…" value={mensaje} onChange={(e) => setMensaje(e.target.value)} className={`${fieldClass} resize-y`} />
+                    </label>
 
-                        <div aria-live="polite" className="min-h-6 text-sm" role="status">
-                            {feedback.status !== "idle" && (
-                                <p className={feedback.status === "success" ? "text-emerald-300" : "text-red-300"}>
-                                    {feedback.message}
-                                </p>
-                            )}
-                        </div>
+                    <div aria-live="polite" role="status" className="min-h-6 text-sm font-medium">
+                        {feedback.status !== "idle" && (
+                            <p className={`m-0 ${feedback.status === "success" ? "text-green-700" : "text-red-700"}`}>{feedback.message}</p>
+                        )}
+                    </div>
 
-                        <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-white/10 pt-8">
-                            <div className="flex gap-6">
-                                {Object.entries(data.social).map(([key, value]) => {
-                                    const Icon = socialIcons[key as keyof typeof socialIcons];
-
-                                    return (
-                                        <motion.a
-                                            whileHover={{ scale: 1.1, y: -2 }}
-                                            key={key}
-                                            href={value}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            aria-label={`Abrir ${key} en una nueva pestaña`}
-                                            className="text-slate-400 hover:text-white transition-colors text-sm font-medium capitalize flex items-center gap-2"
-                                        >
-                                            <Icon aria-hidden="true" size={18} />
-                                            {key}
-                                        </motion.a>
-                                    );
-                                })}
-                            </div>
-
-                            <motion.button 
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                disabled={isSubmitting}
-                                className="w-full sm:w-auto px-8 py-3 bg-white hover:bg-slate-200 text-dark-bg font-sans font-bold rounded-xl transition-colors disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)] relative overflow-hidden group"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-r from-brand-300 to-accent-pink opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                                <span className="relative z-10 flex items-center gap-2">
-                                    {isSubmitting ? "Enviando..." : "Enviar Mensaje"} 
-                                    {!isSubmitting && <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>}
-                                </span>
-                            </motion.button>
-                        </div>
-                    </form>
-                </motion.div>
-
+                    <div className="flex flex-wrap items-center justify-between gap-3.5">
+                        <span className="font-mono text-[13px] text-ink-soft">$ git commit -m &quot;hola&quot;</span>
+                        <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="inline-flex cursor-pointer items-center gap-2.5 rounded-xl border-0 bg-ink px-[26px] py-3.5 text-base font-bold text-white transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60"
+                        >
+                            {isSubmitting ? "Enviando…" : "Enviar mensaje"} <span aria-hidden="true">→</span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </section>
-    )
-}
-export default Contact
+    );
+};
+
+export default Contact;

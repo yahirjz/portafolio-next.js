@@ -1,70 +1,78 @@
 export const data = {
     name: "Jaime Jair",
-    role: "Full stack Developer",
-    about: `
-    
-            Construyo APIs y microservicios escalables con IA para startups.
-            Especializado en arquitecturas distribuidas que procesan datos 
-            en tiempo real. Full-Stack: Next.js, 
-            Node.js/Express, FastAPI, React.
+    role: "Full Stack Developer",
+    location: "Xalapa, Veracruz, México",
+    experience: "2+ años",
+    cv: "/CV_Jair_Formato_Base.pdf",
 
-            Experiencia en:
-            - Integración de múltiples APIs con fallback automático
-            - Microservicios que escalan independientemente
-            - Backend que aguanta carga sin perder performance
-            - Machine Learning integrado en producción
-
-            Si necesitas un sistema que funcione sin downtime, construcción 
-            rápida de MVP, o arquitectura que crezca con tu startup: estoy disponible.
-            `,
-    
     social: {
         github: "https://github.com/yahirjz/",
-        linkedin: "https://www.linkedin.com/in/jaime-jair-rodriguez-juarez-82494b317/", // <-- falta completar
+        linkedin: "https://www.linkedin.com/in/jaime-jair-rodriguez-juarez-82494b317/",
     },
 
-    //<-- HABILIDADES 
-    skills: {
-        frontend: [
-            { name: "HTML5", logo: "https://cdn.simpleicons.org/html5/white" },
-            { name: "CSS3", logo: "https://cdn.simpleicons.org/css3/white" },
-            { name: "JavaScript", logo: "https://cdn.simpleicons.org/javascript/white" },
-            { name: "TypeScript", logo: "https://cdn.simpleicons.org/typescript/white" },
-            { name: "React", logo: "https://cdn.simpleicons.org/react/white" },
-            { name: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/white" },
-            { name: "Tailwind CSS", logo: "https://cdn.simpleicons.org/tailwindcss/white" }
-        ],
-        backend: [
-            { name: "Node.js", logo: "https://cdn.simpleicons.org/nodedotjs/white" },
-            { name: "Express", logo: "https://cdn.simpleicons.org/express/white" },
-            { name: "Python", logo: "https://cdn.simpleicons.org/python/white" },
-            { name: "FastAPI", logo: "https://cdn.simpleicons.org/fastapi/white" },
-            { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql/white" },
-            { name: "Sequelize", logo: "https://cdn.simpleicons.org/sequelize/white" },
-            { name: "MongoDB", logo: "https://cdn.simpleicons.org/mongodb/white" },
-        ],
-        herramientas: [
-            { name: "Postman", logo: "https://cdn.simpleicons.org/postman/white" },
-            { name: "Git", logo: "https://cdn.simpleicons.org/git/white" },
-            { name: "GitHub", logo: "https://cdn.simpleicons.org/github/white" },
-            { name: "Vercel", logo: "https://cdn.simpleicons.org/vercel/white" },
-            { name: "Firebase", logo: "https://cdn.simpleicons.org/firebase/white" },
-            { name: "Supabase", logo: "https://cdn.simpleicons.org/supabase/white" },
-            { name: "Docker", logo: "https://cdn.simpleicons.org/docker/white" }
-        ],
-        cloud: [
-            { name: "Kubernetes", logo: "https://cdn.simpleicons.org/kubernetes/white" }
-        ]
-    },
+    // <-- STACK (se muestra como un package.json)
+    stack: [
+        { key: "frontend", label: "Frontend", detail: "interfaces rápidas y tipadas", color: "#93C5FD", items: ["next", "react", "typescript", "tailwind"] },
+        { key: "backend", label: "Backend", detail: "APIs y lógica de negocio, mi fuerte", color: "#FDBA74", items: ["node", "express", "fastapi", "python", "java", "claude-api"] },
+        { key: "datos", label: "Datos", detail: "modelado relacional y documental", color: "#86EFAC", items: ["postgresql", "supabase", "mongodb"] },
+        { key: "deploy", label: "Deploy", detail: "proyectos en línea, no solo en local", color: "#F9A8D4", items: ["vercel", "railway", "docker", "git"] },
+    ],
+    learning: ["aws", "ia"],
+
+    // <-- SERVICIOS (cada uno apunta a un proyecto que sirve de referencia)
+    services: [
+        {
+            icon: "app",
+            title: "Aplicaciones web a medida",
+            description: "Plataformas, paneles y sistemas internos, desde la base de datos hasta el deploy.",
+            referenceLabel: "Lo he hecho en",
+            reference: "Inphera",
+            href: "/proyecto/inphera",
+        },
+        {
+            icon: "automation",
+            title: "Automatización de procesos",
+            description: "Convierto tareas manuales y repetitivas, como pasar datos de Excel a reportes, en flujos automáticos.",
+            referenceLabel: "Lo he hecho en",
+            reference: "Reportes TISAX",
+            href: "/proyecto/reportes-tisax",
+        },
+        {
+            icon: "calendar",
+            title: "Reservas y citas para negocios",
+            description: "Agenda en línea que administras desde el celular, con confirmación por WhatsApp para tus clientes.",
+            referenceLabel: "Lo estoy construyendo en",
+            reference: "Sistema de citas",
+            href: "#proyectos",
+        },
+    ],
+
+    process: [
+        { hash: "e1a2f03", title: "Platicamos", detail: "Me cuentas tu problema y qué quieres lograr." },
+        { hash: "9b4c7d1", title: "Propuesta", detail: "Te entrego alcance, tiempos y costo por escrito." },
+        { hash: "4f8e2a6", title: "Desarrollo", detail: "Avances que puedes probar, no solo promesas." },
+        { hash: "HEAD", title: "Entrega y soporte", detail: "Lo dejo funcionando en línea y te acompaño después." },
+    ],
+
+    // Proyectos en construcción: se muestran en la portada sin página de detalle.
+    // Si alguno todavía no arranca, bórralo de esta lista.
+    upcoming: [
+        {
+            title: "Sistema de reservas de citas",
+            tag: "En desarrollo · Java",
+            result: "Cualquier negocio administra servicios y horarios desde el celular; sus clientes reservan por WhatsApp sin instalar nada.",
+            technical: "Buffer time por servicio y magic link por WhatsApp para confirmar o reagendar.",
+        },
+    ],
 
     // <--- PROYECTOS   
     projects: [
 
         // PROYECTO DE ANALISIS DE PARTIDOS 
         {
-            slug: "sportixa",
+            slug: "inphera",
             img: "/projects/sportixa/overview.png",
-            imageAlt: "Vista general del panel de análisis de Sportixa",
+            imageAlt: "Vista general del panel de análisis de Inphera",
             imageContain: true,
             gallery: [
                 "/projects/sportixa/analysis-context.png",
@@ -72,17 +80,22 @@ export const data = {
                 "/projects/sportixa/overview2.png"
             ],
             galleryAlts: [
-                "Análisis contextual de un partido presentado en Sportixa",
-                "Mercados recomendados y probabilidades en Sportixa",
-                "Vista general adicional del panel de Sportixa"
+                "Análisis contextual de un partido presentado en Inphera",
+                "Mercados recomendados y probabilidades en Inphera",
+                "Vista general adicional del panel de Inphera"
             ],
             galleryContain: true,
-            title: "Sportixa",
+            title: "Inphera",
+            tag: "Proyecto principal · Beta privada",
+            result: "Reúne forma reciente, estadísticas y contexto de un partido en un solo lugar, con análisis trazable.",
+            technical: "Modelo de Poisson + Claude API para el análisis, y un filtro determinista que solo muestra mercados con probabilidad ≥ 65%.",
+            featured: true,
+            live: "https://www.inphera.com.mx",
             summary: "Beta privada para revisar probabilidades matemáticas y contexto de partidos de fútbol con guardrails visibles.",
             description: `
                 **El problema**
 
-                Analizar un partido exige contrastar forma reciente, estadísticas y contexto en fuentes separadas. Sportixa reúne esas señales en una sola experiencia para que la persona usuaria pueda revisarlas con trazabilidad, sin presentar el análisis como una certeza.
+                Analizar un partido exige contrastar forma reciente, estadísticas y contexto en fuentes separadas. Inphera reúne esas señales en una sola experiencia para que la persona usuaria pueda revisarlas con trazabilidad, sin presentar el análisis como una certeza.
 
                 **Flujo actual de la persona usuaria**
 
@@ -114,7 +127,7 @@ export const data = {
 
                 **Estado actual: beta privada**
 
-                Sportixa está en desarrollo y se prueba con acceso limitado. Sus resultados son informativos y experimentales: no son asesoría financiera ni una promesa de resultados.
+                Inphera está en desarrollo y se prueba con acceso limitado. Sus resultados son informativos y experimentales: no son asesoría financiera ni una promesa de resultados.
 
                 **Hoja de ruta de ML**
 
@@ -135,6 +148,10 @@ export const data = {
             galleryAlts: [],
             galleryContain: false,
             title: "Sistema de reportes TISAX",
+            tag: "Caso de estudio",
+            metric: { value: "30 → 2 min", label: "por reporte" },
+            result: "Reemplazó el copiado manual de Excel a Word por reportes automáticos, sin errores de captura.",
+            technical: "Formulario tipado con TypeScript y validación en tiempo real. Next.js + Supabase.",
             summary: "Plataforma que automatiza reportes TISAX, reemplaza el copiado manual y valida los datos en tiempo real.",
             description: 
                 `

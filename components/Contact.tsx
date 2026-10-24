@@ -73,7 +73,7 @@ const Contact = () => {
                     <p className="m-0 font-mono text-sm text-terra-tint">04 — Contacto</p>
                     <h2 className="m-0 font-heading text-[clamp(36px,5vw,56px)] font-extrabold leading-[1.05]">¿Tienes un proyecto o una vacante? Platiquemos.</h2>
                     <p className="m-0 max-w-[440px] text-lg text-terra-tint">
-                        Cuéntame qué necesitas y te respondo con una propuesta clara. Trabajo remoto desde Xalapa (UTC-6).
+                        Cuéntame qué necesitas y te respondo con una propuesta clara. Trabajo remoto desde México (UTC-6).
                     </p>
                     <div className="flex flex-col gap-2.5 pt-2">
                         <a href={data.social.linkedin} target="_blank" rel="noreferrer" className={linkClass}>

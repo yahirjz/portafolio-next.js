@@ -13,7 +13,7 @@ const Hero = () => {
                     Desarrollo aplicaciones web que resuelven <span className="text-terra">problemas reales</span> de negocio.
                 </h1>
                 <p className="rise rise-2 m-0 max-w-[620px] text-xl text-ink-soft">
-                    Soy {data.name}, desarrollador full stack en Xalapa, Veracruz. Construyo con Next.js, TypeScript, Node.js y FastAPI, desde la base de datos hasta el deploy.
+                    Soy {data.name}, desarrollador full stack en México. Construyo con Next.js, TypeScript, Node.js y FastAPI, desde la base de datos hasta el deploy.
                 </p>
                 <div className="rise rise-3 flex flex-wrap gap-3 pt-2">
                     <Link href="#proyectos" className="rounded-xl bg-terra px-6 py-3.5 font-bold text-white transition-transform hover:-translate-y-0.5 hover:bg-terra-dark">
@@ -39,7 +39,7 @@ const Hero = () => {
                     <pre className="m-0 overflow-x-auto whitespace-pre-wrap p-[22px] font-mono text-sm leading-[1.75] text-code-text">
 <span className="text-terra-soft">const</span> jaimeJair = {"{"}{"\n"}
 {"  "}rol: <span className="text-code-string">&quot;Fullstack dev&quot;</span>,{"\n"}
-{"  "}base: <span className="text-code-string">&quot;Xalapa, MX&quot;</span>,{"\n"}
+{"  "}base: <span className="text-code-string">&quot;México&quot;</span>,{"\n"}
 {"  "}experiencia: <span className="text-code-number">&quot;{data.experience}&quot;</span>,{"\n"}
 {"  "}construyendo: <span className="text-code-string">&quot;Inphera&quot;</span>,{"\n"}
 {"  "}abierto: <span className="text-terra-soft">true</span>,{"\n"}

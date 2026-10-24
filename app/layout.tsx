@@ -24,7 +24,7 @@ const jetbrains = JetBrains_Mono({
 // Configure this in deployment so Next.js can generate absolute canonical URLs.
 const siteUrl = getPublicSiteUrl();
 const portfolioDescription =
-  "Portafolio de Jaime Jair, desarrollador Full Stack en Xalapa. Desarrollo aplicaciones web que resuelven problemas reales de negocio con Next.js, TypeScript, Node.js y FastAPI.";
+  "Portafolio de Jaime Jair, desarrollador Full Stack en México. Desarrollo aplicaciones web que resuelven problemas reales de negocio con Next.js, TypeScript, Node.js y FastAPI.";
 
 export const metadata: Metadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { data } from "@/data/data";
+import { getContent } from "@/data/content";
+import { getDictionary, paths, type Locale } from "@/lib/i18n";
 
 const icons: Record<string, React.ReactNode> = {
     app: (
@@ -13,12 +14,14 @@ const icons: Record<string, React.ReactNode> = {
     ),
 };
 
-const Services = () => {
+const Services = ({ locale }: { locale: Locale }) => {
+    const t = getDictionary(locale);
+    const data = getContent(locale);
     return (
-        <section id="servicios" className="mx-auto flex max-w-[1200px] flex-col gap-10 px-4 py-24 sm:px-6">
+        <section id={t.ids.services} className="mx-auto flex max-w-[1200px] flex-col gap-10 px-4 py-24 sm:px-6">
             <div className="flex flex-col gap-2">
-                <p className="m-0 font-mono text-sm text-terra">02 — Servicios</p>
-                <h2 className="m-0 font-heading text-[clamp(32px,4vw,48px)] font-bold leading-[1.1]">Cómo puedo ayudarte</h2>
+                <p className="m-0 font-mono text-sm text-terra">{t.services.eyebrow}</p>
+                <h2 className="m-0 font-heading text-[clamp(32px,4vw,48px)] font-bold leading-[1.1]">{t.services.title}</h2>
             </div>
 
             <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
@@ -30,7 +33,7 @@ const Services = () => {
                         <h3 className="m-0 font-heading text-2xl font-bold leading-tight">{service.title}</h3>
                         <p className="m-0 text-ink-soft">{service.description}</p>
                         <Link
-                            href={service.href}
+                            href={service.slug ? paths.project(locale, service.slug) : `#${t.ids.projects}`}
                             className="mt-auto flex items-center gap-2.5 rounded-xl bg-sand px-3.5 py-3 text-[15px] text-ink transition-colors hover:bg-sand-line"
                         >
                             <span className="font-mono text-xs text-ink-soft">{service.referenceLabel}</span>
@@ -43,7 +46,7 @@ const Services = () => {
 
             <div className="flex flex-col gap-8 rounded-[28px] bg-ink p-7 text-cream sm:p-12">
                 <div className="flex flex-wrap items-end justify-between gap-3">
-                    <h3 className="m-0 font-heading text-[clamp(26px,3vw,34px)] font-bold">Así trabajamos juntos</h3>
+                    <h3 className="m-0 font-heading text-[clamp(26px,3vw,34px)] font-bold">{t.services.processTitle}</h3>
                     <p className="m-0 font-mono text-[13px] text-code-key">git log --oneline</p>
                 </div>
                 <ol className="m-0 grid list-none gap-6 p-0 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">

@@ -4,6 +4,11 @@ const MAX_NOMBRE_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_MENSAJE_LENGTH = 5_000;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MOTIVOS: Record<string, string> = {
+  proyecto: "Proyecto",
+  vacante: "Vacante",
+  saludo: "Saludo",
+};
 
 const badRequest = (message: string) => Response.json({ message }, { status: 400 });
 
@@ -32,6 +37,9 @@ export async function POST(request: Request){
   const nombreLimpio = nombre.trim();
   const emailLimpio = email.trim();
   const mensajeLimpio = mensaje.trim();
+  // "motivo" es opcional: solo aceptamos los valores que ofrece el formulario.
+  const { motivo } = body as Record<string, unknown>;
+  const motivoLimpio = typeof motivo === "string" && Object.hasOwn(MOTIVOS, motivo) ? MOTIVOS[motivo] : "Sin especificar";
 
   if (!EMAIL_PATTERN.test(emailLimpio)) {
     return badRequest("La información enviada no es válida. Revisa los campos e inténtalo de nuevo.");
@@ -43,8 +51,9 @@ export async function POST(request: Request){
     const { error } = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "yahir.rod137@gmail.com",
-      subject: `Nuevo mensaje de ${nombreLimpio}`,
-      text: `Nombre: ${nombreLimpio}\nEmail: ${emailLimpio}\nMensaje: ${mensajeLimpio}`
+      subject: `[${motivoLimpio}] Nuevo mensaje de ${nombreLimpio}`,
+      replyTo: emailLimpio,
+      text: `Motivo: ${motivoLimpio}\nNombre: ${nombreLimpio}\nEmail: ${emailLimpio}\nMensaje: ${mensajeLimpio}`
     });
 
     if (error) {

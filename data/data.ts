@@ -1,9 +1,148 @@
+export type Project = {
+    slug: string;
+    img: string;
+    imageAlt: string;
+    imageContain: boolean;
+    gallery: string[];
+    galleryAlts: string[];
+    galleryContain: boolean;
+    title: string;
+    tag: string;
+    result: string;
+    technical: string;
+    summary: string;
+    description: string;
+    featured?: boolean;
+    metric?: { value: string; label: string };
+    live?: string;
+    github?: string;
+    githubBackend?: string;
+    isPrivate?: boolean;
+};
+
+const projects: Project[] = [
+
+    // PROYECTO DE ANALISIS DE PARTIDOS 
+    {
+        slug: "inphera",
+        img: "/projects/sportixa/overview.png",
+        imageAlt: "Vista general del panel de análisis de Inphera",
+        imageContain: true,
+        gallery: [
+            "/projects/sportixa/analysis-context.png",
+            "/projects/sportixa/recommended-markets.png",
+            "/projects/sportixa/overview2.png"
+        ],
+        galleryAlts: [
+            "Análisis contextual de un partido presentado en Inphera",
+            "Mercados recomendados y probabilidades en Inphera",
+            "Vista general adicional del panel de Inphera"
+        ],
+        galleryContain: true,
+        title: "Inphera",
+        tag: "Proyecto principal · Beta privada",
+        result: "Reúne forma reciente, estadísticas y contexto de un partido en un solo lugar, con análisis trazable.",
+        technical: "Modelo de Poisson + Claude API para el análisis, y un filtro determinista que solo muestra mercados con probabilidad ≥ 65%.",
+        featured: true,
+        live: "https://www.inphera.com.mx",
+        summary: "Beta privada para revisar probabilidades matemáticas y contexto de partidos de fútbol con guardrails visibles.",
+        description: `
+            **El problema**
+
+            Analizar un partido exige contrastar forma reciente, estadísticas y contexto en fuentes separadas. Inphera reúne esas señales en una sola experiencia para que la persona usuaria pueda revisarlas con trazabilidad, sin presentar el análisis como una certeza.
+
+            **Flujo actual de la persona usuaria**
+
+            1. Selecciona un partido disponible.
+            2. Revisa los promedios directos de los últimos encuentros y el contexto de ambos equipos.
+            3. Consulta las probabilidades por mercado y distingue cuáles superaron el filtro de recomendación.
+            4. Lee una síntesis contextual y conserva el criterio final sobre cómo interpretar los datos.
+
+            **Metodología actual**
+
+            - Los promedios de los últimos partidos son una agregación directa del historial disponible.
+            - Poisson es el modelo matemático de probabilidad usado para estimar distintos mercados.
+            - La auto-calibración ajusta pesos con una heurística basada en resultados observados; no es un modelo de machine learning entrenado.
+
+            **Análisis estructurado con Claude**
+
+            - Claude recibe estadísticas, contexto y señales matemáticas ya calculadas para producir un análisis estructurado.
+            - Dentro de esa estructura emite mercados candidatos, probabilidades candidatas y razones. Estas salidas están condicionadas por el contexto suministrado, pero todavía no son recomendaciones visibles.
+
+            **Guardrails deterministas**
+
+            - Después del análisis estructurado, filterRecommendedBets aplica un post-filtro y deja pasar a la interfaz de recomendados únicamente los candidatos con probabilidad mayor o igual a 65%.
+            - Claude no puede saltarse esa comparación determinista. El umbral controla la presentación, pero no garantiza aciertos ni elimina la incertidumbre del deporte.
+
+            **Rol y stack**
+
+            - Claude sintetiza el contexto recibido y genera candidatos estructurados; el código de la aplicación decide cuáles se presentan finalmente como recomendados.
+            - La experiencia conecta una interfaz en Next.js con un motor matemático en FastAPI, datos persistidos en Supabase y la salida estructurada de Claude.
+
+            **Estado actual: beta privada**
+
+            Inphera está en desarrollo y se prueba con acceso limitado. Sus resultados son informativos y experimentales: no son asesoría financiera ni una promesa de resultados.
+
+            **Hoja de ruta de ML**
+
+            El aprendizaje supervisado es trabajo futuro. Solo se evaluará cuando exista un volumen suficiente de datos históricos etiquetados para entrenar, validar y comparar modelos de forma responsable.
+
+            Stack: Next.js · React · TypeScript · FastAPI · Python · Supabase · Claude API
+            `,
+        isPrivate: true
+    },
+
+    // PROJECTO DE REPORTES TIXAS
+    {
+        slug: "reportes-tisax",
+        img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1776461350/Captura_de_pantalla_2026-04-17_a_la_s_3.10.17_p.m._zsuwkj.png",
+        imageAlt: "Vista del sistema de reportes TISAX",
+        imageContain: false,
+        gallery: [],
+        galleryAlts: [],
+        galleryContain: false,
+        title: "Sistema de reportes TISAX",
+        tag: "Caso de estudio",
+        metric: { value: "0", label: "transcripción manual entre Excel y Word" },
+        result: "Eliminó la transcripción manual entre Excel y Word y la pérdida de datos que ocurría en ese proceso.",
+        technical: "Formulario tipado con TypeScript y validación en tiempo real. Next.js + Supabase.",
+        summary: "Plataforma que automatiza los reportes de cumplimiento TISAX, elimina la transcripción manual entre Excel y Word y valida los datos en tiempo real.",
+        description: `
+                La empresa manejaba **reportes de cumplimiento TISAX**, que requieren múltiples validaciones de seguridad y madurez y son críticos para las auditorías.
+
+                El proceso manual era:
+
+                1. Capturar los datos en Excel (niveles de madurez, puntos a validar)
+                2. Transcribirlos a una plantilla de Word, yendo y viniendo entre los dos programas
+                3. Repetirlo en cada reporte, con riesgo de perder datos en la transcripción
+                4. Los mismos datos a veces quedaban distintos entre un reporte y otro
+
+                Resultado: un proceso lento y difícil, en el que a veces se perdían datos.
+
+                La solución fue una plataforma que automatiza todo el flujo: los datos se capturan una sola vez, se validan y el reporte se genera solo.
+
+                - Formulario integrado que reemplaza el ir y venir entre Excel y Word
+                - Datos guardados con tipos, sin inconsistencias entre reportes
+                - Reportes generados automáticamente con el formato correcto
+                - Validación en tiempo real con TypeScript para evitar datos mal capturados
+                - Modelo relacional en PostgreSQL/Supabase con Row Level Security para proteger los datos de auditoría
+
+                Stack: Next.js · React · TypeScript · Tailwind CSS · Supabase · Vercel
+                `,
+        github: "https://github.com/yahirjz/reportes", 
+        githubBackend: "", 
+        live: "https://reportes-ebon.vercel.app/"
+    },
+    ];
+
+// Contenido en español. La versión en inglés vive en data.en.ts y debe
+// mantener la misma forma (TypeScript avisa si falta algo).
 export const data = {
     name: "Jaime Jair",
     role: "Full Stack Developer",
     location: "México",
     experience: "2+ años",
-    cv: "/CV_Jair_Formato_Base.pdf",
+    cv: "/cv/Jaime_Jair_Rodriguez_CV_ES.pdf",
 
     social: {
         github: "https://github.com/yahirjz/",
@@ -27,7 +166,7 @@ export const data = {
             description: "Plataformas, paneles y sistemas internos, desde la base de datos hasta el deploy.",
             referenceLabel: "Lo he hecho en",
             reference: "Inphera",
-            href: "/proyecto/inphera",
+            slug: "inphera",
         },
         {
             icon: "automation",
@@ -35,7 +174,7 @@ export const data = {
             description: "Convierto tareas manuales y repetitivas, como pasar datos de Excel a reportes, en flujos automáticos.",
             referenceLabel: "Lo he hecho en",
             reference: "Reportes TISAX",
-            href: "/proyecto/reportes-tisax",
+            slug: "reportes-tisax",
         },
         {
             icon: "calendar",
@@ -43,7 +182,7 @@ export const data = {
             description: "Agenda en línea que administras desde el celular, con confirmación por WhatsApp para tus clientes.",
             referenceLabel: "Lo estoy construyendo en",
             reference: "Sistema de citas",
-            href: "#proyectos",
+            slug: null,
         },
     ],
 
@@ -65,126 +204,6 @@ export const data = {
         },
     ],
 
-    // <--- PROYECTOS   
-    projects: [
-
-        // PROYECTO DE ANALISIS DE PARTIDOS 
-        {
-            slug: "inphera",
-            img: "/projects/sportixa/overview.png",
-            imageAlt: "Vista general del panel de análisis de Inphera",
-            imageContain: true,
-            gallery: [
-                "/projects/sportixa/analysis-context.png",
-                "/projects/sportixa/recommended-markets.png",
-                "/projects/sportixa/overview2.png"
-            ],
-            galleryAlts: [
-                "Análisis contextual de un partido presentado en Inphera",
-                "Mercados recomendados y probabilidades en Inphera",
-                "Vista general adicional del panel de Inphera"
-            ],
-            galleryContain: true,
-            title: "Inphera",
-            tag: "Proyecto principal · Beta privada",
-            result: "Reúne forma reciente, estadísticas y contexto de un partido en un solo lugar, con análisis trazable.",
-            technical: "Modelo de Poisson + Claude API para el análisis, y un filtro determinista que solo muestra mercados con probabilidad ≥ 65%.",
-            featured: true,
-            live: "https://www.inphera.com.mx",
-            summary: "Beta privada para revisar probabilidades matemáticas y contexto de partidos de fútbol con guardrails visibles.",
-            description: `
-                **El problema**
-
-                Analizar un partido exige contrastar forma reciente, estadísticas y contexto en fuentes separadas. Inphera reúne esas señales en una sola experiencia para que la persona usuaria pueda revisarlas con trazabilidad, sin presentar el análisis como una certeza.
-
-                **Flujo actual de la persona usuaria**
-
-                1. Selecciona un partido disponible.
-                2. Revisa los promedios directos de los últimos encuentros y el contexto de ambos equipos.
-                3. Consulta las probabilidades por mercado y distingue cuáles superaron el filtro de recomendación.
-                4. Lee una síntesis contextual y conserva el criterio final sobre cómo interpretar los datos.
-
-                **Metodología actual**
-
-                - Los promedios de los últimos partidos son una agregación directa del historial disponible.
-                - Poisson es el modelo matemático de probabilidad usado para estimar distintos mercados.
-                - La auto-calibración ajusta pesos con una heurística basada en resultados observados; no es un modelo de machine learning entrenado.
-
-                **Análisis estructurado con Claude**
-
-                - Claude recibe estadísticas, contexto y señales matemáticas ya calculadas para producir un análisis estructurado.
-                - Dentro de esa estructura emite mercados candidatos, probabilidades candidatas y razones. Estas salidas están condicionadas por el contexto suministrado, pero todavía no son recomendaciones visibles.
-
-                **Guardrails deterministas**
-
-                - Después del análisis estructurado, filterRecommendedBets aplica un post-filtro y deja pasar a la interfaz de recomendados únicamente los candidatos con probabilidad mayor o igual a 65%.
-                - Claude no puede saltarse esa comparación determinista. El umbral controla la presentación, pero no garantiza aciertos ni elimina la incertidumbre del deporte.
-
-                **Rol y stack**
-
-                - Claude sintetiza el contexto recibido y genera candidatos estructurados; el código de la aplicación decide cuáles se presentan finalmente como recomendados.
-                - La experiencia conecta una interfaz en Next.js con un motor matemático en FastAPI, datos persistidos en Supabase y la salida estructurada de Claude.
-
-                **Estado actual: beta privada**
-
-                Inphera está en desarrollo y se prueba con acceso limitado. Sus resultados son informativos y experimentales: no son asesoría financiera ni una promesa de resultados.
-
-                **Hoja de ruta de ML**
-
-                El aprendizaje supervisado es trabajo futuro. Solo se evaluará cuando exista un volumen suficiente de datos históricos etiquetados para entrenar, validar y comparar modelos de forma responsable.
-
-                Stack: Next.js · React · TypeScript · FastAPI · Python · Supabase · Claude API
-                `,
-            isPrivate: true
-        },
-
-        // PROJECTO DE REPORTES TIXAS
-        {
-            slug: "reportes-tisax",
-            img: "https://res.cloudinary.com/deyjebm1c/image/upload/q_auto/f_auto/v1776461350/Captura_de_pantalla_2026-04-17_a_la_s_3.10.17_p.m._zsuwkj.png",
-            imageAlt: "Vista del sistema de reportes TISAX",
-            imageContain: false,
-            gallery: [],
-            galleryAlts: [],
-            galleryContain: false,
-            title: "Sistema de reportes TISAX",
-            tag: "Caso de estudio",
-            metric: { value: "30 → 2 min", label: "por reporte" },
-            result: "Reemplazó el copiado manual de Excel a Word por reportes automáticos, sin errores de captura.",
-            technical: "Formulario tipado con TypeScript y validación en tiempo real. Next.js + Supabase.",
-            summary: "Plataforma que automatiza reportes TISAX, reemplaza el copiado manual y valida los datos en tiempo real.",
-            description: 
-                `
-                    La empresa manejaba **reportes TISAX complejos** que requerían múltiples validaciones 
-                    de seguridad y maduración. Estos reportes son críticos para auditoría.
-                    
-                    El proceso manual era:
-
-                    1. Completar datos en Excel (números de maduración, puntos a validar)
-                    2. Copiaban manualmente a plantilla en Word
-                    3. Alto riesgo de errores humanos: tipográficos, números incorrectos, inconsistencias
-                    4. Inconsistencias, los mismos datos podian verse diferente entre reportes
-
-                    Resultado: Cada reporte tomaba 30+ minutos tenía riesgo de fallos.
-
-                    La solucion fue construí una plataforma que automatizara el proceso con un flujo completo para el mejoramiento de los reportes. Genarando mas reportes en el mismo tiempo que se gueneraba antes 1 solo.
-                    
-                    - Formulario integrado (reemplaza Excel + Word)
-                    - Datos se guardan tipados (zero inconsistencias)
-                    - Reportes se generan automáticamente con formato correcto
-                    - TypeScript ensures que números y textos no pueden ser mal ingresados
-
-                    - ⏱️ Tiempo reporte: 30 min → 2 min (93% más rápido)
-                    - ✅ Errores humanos: Eliminados (validación en tiempo real)
-                    - 🎯 Confiabilidad: 100% (sin copiar/pegar manual)
-
-                    Stack: Next.js · React · TypeScript · Tailwind CSS · Supabase · Vercel
-
-
-                `,
-            github: "https://github.com/yahirjz/reportes", 
-            githubBackend: "", 
-            live: "https://reportes-ebon.vercel.app/"
-        },
-    ]
+    // <--- PROYECTOS (definidos arriba en `projects`)
+    projects,
 }

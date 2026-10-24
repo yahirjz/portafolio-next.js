@@ -1,26 +1,29 @@
 import Link from "next/link";
-import { data } from "@/data/data";
+import { getContent } from "@/data/content";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
-const Hero = () => {
+const Hero = ({ locale }: { locale: Locale }) => {
+    const t = getDictionary(locale);
+    const data = getContent(locale);
+    const c = t.hero.code;
+
     return (
         <section id="inicio" className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-12 px-4 pb-24 pt-32 sm:px-6 sm:pt-40">
             <div className="flex min-w-0 flex-[999_1_560px] flex-col gap-6">
                 <p className="m-0 inline-flex items-center gap-2 self-start rounded-full bg-sand px-3.5 py-1.5 text-sm font-medium text-ink-soft">
                     <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-green-700" aria-hidden="true" />
-                    Disponible para proyectos y empleo remoto
+                    {t.hero.badge}
                 </p>
                 <h1 className="rise m-0 font-heading text-[clamp(40px,6vw,76px)] font-extrabold leading-[1.02] tracking-[-0.02em]">
-                    Desarrollo aplicaciones web que resuelven <span className="text-terra">problemas reales</span> de negocio.
+                    {t.hero.titleStart} <span className="text-terra">{t.hero.titleHighlight}</span> {t.hero.titleEnd}
                 </h1>
-                <p className="rise rise-2 m-0 max-w-[620px] text-xl text-ink-soft">
-                    Soy {data.name}, desarrollador full stack en México. Construyo con Next.js, TypeScript, Node.js y FastAPI, desde la base de datos hasta el deploy.
-                </p>
+                <p className="rise rise-2 m-0 max-w-[620px] text-xl text-ink-soft">{t.hero.intro(data.name)}</p>
                 <div className="rise rise-3 flex flex-wrap gap-3 pt-2">
-                    <Link href="#proyectos" className="rounded-xl bg-terra px-6 py-3.5 font-bold text-white transition-transform hover:-translate-y-0.5 hover:bg-terra-dark">
-                        Ver proyectos
+                    <Link href={`#${t.ids.projects}`} className="rounded-xl bg-terra px-6 py-3.5 font-bold text-white transition-transform hover:-translate-y-0.5 hover:bg-terra-dark">
+                        {t.hero.ctaProjects}
                     </Link>
-                    <Link href="#contacto" className="rounded-xl border-2 border-ink px-[22px] py-3 font-bold text-ink transition-transform hover:-translate-y-0.5">
-                        Hablemos de tu proyecto
+                    <Link href={`#${t.ids.contact}`} className="rounded-xl border-2 border-ink px-[22px] py-3 font-bold text-ink transition-transform hover:-translate-y-0.5">
+                        {t.hero.ctaContact}
                     </Link>
                 </div>
             </div>
@@ -38,18 +41,18 @@ const Hero = () => {
                     </div>
                     <pre className="m-0 overflow-x-auto whitespace-pre-wrap p-[22px] font-mono text-sm leading-[1.75] text-code-text">
 <span className="text-terra-soft">const</span> jaimeJair = {"{"}{"\n"}
-{"  "}rol: <span className="text-code-string">&quot;Fullstack dev&quot;</span>,{"\n"}
-{"  "}base: <span className="text-code-string">&quot;México&quot;</span>,{"\n"}
-{"  "}experiencia: <span className="text-code-number">&quot;{data.experience}&quot;</span>,{"\n"}
-{"  "}construyendo: <span className="text-code-string">&quot;Inphera&quot;</span>,{"\n"}
-{"  "}abierto: <span className="text-terra-soft">true</span>,{"\n"}
+{"  "}{c.role}: <span className="text-code-string">&quot;{c.roleValue}&quot;</span>,{"\n"}
+{"  "}{c.base}: <span className="text-code-string">&quot;{data.location}&quot;</span>,{"\n"}
+{"  "}{c.experience}: <span className="text-code-number">&quot;{data.experience}&quot;</span>,{"\n"}
+{"  "}{c.building}: <span className="text-code-string">&quot;Inphera&quot;</span>,{"\n"}
+{"  "}{c.open}: <span className="text-terra-soft">true</span>,{"\n"}
 {"}"};<span className="cursor" aria-hidden="true" />
                     </pre>
                 </div>
 
                 <div className="float-b absolute bottom-2 right-0 flex items-center gap-2.5 rounded-[14px] bg-white px-4 py-3 shadow-[0_12px_30px_-10px_rgba(41,37,36,0.3)]">
                     <span className="pulse-dot inline-block h-2.5 w-2.5 rounded-full bg-green-700" aria-hidden="true" />
-                    <span className="text-sm font-bold">Inphera · en beta</span>
+                    <span className="text-sm font-bold">{t.hero.badgeBeta}</span>
                 </div>
             </div>
         </section>

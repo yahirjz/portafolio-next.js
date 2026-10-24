@@ -1,4 +1,5 @@
-import { data } from "@/data/data";
+import { getContent } from "@/data/content";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 const Str = ({ children }: { children: React.ReactNode }) => (
     <span className="text-code-string">&quot;{children}&quot;</span>
@@ -21,16 +22,18 @@ const List = ({ items }: { items: string[] }) => (
     </>
 );
 
-const Stack = () => {
+const Stack = ({ locale }: { locale: Locale }) => {
+    const t = getDictionary(locale);
+    const data = getContent(locale);
     const totalSkills = data.stack.reduce((sum, group) => sum + group.items.length, 0);
 
     return (
-        <section id="stack" className="bg-sand px-4 py-[88px] sm:px-6">
+        <section id={t.ids.stack} className="bg-sand px-4 py-[88px] sm:px-6">
             <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-12">
                 <div className="flex min-w-0 flex-[1_1_340px] flex-col gap-5">
-                    <p className="m-0 font-mono text-sm text-terra">03 — Stack</p>
-                    <h2 className="m-0 font-heading text-[clamp(32px,4vw,48px)] font-bold leading-[1.1]">Si fuera un paquete de npm…</h2>
-                    <p className="m-0 text-lg text-ink-soft">…estas serían mis dependencias. Las herramientas con las que construyo, del frontend al deploy.</p>
+                    <p className="m-0 font-mono text-sm text-terra">{t.stack.eyebrow}</p>
+                    <h2 className="m-0 font-heading text-[clamp(32px,4vw,48px)] font-bold leading-[1.1]">{t.stack.title}</h2>
+                    <p className="m-0 text-lg text-ink-soft">{t.stack.intro}</p>
                     <ul className="m-0 flex list-none flex-col gap-3 p-0">
                         {data.stack.map((group) => (
                             <li key={group.key} className="flex items-baseline gap-3">
@@ -53,7 +56,7 @@ const Stack = () => {
                     <div className="overflow-x-auto bg-ink py-[18px] font-mono text-sm leading-[1.9] text-code-text">
                         <span className="code-line">{"{"}</span>
                         <span className="code-line">  <Key>name</Key>: <Str>jaime-jair</Str>,</span>
-                        <span className="code-line">  <Key>experiencia</Key>: <Str>{data.experience}</Str>,</span>
+                        <span className="code-line">  <Key>{t.stack.experienceKey}</Key>: <Str>{data.experience}</Str>,</span>
                         <span className="code-line">  <Key>dependencies</Key>: {"{"}</span>
                         {data.stack.map((group, i) => (
                             <span key={group.key} className="code-line">
@@ -62,14 +65,14 @@ const Stack = () => {
                         ))}
                         <span className="code-line">  {"},"}</span>
                         <span className="code-line">  <Key>devDependencies</Key>: {"{"}</span>
-                        <span className="code-line">    <Key>aprendiendo</Key>: <List items={data.learning} /></span>
+                        <span className="code-line">    <Key>{t.stack.learningKey}</Key>: <List items={data.learning} /></span>
                         <span className="code-line">  {"}"}</span>
                         <span className="code-line">{"}"}</span>
                     </div>
                     <div className="border-t border-ink-line bg-ink-deep px-[22px] py-4 font-mono text-sm leading-[1.8] text-code-text">
                         <div><span className="text-terra-soft">$</span> npm install jaime-jair</div>
                         <div className="text-code-string">
-                            ✔ added {totalSkills} skills, found 0 vulnerabilities<span className="cursor" aria-hidden="true" style={{ height: 15 }} />
+                            ✔ {t.stack.installed(totalSkills)}<span className="cursor" aria-hidden="true" style={{ height: 15 }} />
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
-import { data } from "@/data/data";
+import { getContent } from "@/data/content";
 import { notFound } from "next/navigation";
+import LanguageSwitch from "@/components/LanguageSwitch";
+import { getDictionary, locales, paths, type Locale } from "@/lib/i18n";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
@@ -17,12 +19,6 @@ type DescriptionBlock =
 
 const EMOJI_STAT = /^(\p{Emoji}️?)\s*(.+?):\s*(.+)$/u;
 
-const INPHERA_RECOMMENDATION_FLOW = [
-  { label: "Entradas estadísticas y matemáticas", detail: "Promedios directos, Poisson y calibración heurística forman el contexto" },
-  { label: "Análisis estructurado con Claude", detail: "Emite mercados, probabilidades y razones candidatas, condicionadas por las entradas recibidas" },
-  { label: "Post-filtro determinista ≥65%", detail: "filterRecommendedBets evalúa cada candidato después de Claude" },
-  { label: "UI de mercados recomendados", detail: "La interfaz presenta solo candidatos que superan el post-filtro" },
-];
 
 // Turns the free-text project description into semantic blocks so numbered
 // steps, feature bullets and impact metrics each get their own treatment
@@ -93,6 +89,13 @@ function parseDescriptionBlocks(raw: string): DescriptionBlock[] {
   return blocks;
 }
 
+// Convierte **texto** dentro de un párrafo en <strong>.
+function renderInline(text: string) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? <strong key={i} className="font-bold text-ink">{part}</strong> : part
+  );
+}
+
 // blocke de descripción
 function DescriptionBlocks({ blocks }: { blocks: DescriptionBlock[] }) {
   return (
@@ -101,7 +104,7 @@ function DescriptionBlocks({ blocks }: { blocks: DescriptionBlock[] }) {
         if (block.type === "paragraph") {
           return (
             <p key={idx} className="leading-relaxed text-ink-soft">
-              {block.text}
+              {renderInline(block.text)}
             </p>
           );
         }
@@ -109,7 +112,7 @@ function DescriptionBlocks({ blocks }: { blocks: DescriptionBlock[] }) {
         if (block.type === "callout") {
           return (
             <p key={idx} className="rounded-r-xl border-l-4 border-terra bg-peach py-3 pl-5 pr-4 text-ink">
-              {block.text}
+              {renderInline(block.text)}
             </p>
           );
         }
@@ -169,74 +172,81 @@ function DescriptionBlocks({ blocks }: { blocks: DescriptionBlock[] }) {
   );
 }
 
-function InpheraArchitecture() {
+function InpheraArchitecture({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale).detail;
   return (
     <section aria-labelledby="inphera-pipeline-title" className="mb-16">
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-terra">Pipeline actual</p>
-          <h2 id="inphera-pipeline-title" className="font-heading text-2xl font-bold text-ink sm:text-3xl">De candidatos estructurados a recomendaciones</h2>
+          <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-terra">{t.pipelineEyebrow}</p>
+          <h2 id="inphera-pipeline-title" className="font-heading text-2xl font-bold text-ink sm:text-3xl">{t.pipelineTitle}</h2>
         </div>
-        <p className="max-w-sm text-sm leading-relaxed text-ink-soft">Claude propone candidatos dentro del contexto suministrado. El código aplica después el umbral que decide qué llega a la interfaz de recomendados.</p>
+        <p className="max-w-sm text-sm leading-relaxed text-ink-soft">{t.pipelineIntro}</p>
       </div>
 
       <div className="rounded-3xl bg-ink p-4 text-cream sm:p-6">
-        <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.18em] text-terra-soft">Secuencia de recomendación</p>
+        <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.18em] text-terra-soft">{t.pipelineSequence}</p>
         <ol className="grid grid-cols-1 gap-3 lg:grid-cols-4">
-          {INPHERA_RECOMMENDATION_FLOW.map((step, index) => (
+          {t.flow.map((step, index) => (
             <li key={step.label} className="relative min-w-0 rounded-xl border border-ink-line bg-ink-deep p-4">
               <span className="mb-3 flex h-7 w-7 items-center justify-center rounded-full bg-terra font-mono text-xs font-bold text-white">
                 {index + 1}
               </span>
               <p className="font-heading text-sm font-bold leading-snug">{step.label}</p>
               <p className="mt-2 text-xs leading-relaxed text-[#D6D3D1]">{step.detail}</p>
-              {index < INPHERA_RECOMMENDATION_FLOW.length - 1 && (
+              {index < t.flow.length - 1 && (
                 <span aria-hidden="true" className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 text-terra-soft lg:-right-2 lg:bottom-auto lg:left-auto lg:top-1/2 lg:translate-x-0 lg:-translate-y-1/2">↓</span>
               )}
             </li>
           ))}
         </ol>
-        <p className="mt-4 text-xs leading-relaxed text-[#D6D3D1]"><strong className="text-white">Límite explícito:</strong> un candidato emitido por Claude no aparece como mercado recomendado si su probabilidad no alcanza 65%.</p>
+        <p className="mt-4 text-xs leading-relaxed text-[#D6D3D1]"><strong className="text-white">{t.pipelineLimitLabel}</strong> {t.pipelineLimit}</p>
       </div>
     </section>
   );
 }
 
-function InpheraResponsibleUse() {
+function InpheraResponsibleUse({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale).detail;
   return (
     <aside aria-labelledby="inphera-responsible-use" className="mb-16 rounded-2xl border border-amber-300 bg-amber-50 p-5 sm:p-6">
       <div className="flex items-start gap-4">
         <span aria-hidden="true" className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-200 font-bold text-amber-900">!</span>
         <div>
-          <h2 id="inphera-responsible-use" className="font-heading text-base font-bold text-amber-900">Beta privada · Uso responsable</h2>
-          <p className="mt-2 text-sm leading-relaxed text-ink-soft">Producto experimental en desarrollo. Las probabilidades y explicaciones ayudan a revisar información; no garantizan resultados, no son asesoría financiera y siempre deben interpretarse con criterio propio.</p>
+          <h2 id="inphera-responsible-use" className="font-heading text-base font-bold text-amber-900">{t.responsibleTitle}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">{t.responsibleText}</p>
         </div>
       </div>
     </aside>
   );
 }
 
-export function generateStaticParams() {
-  return data.projects.map((p) => ({ slug: p.slug }));
+export function projectStaticParams() {
+  return getContent("es").projects.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const project = data.projects.find((p) => p.slug === slug);
-  if (!project) return { title: "Proyecto no encontrado" };
+export function projectMetadata(locale: Locale, slug: string): Metadata {
+  const t = getDictionary(locale);
+  const project = getContent(locale).projects.find((p) => p.slug === slug);
+  if (!project) return { title: t.detail.notFound };
 
-  const description = project.isPrivate
-    ? `${project.summary} Caso de estudio de una beta privada en desarrollo; su contenido es informativo y no constituye asesoría financiera.`
-    : project.summary;
-  const pathname = `/proyecto/${project.slug}`;
+  const description = project.isPrivate ? `${project.summary} ${t.detail.privateMetaSuffix}` : project.summary;
+  const pathname = paths.project(locale, project.slug);
 
   return {
     title: project.title,
     description,
-    ...(siteUrl ? { alternates: { canonical: pathname } } : {}),
+    ...(siteUrl
+      ? {
+          alternates: {
+            canonical: pathname,
+            languages: Object.fromEntries(locales.map((l) => [l, paths.project(l, project.slug)])),
+          },
+        }
+      : {}),
     openGraph: {
       type: "article",
-      locale: "es_MX",
+      locale: t.ogLocale,
       title: `${project.title} | Jaime Jair`,
       description,
       ...(siteUrl ? { url: pathname } : {}),
@@ -252,10 +262,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = data.projects.find((p) => p.slug === slug);
-
+export default function ProjectDetail({ locale, slug }: { locale: Locale; slug: string }) {
+  const t = getDictionary(locale).detail;
+  const project = getContent(locale).projects.find((p) => p.slug === slug);
   if (!project) {
     notFound();
   }
@@ -269,11 +278,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <main className="relative min-h-screen bg-cream pb-32 text-ink">
-        <div className="relative mx-auto max-w-5xl px-4 pt-16 sm:px-6 sm:pt-24">
-            <Link href="/#proyectos" className="mb-12 inline-flex items-center gap-2 font-medium text-ink-soft transition-colors hover:text-terra">
+        <div className="relative mx-auto max-w-5xl px-4 pt-10 sm:px-6 sm:pt-16">
+            <div className="mb-12 flex flex-wrap items-center justify-between gap-4">
+            <Link href={`${paths.home(locale)}#${getDictionary(locale).ids.projects}`} className="inline-flex items-center gap-2 font-medium text-ink-soft transition-colors hover:text-terra">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-                Volver al portafolio
+                {t.back}
             </Link>
+            <LanguageSwitch locale={locale} />
+            </div>
 
             <header className="mb-16">
                 <p className="mb-3 font-mono text-sm text-terra">git show {project.slug}</p>
@@ -282,7 +294,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     {project.isPrivate && (
                         <div className="inline-flex w-fit items-center gap-1.5 rounded-full bg-ink px-3 py-1.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="text-terra-soft"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                            <span className="text-xs font-bold uppercase tracking-wider text-cream">Beta privada · En desarrollo</span>
+                            <span className="text-xs font-bold uppercase tracking-wider text-cream">{t.privateBadge}</span>
                         </div>
                     )}
                 </div>
@@ -300,12 +312,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 <div className="flex flex-wrap gap-3">
                     {project.live && (
                         <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-xl bg-terra px-6 py-3 font-bold text-white transition-colors hover:bg-terra-dark">
-                            Ver proyecto <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            {t.viewProject} <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                         </a>
                     )}
                     {(project.github || project.githubBackend) && (
                         <a href={project.github || project.githubBackend} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-xl border-2 border-ink px-6 py-2.5 font-bold text-ink transition-colors hover:bg-ink hover:text-cream">
-                            Ver código <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                            {t.viewCode} <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
                         </a>
                     )}
                 </div>
@@ -324,21 +336,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
             {isInphera && (
               <>
-                <InpheraArchitecture />
-                <InpheraResponsibleUse />
+                <InpheraArchitecture locale={locale} />
+                <InpheraResponsibleUse locale={locale} />
               </>
             )}
 
             <article className="max-w-none">
-                <h2 className="mb-8 font-heading text-3xl font-bold">Acerca del proyecto</h2>
+                <h2 className="mb-8 font-heading text-3xl font-bold">{t.about}</h2>
                 <DescriptionBlocks blocks={parseDescriptionBlocks(mainDesc)} />
             </article>
 
             {project.gallery && project.gallery.length > 0 && (
                 <div className="mt-20">
-                    <h2 className="mb-3 font-heading text-3xl font-bold">{isInphera ? "Evidencia visual disponible" : "Galería de imágenes"}</h2>
+                    <h2 className="mb-3 font-heading text-3xl font-bold">{isInphera ? t.evidence : t.gallery}</h2>
                     {isInphera && (
-                      <p className="mb-8 max-w-2xl text-sm leading-relaxed text-ink-soft">Esta vista documenta el análisis contextual. Solo se publica evidencia compatible con el guardrail vigente de 65% para mercados recomendados.</p>
+                      <p className="mb-8 max-w-2xl text-sm leading-relaxed text-ink-soft">{t.evidenceNote}</p>
                     )}
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                         {project.gallery.map((img, i) => (

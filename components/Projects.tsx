@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { data } from "@/data/data";
+import { getContent } from "@/data/content";
+import { getDictionary, paths, type Locale } from "@/lib/i18n";
 
 const Tag = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
     <span
@@ -17,16 +18,18 @@ const getStack = (description: string) => {
     return parts.length > 1 ? parts[1].split("·").map((s) => s.trim()).filter(Boolean) : [];
 };
 
-const Projects = () => {
+const Projects = ({ locale }: { locale: Locale }) => {
+    const t = getDictionary(locale);
+    const data = getContent(locale);
     const featured = data.projects.find((p) => p.featured);
     const rest = data.projects.filter((p) => !p.featured);
 
     return (
-        <section id="proyectos" className="bg-sand px-4 py-24 sm:px-6">
+        <section id={t.ids.projects} className="bg-sand px-4 py-24 sm:px-6">
             <div className="mx-auto flex max-w-[1200px] flex-col gap-10">
                 <div className="flex flex-col gap-2">
-                    <p className="m-0 font-mono text-sm text-terra">01 — Proyectos</p>
-                    <h2 className="m-0 font-heading text-[clamp(32px,4vw,48px)] font-bold leading-[1.1]">Lo que he construido</h2>
+                    <p className="m-0 font-mono text-sm text-terra">{t.projects.eyebrow}</p>
+                    <h2 className="m-0 font-heading text-[clamp(32px,4vw,48px)] font-bold leading-[1.1]">{t.projects.title}</h2>
                 </div>
 
                 {featured && (
@@ -45,19 +48,19 @@ const Projects = () => {
                             <h3 className="m-0 font-heading text-[44px] font-extrabold leading-[1.05]">{featured.title}</h3>
                             <p className="m-0 text-[19px] text-[#D6D3D1]">{featured.summary}</p>
                             <div className="flex flex-col gap-3 border-t border-ink-soft pt-4">
-                                <p className="m-0"><strong className="text-terra-soft">Resultado:</strong> {featured.result}</p>
-                                <p className="m-0"><strong className="text-terra-soft">Técnico:</strong> {featured.technical}</p>
+                                <p className="m-0"><strong className="text-terra-soft">{t.projects.result}</strong> {featured.result}</p>
+                                <p className="m-0"><strong className="text-terra-soft">{t.projects.technical}</strong> {featured.technical}</p>
                             </div>
                             <div className="flex flex-wrap gap-2">
                                 {getStack(featured.description).map((tech) => <Tag key={tech} dark>{tech}</Tag>)}
                             </div>
                             <div className="flex flex-wrap gap-x-6 gap-y-1">
-                                <Link href={`/proyecto/${featured.slug}`} className="py-2.5 font-bold text-terra-soft hover:text-white">
-                                    Ver caso de estudio →
+                                <Link href={paths.project(locale, featured.slug)} className="py-2.5 font-bold text-terra-soft hover:text-white">
+                                    {t.projects.caseStudy}
                                 </Link>
                                 {featured.live && (
                                     <a href={featured.live} target="_blank" rel="noreferrer" className="py-2.5 font-bold text-terra-soft hover:text-white">
-                                        Visitar inphera.com.mx ↗
+                                        {t.projects.visit}
                                     </a>
                                 )}
                             </div>
@@ -86,10 +89,10 @@ const Projects = () => {
                                         <span className="text-sm text-ink-soft">{project.metric.label}</span>
                                     </p>
                                 )}
-                                <p className="m-0"><strong className="text-terra">Resultado:</strong> {project.result}</p>
-                                <p className="m-0"><strong className="text-terra">Técnico:</strong> {project.technical}</p>
-                                <Link href={`/proyecto/${project.slug}`} className="mt-auto py-2.5 font-bold text-terra hover:text-terra-dark">
-                                    Ver caso de estudio →
+                                <p className="m-0"><strong className="text-terra">{t.projects.result}</strong> {project.result}</p>
+                                <p className="m-0"><strong className="text-terra">{t.projects.technical}</strong> {project.technical}</p>
+                                <Link href={paths.project(locale, project.slug)} className="mt-auto py-2.5 font-bold text-terra hover:text-terra-dark">
+                                    {t.projects.caseStudy}
                                 </Link>
                             </div>
                         </article>
@@ -103,8 +106,8 @@ const Projects = () => {
                             <div className="flex flex-col gap-3.5 px-3">
                                 <p className="m-0 font-mono text-[13px] text-ink-soft">{project.tag}</p>
                                 <h3 className="m-0 font-heading text-2xl font-bold leading-tight">{project.title}</h3>
-                                <p className="m-0"><strong className="text-terra">Resultado:</strong> {project.result}</p>
-                                <p className="m-0"><strong className="text-terra">Técnico:</strong> {project.technical}</p>
+                                <p className="m-0"><strong className="text-terra">{t.projects.result}</strong> {project.result}</p>
+                                <p className="m-0"><strong className="text-terra">{t.projects.technical}</strong> {project.technical}</p>
                             </div>
                         </article>
                     ))}

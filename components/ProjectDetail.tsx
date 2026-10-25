@@ -354,7 +354,7 @@ export default function ProjectDetail({ locale, slug }: { locale: Locale; slug: 
                     )}
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                         {project.gallery.map((img, i) => (
-                            <div key={i} className="relative aspect-video overflow-hidden rounded-2xl bg-ink shadow-lg">
+                            <div key={i} className={`relative aspect-video overflow-hidden rounded-2xl bg-ink shadow-lg ${i === 0 && project.gallery.length % 2 === 1 ? "md:col-span-2 md:aspect-[21/9]" : ""}`}>
                                 <Image
                                   src={img}
                                   alt={project.galleryAlts[i] ?? `${project.title} screenshot ${i+1}`}

@@ -62,11 +62,11 @@ export const dataEn: typeof es = {
     projects: [
         {
             ...es.projects[0],
-            imageAlt: "Overview of the Inphera analysis dashboard",
+            imageAlt: "Inphera's list of today's matches, with their status and whether the analysis is ready",
             galleryAlts: [
-                "Contextual match analysis in Inphera",
-                "Recommended markets and probabilities in Inphera",
-                "Additional overview of the Inphera dashboard",
+                "A match result in Inphera and whether the official pick was correct",
+                "Per-line probabilities calculated by the model, with the official pick highlighted",
+                "Match statistics in Inphera: possession, shots, corners, fouls and cards",
             ],
             tag: "Main project · Private beta",
             result: "Brings a match's recent form, stats and context together in one place, with traceable analysis.",

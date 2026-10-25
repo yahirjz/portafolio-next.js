@@ -25,18 +25,18 @@ const projects: Project[] = [
     // PROYECTO DE ANALISIS DE PARTIDOS 
     {
         slug: "inphera",
-        img: "/projects/sportixa/overview.png",
-        imageAlt: "Vista general del panel de análisis de Inphera",
+        img: "/projects/inphera/overview.png",
+        imageAlt: "Lista de partidos del día en Inphera, con su estado y si ya tienen análisis",
         imageContain: true,
         gallery: [
-            "/projects/sportixa/analysis-context.png",
-            "/projects/sportixa/recommended-markets.png",
-            "/projects/sportixa/overview2.png"
+            "/projects/inphera/match-result.png",
+            "/projects/inphera/line-probabilities.png",
+            "/projects/inphera/match-stats.png"
         ],
         galleryAlts: [
-            "Análisis contextual de un partido presentado en Inphera",
-            "Mercados recomendados y probabilidades en Inphera",
-            "Vista general adicional del panel de Inphera"
+            "Resultado de un partido en Inphera y si el pick oficial acertó",
+            "Probabilidades por línea calculadas por el modelo, con el pick oficial marcado",
+            "Estadísticas de un partido en Inphera: posesión, tiros, córners, faltas y tarjetas"
         ],
         galleryContain: true,
         title: "Inphera",

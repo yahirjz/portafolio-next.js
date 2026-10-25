@@ -146,7 +146,7 @@ export const data = {
 
     social: {
         github: "https://github.com/yahirjz/",
-        linkedin: "https://www.linkedin.com/in/jaime-jair-rodriguez-juarez-82494b317/",
+        linkedin: "https://www.linkedin.com/in/jaime-jair-rodr%C3%ADguez-ju%C3%A1rez-82494b317/",
     },
 
     // <-- STACK (se muestra como un package.json)

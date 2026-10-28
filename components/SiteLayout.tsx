@@ -31,7 +31,7 @@ export function siteMetadata(locale: Locale): Metadata {
       ...(siteUrl ? { url: paths.home(locale) } : {}),
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: t.meta.title,
       description: t.meta.description,
     },

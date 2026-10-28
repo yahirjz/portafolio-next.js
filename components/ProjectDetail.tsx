@@ -250,11 +250,14 @@ export function projectMetadata(locale: Locale, slug: string): Metadata {
       title: `${project.title} | Jaime Jair`,
       description,
       ...(siteUrl ? { url: pathname } : {}),
+      // La captura principal del proyecto es la imagen al compartir el caso de estudio.
+      images: [{ url: project.img, alt: project.imageAlt }],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: `${project.title} | Jaime Jair`,
       description,
+      images: [{ url: project.img, alt: project.imageAlt }],
     },
     robots: project.isPrivate
       ? { index: false, follow: false }

@@ -32,7 +32,6 @@ const serviceIcons: IconType[] = [LuCodeXml, LuChartNoAxesCombined, LuBrain, LuS
 const links: { label: string; href: string; icon: IconType; external: boolean }[] = [
   { label: "GitHub", href: contact.github, icon: FaGithub, external: true },
   { label: "LinkedIn", href: contact.linkedin, icon: FaLinkedinIn, external: true },
-  { label: "¿Quieres conocer más sobre mí?", href: contact.site, icon: LuGlobe, external: false },
   { label: "Correo", href: `mailto:${contact.email}`, icon: LuMail, external: false },
 ];
 
@@ -164,27 +163,40 @@ export default function JrCard() {
           </a>
         </section>
 
+        {/* Portafolio */}
+        <a
+          href={contact.site}
+          className="group -mt-2 flex items-center gap-4 rounded-[2rem] border border-white/[0.12] bg-gradient-to-b from-[#1E2023] to-[#15171A] px-5 py-5 shadow-[0_18px_34px_-20px_rgba(0,0,0,1)] transition hover:-translate-y-0.5 hover:border-[#00F2EC]/50 sm:gap-6 sm:px-8 sm:py-6 lg:-mt-3"
+        >
+          <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-[#00F2EC]/10 text-[#00F2EC] ring-1 ring-[#00F2EC]/25 sm:size-16">
+            <LuGlobe aria-hidden="true" className="size-7 sm:size-9" />
+          </span>
+          <span className="flex-1">
+            <span className="block text-lg font-bold leading-tight sm:text-2xl">¿Quieres conocer más sobre mí?</span>
+            <span className="mt-1 block text-sm font-medium leading-snug text-[#C9C9C9] sm:text-lg">
+              Conoce mi trayectoria, proyectos y experiencia.
+            </span>
+          </span>
+          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#FD9B02] text-[#05080A] transition group-hover:translate-x-1 sm:size-14">
+            <LuArrowRight aria-hidden="true" strokeWidth={2.5} className="size-6 sm:size-7" />
+          </span>
+        </a>
+
         {/* Enlaces */}
         <nav aria-label="Enlaces" className="border-t border-white/15 pt-6 sm:pt-8">
-          <ul className="grid grid-cols-3 gap-y-3 lg:flex lg:items-center lg:justify-between lg:divide-x lg:divide-white/25">
-            {links.map(({ label, href, icon: Icon, external }) => {
-              const wide = href === contact.site;
-              return (
-                <li
-                  key={label}
-                  className={`flex justify-center lg:flex-1 ${wide ? "order-last col-span-3 lg:order-none lg:flex-[1.9]" : ""}`}
+          <ul className="grid grid-cols-3 divide-x divide-white/25">
+            {links.map(({ label, href, icon: Icon, external }) => (
+              <li key={label} className="flex justify-center">
+                <a
+                  href={href}
+                  {...(external ? externalProps : {})}
+                  className="flex flex-col items-center gap-2 rounded-xl px-3 py-2 text-[0.95rem] font-semibold transition hover:text-[#00F2EC] sm:flex-row sm:gap-4 sm:text-xl xl:text-[1.35rem]"
                 >
-                  <a
-                    href={href}
-                    {...(external ? externalProps : {})}
-                    className={`flex items-center gap-2 rounded-xl px-3 py-2 text-[0.95rem] font-semibold transition hover:text-[#00F2EC] sm:gap-4 sm:text-xl lg:flex-row lg:text-lg xl:text-[1.35rem] ${wide ? "flex-row" : "flex-col sm:flex-row"}`}
-                  >
-                    <Icon aria-hidden="true" className="size-8 shrink-0 sm:size-10" />
-                    <span className="leading-tight lg:whitespace-nowrap">{label}</span>
-                  </a>
-                </li>
-              );
-            })}
+                  <Icon aria-hidden="true" className="size-8 shrink-0 sm:size-10" />
+                  <span className="leading-tight">{label}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

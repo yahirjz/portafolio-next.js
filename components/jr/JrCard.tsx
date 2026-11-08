@@ -19,11 +19,11 @@ import { contact, services, type Accent } from "./jr-data";
 const accent: Record<Accent, { text: string; tile: string }> = {
   turquesa: {
     text: "text-[#00F2EC]",
-    tile: "bg-[#00F2EC]/10 shadow-[0_0_22px_-6px_rgba(0,242,236,0.55)] ring-1 ring-[#00F2EC]/25",
+    tile: "bg-[#00F2EC]/10 ring-1 ring-[#00F2EC]/25",
   },
   ambar: {
     text: "text-[#FD9B02]",
-    tile: "bg-[#FD9B02]/10 shadow-[0_0_22px_-6px_rgba(253,155,2,0.55)] ring-1 ring-[#FD9B02]/25",
+    tile: "bg-[#FD9B02]/10 ring-1 ring-[#FD9B02]/25",
   },
 };
 
@@ -141,7 +141,7 @@ export default function JrCard() {
             href={`https://wa.me/${contact.whatsapp}`}
             {...externalProps}
             aria-label="¿Tienes un proyecto en mente? Hablemos por WhatsApp"
-            className="group block rounded-full bg-gradient-to-r from-[#00F2EC] via-[#00F2EC]/40 to-[#FD9B02] p-[2px] shadow-[-10px_0_32px_-12px_rgba(0,242,236,0.8),10px_0_32px_-12px_rgba(253,155,2,0.8)] transition hover:-translate-y-0.5"
+            className="group block rounded-full bg-gradient-to-r from-[#00F2EC] via-[#00F2EC]/40 to-[#FD9B02] p-[2px] transition hover:-translate-y-0.5"
           >
             <span className="flex min-h-[5rem] items-center gap-3 rounded-full bg-[#07090B] px-5 sm:min-h-24 sm:gap-6 sm:px-10 xl:min-h-[6.5rem]">
               <FaWhatsapp aria-hidden="true" className="size-9 shrink-0 text-white sm:size-14" />
@@ -161,7 +161,7 @@ export default function JrCard() {
           <a
             href="/jr/jair-rodriguez.vcf"
             download="Jair-Rodriguez.vcf"
-            className="group flex min-h-[5rem] items-center gap-4 rounded-full border-2 border-[#D9AE6E] px-7 shadow-[0_0_24px_-10px_rgba(253,155,2,0.8)] transition hover:-translate-y-0.5 hover:bg-[#FD9B02]/10 sm:min-h-24 sm:px-12 xl:min-h-[6.5rem]"
+            className="group flex min-h-[5rem] items-center gap-4 rounded-full border-2 border-[#D9AE6E] px-7 transition hover:-translate-y-0.5 hover:bg-[#FD9B02]/10 sm:min-h-24 sm:px-12 xl:min-h-[6.5rem]"
           >
             <LuUserPlus aria-hidden="true" className="size-9 shrink-0 sm:size-11" />
             <span aria-hidden="true" className="h-12 w-px shrink-0 bg-white/40" />

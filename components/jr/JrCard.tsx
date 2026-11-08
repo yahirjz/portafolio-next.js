@@ -144,7 +144,9 @@ export default function JrCard() {
             className="group block rounded-full bg-gradient-to-r from-[#00F2EC] via-[#00F2EC]/40 to-[#FD9B02] p-[2px] transition hover:-translate-y-0.5"
           >
             <span className="flex min-h-[5rem] items-center gap-3 rounded-full bg-[#07090B] px-5 sm:min-h-24 sm:gap-6 sm:px-10 xl:min-h-[6.5rem]">
-              <FaWhatsapp aria-hidden="true" className="size-9 shrink-0 text-white sm:size-14" />
+              <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#25D366] sm:size-16">
+                <FaWhatsapp aria-hidden="true" className="size-6 text-white sm:size-10" />
+              </span>
               <span className="flex-1 leading-tight">
                 <span className="block whitespace-nowrap text-[0.8rem] font-semibold text-white sm:text-xl xl:text-2xl">
                   ¿Tienes un proyecto en mente?

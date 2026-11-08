@@ -7,7 +7,8 @@ import {
   LuCodeXml,
   LuCpu,
   LuDownload,
-  LuLaptop,
+  LuGlobe,
+  LuMail,
   LuLayers,
   LuSettings,
   LuUserPlus,
@@ -29,7 +30,7 @@ const serviceIcons: IconType[] = [LuCodeXml, LuCpu, LuLayers, LuSettings, LuClou
 const links: { label: string; href: string; icon: IconType; external: boolean }[] = [
   { label: "GitHub", href: contact.github, icon: FaGithub, external: true },
   { label: "LinkedIn", href: contact.linkedin, icon: FaLinkedinIn, external: true },
-  { label: "Portafolio", href: contact.site, icon: LuLaptop, external: false },
+  { label: "Correo", href: `mailto:${contact.email}`, icon: LuMail, external: false },
 ];
 
 const externalProps = { target: "_blank", rel: "noopener noreferrer" } as const;
@@ -184,6 +185,23 @@ export default function JrCard() {
         {/* Conecta conmigo */}
         <section aria-labelledby="jr-conecta">
           <SectionTitle id="jr-conecta">Conecta conmigo</SectionTitle>
+          <a
+            href={contact.site}
+            className="group mb-6 flex items-center gap-4 rounded-[1.6rem] border border-white/[0.12] bg-[#121518]/90 px-5 py-5 transition hover:-translate-y-0.5 hover:border-[#00F2EC]/50 sm:mb-8 sm:gap-6 sm:px-8 sm:py-6"
+          >
+            <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-[#00F2EC]/15 text-[#00F2EC] sm:size-16">
+              <LuGlobe aria-hidden="true" className="size-7 sm:size-9" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-lg font-bold leading-tight sm:text-2xl">¿Quieres conocer más sobre mí?</span>
+              <span className="mt-1 block text-sm font-medium leading-snug text-white/75 sm:text-lg">
+                Conoce mi trayectoria, proyectos y experiencia.
+              </span>
+            </span>
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#FD9B02] text-[#05080A] transition group-hover:translate-x-1 sm:size-14">
+              <LuArrowRight aria-hidden="true" strokeWidth={2.5} className="size-6 sm:size-7" />
+            </span>
+          </a>
           <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
             <ul className="grid grid-cols-3 gap-3 sm:flex sm:gap-4">
               {links.map(({ label, href, icon: Icon, external }) => (

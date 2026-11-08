@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import {
   LuArrowRight,
   LuBrain,
-  LuChartColumnIncreasing,
+  LuChartNoAxesCombined,
   LuCodeXml,
   LuDownload,
   LuGlobe,
@@ -18,16 +18,16 @@ import { contact, services, type Accent } from "./jr-data";
 /** Clases por acento: el turquesa y el ámbar de la marca JR. */
 const accent: Record<Accent, { text: string; tile: string }> = {
   turquesa: {
-    text: "text-[#14E6C5]",
-    tile: "bg-[#14E6C5]/10 shadow-[0_0_22px_-6px_rgba(20,230,197,0.55)] ring-1 ring-[#14E6C5]/25",
+    text: "text-[#00F2EC]",
+    tile: "bg-[#00F2EC]/10 shadow-[0_0_22px_-6px_rgba(0,242,236,0.55)] ring-1 ring-[#00F2EC]/25",
   },
   ambar: {
-    text: "text-[#E5A13B]",
-    tile: "bg-[#E5A13B]/10 shadow-[0_0_22px_-6px_rgba(229,161,59,0.55)] ring-1 ring-[#E5A13B]/25",
+    text: "text-[#FD9B02]",
+    tile: "bg-[#FD9B02]/10 shadow-[0_0_22px_-6px_rgba(253,155,2,0.55)] ring-1 ring-[#FD9B02]/25",
   },
 };
 
-const serviceIcons: IconType[] = [LuCodeXml, LuChartColumnIncreasing, LuBrain, LuSettings];
+const serviceIcons: IconType[] = [LuCodeXml, LuChartNoAxesCombined, LuBrain, LuSettings];
 
 const links: { label: string; href: string; icon: IconType; external: boolean }[] = [
   { label: "GitHub", href: contact.github, icon: FaGithub, external: true },
@@ -67,7 +67,7 @@ export default function JrCard() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-[6%] top-[22%] h-[20%] w-[22%] -skew-x-[38deg] bg-gradient-to-br from-[#14E6C5]/[0.07] to-transparent"
+        className="pointer-events-none absolute right-[6%] top-[22%] h-[20%] w-[22%] -skew-x-[38deg] bg-gradient-to-br from-[#00F2EC]/[0.07] to-transparent"
       />
 
       {/* Brochazos en las esquinas */}
@@ -76,7 +76,7 @@ export default function JrCard() {
       <Brush src="brochazo-ambar-der" w={595} h={722} className="right-0 top-[12%] hidden w-[16%] lg:block" />
       <Brush src="brochazo-ambar-inf" w={1093} h={712} className="bottom-0 right-0 w-[62%] sm:w-[42%] lg:w-[31%]" />
 
-      <div className="relative mx-auto flex w-full max-w-[1120px] flex-col gap-9 px-5 pb-36 pt-14 sm:gap-11 sm:px-10 sm:pt-20 lg:pb-40">
+      <div className="relative mx-auto flex w-full max-w-[1200px] flex-col gap-9 px-5 pb-36 pt-14 sm:gap-11 sm:px-10 sm:pt-20 lg:px-8 lg:pb-40">
         {/* Encabezado */}
         <header className="flex items-center justify-center gap-4 sm:gap-9">
           <Image
@@ -92,7 +92,7 @@ export default function JrCard() {
             <h1 className="text-[1.6rem] font-bold leading-none tracking-tight sm:text-5xl lg:text-[4rem]">
               Jair Rodríguez
             </h1>
-            <p className="mt-2 text-[0.9rem] font-semibold tracking-[0.2em] text-[#14E6C5] sm:mt-4 sm:text-2xl sm:tracking-[0.25em] lg:text-[2.1rem]">
+            <p className="mt-2 text-[0.9rem] font-semibold tracking-[0.2em] text-[#00F2EC] sm:mt-4 sm:text-2xl sm:tracking-[0.25em] lg:text-[2.1rem]">
               Software Engineer
             </p>
           </div>
@@ -106,30 +106,30 @@ export default function JrCard() {
           >
             Desarrollo soluciones <br className="hidden sm:block" />
             digitales que resuelven <br className="hidden sm:block" />
-            <em className="font-bold text-[#14E6C5]">
+            <em className="font-bold text-[#00F2EC]">
               necesidades reales <br className="hidden sm:block" />
               de negocio.
             </em>
           </h2>
-          <span aria-hidden="true" className="mt-6 block h-1.5 w-28 rounded-full bg-[#E5A13B] sm:w-40" />
+          <span aria-hidden="true" className="mt-6 block h-1.5 w-28 rounded-full bg-[#FD9B02] sm:w-40" />
         </section>
 
         {/* Servicios */}
         <section aria-label="Servicios">
-          <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-6">
             {services.map((s, i) => {
               const Icon = serviceIcons[i];
               const a = accent[s.accent];
               return (
                 <li
                   key={s.title}
-                  className="flex flex-col rounded-[1.6rem] border border-white/[0.08] bg-gradient-to-b from-[#1D1D1D] to-[#161616] p-4 shadow-[0_18px_34px_-20px_rgba(0,0,0,1)] sm:p-6"
+                  className="flex flex-col rounded-[1.6rem] border border-white/[0.1] bg-gradient-to-b from-[#242424] to-[#171717] p-4 shadow-[0_18px_34px_-20px_rgba(0,0,0,1)] sm:p-6"
                 >
-                  <span className={`grid size-12 place-items-center rounded-2xl sm:size-16 ${a.tile} ${a.text}`}>
-                    <Icon aria-hidden="true" strokeWidth={2.2} className="size-7 sm:size-9" />
+                  <span className={`grid size-14 place-items-center rounded-2xl sm:size-[4.5rem] xl:size-20 ${a.tile} ${a.text}`}>
+                    <Icon aria-hidden="true" strokeWidth={2.3} className="size-8 sm:size-11 xl:size-12" />
                   </span>
-                  <h3 className="mt-4 text-[1.02rem] font-bold leading-tight sm:text-[1.45rem] lg:text-[1.35rem] xl:text-[1.5rem]">{s.title}</h3>
-                  <p className="mt-2 text-[0.85rem] font-medium leading-snug text-[#BDBDBD] sm:text-base">{s.description}</p>
+                  <h3 className="mt-4 text-[1.02rem] font-bold leading-tight sm:text-[1.45rem] lg:text-[1.55rem] xl:text-[1.75rem] tracking-tight">{s.title}</h3>
+                  <p className="mt-2 text-[0.88rem] font-medium leading-snug text-[#D6D6D6] sm:text-[1.05rem] xl:text-[1.15rem]">{s.description}</p>
                 </li>
               );
             })}
@@ -142,24 +142,24 @@ export default function JrCard() {
             href={`https://wa.me/${contact.whatsapp}`}
             {...externalProps}
             aria-label="Hablemos por WhatsApp"
-            className="group flex min-h-[5rem] items-center gap-5 rounded-full bg-[#14E6C5] px-7 text-[#0D0D0D] shadow-[0_0_30px_-6px_rgba(20,230,197,0.6)] transition hover:-translate-y-0.5 hover:bg-[#3BEDD0] sm:min-h-24 sm:px-12"
+            className="group flex min-h-[5rem] items-center gap-5 rounded-full bg-[#00F2EC] px-7 text-[#0D0D0D] shadow-[0_0_30px_-6px_rgba(0,242,236,0.6)] transition hover:-translate-y-0.5 hover:bg-[#5EF8F3] sm:min-h-24 sm:px-12 xl:min-h-[6.5rem]"
           >
             <FaWhatsapp aria-hidden="true" className="size-10 shrink-0 sm:size-14" />
             <span aria-hidden="true" className="h-12 w-px shrink-0 bg-[#0D0D0D]/30" />
             <span className="flex-1 leading-none">
-              <span className="block text-base font-bold sm:text-xl">Hablemos por</span>
-              <span className="mt-1 block text-[1.6rem] font-extrabold sm:text-[2rem]">WhatsApp</span>
+              <span className="block text-base font-bold sm:text-xl xl:text-2xl">Hablemos por</span>
+              <span className="mt-1 block text-[1.6rem] font-extrabold sm:text-[2rem] xl:text-[2.3rem]">WhatsApp</span>
             </span>
             <LuArrowRight aria-hidden="true" strokeWidth={2.5} className="size-8 shrink-0 transition group-hover:translate-x-1 sm:size-10" />
           </a>
           <a
             href="/jr/jair-rodriguez.vcf"
             download="Jair-Rodriguez.vcf"
-            className="group flex min-h-[5rem] items-center gap-4 rounded-full border-2 border-[#E5A13B] px-7 shadow-[0_0_24px_-10px_rgba(229,161,59,0.8)] transition hover:-translate-y-0.5 hover:bg-[#E5A13B]/10 sm:min-h-24 sm:px-12"
+            className="group flex min-h-[5rem] items-center gap-4 rounded-full border-2 border-[#D9AE6E] px-7 shadow-[0_0_24px_-10px_rgba(253,155,2,0.8)] transition hover:-translate-y-0.5 hover:bg-[#FD9B02]/10 sm:min-h-24 sm:px-12 xl:min-h-[6.5rem]"
           >
             <LuUserPlus aria-hidden="true" className="size-9 shrink-0 sm:size-11" />
             <span aria-hidden="true" className="h-12 w-px shrink-0 bg-white/40" />
-            <span className="flex-1 whitespace-nowrap text-lg font-bold sm:text-[1.65rem]">Guardar contacto</span>
+            <span className="flex-1 whitespace-nowrap text-lg font-bold sm:text-[1.65rem] xl:text-[1.85rem]">Guardar contacto</span>
             <LuDownload aria-hidden="true" className="size-8 shrink-0 transition group-hover:translate-y-0.5 sm:size-10" />
           </a>
         </section>
@@ -177,7 +177,7 @@ export default function JrCard() {
                   <a
                     href={href}
                     {...(external ? externalProps : {})}
-                    className={`flex items-center gap-2 rounded-xl px-3 py-2 text-[0.95rem] font-semibold transition hover:text-[#14E6C5] sm:gap-4 sm:text-xl lg:flex-row lg:text-lg xl:text-xl ${wide ? "flex-row" : "flex-col sm:flex-row"}`}
+                    className={`flex items-center gap-2 rounded-xl px-3 py-2 text-[0.95rem] font-semibold transition hover:text-[#00F2EC] sm:gap-4 sm:text-xl lg:flex-row lg:text-lg xl:text-[1.35rem] ${wide ? "flex-row" : "flex-col sm:flex-row"}`}
                   >
                     <Icon aria-hidden="true" className="size-8 shrink-0 sm:size-10" />
                     <span className="leading-tight lg:whitespace-nowrap">{label}</span>

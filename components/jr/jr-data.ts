@@ -15,8 +15,9 @@ export const contact = {
 };
 
 export const services: { title: string; description: string; accent: Accent }[] = [
-  { title: "Desarrollo de software", description: "Aplicaciones y plataformas a medida.", accent: "turquesa" },
-  { title: "Mejora de procesos", description: "Soluciones digitales más eficientes.", accent: "ambar" },
-  { title: "Inteligencia Artificial", description: "Herramientas inteligentes para la toma de decisiones.", accent: "turquesa" },
-  { title: "Automatización de tareas", description: "Conecta y optimiza tus sistemas.", accent: "ambar" },
+  { title: "Desarrollo Web", description: "Apps modernas, escalables y seguras.", accent: "turquesa" },
+  { title: "Inteligencia Artificial", description: "Soluciones inteligentes con IA.", accent: "turquesa" },
+  { title: "Sistemas a Medida", description: "Plataformas y herramientas para tu negocio.", accent: "ambar" },
+  { title: "Automatización", description: "Optimización de procesos y tareas repetitivas.", accent: "ambar" },
+  { title: "APIs e Integraciones", description: "Conexión con servicios y datos externos.", accent: "turquesa" },
 ];

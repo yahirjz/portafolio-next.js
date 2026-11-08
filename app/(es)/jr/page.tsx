@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import JrCard from "@/components/jr/JrCard";
 
 const title = "Jair Rodríguez · Software Engineer";
-const description = "Desarrollo soluciones digitales que resuelven necesidades reales de negocio.";
+const description = "Desarrollo software con tecnología e IA para crear soluciones reales.";
 
 export const metadata: Metadata = {
   title: { absolute: title },

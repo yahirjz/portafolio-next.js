@@ -17,8 +17,8 @@ export const viewport: Viewport = { themeColor: "#05080A" };
 export default function JrPage() {
   return (
     <>
-      {/* Solo en /jr: fondo negro también al estirar la página (rebote de iOS) */}
-      <style>{"html,body{background-color:#05080A!important}"}</style>
+      {/* Solo en /jr: fondo negro y sin rebote al estirar la página (los brochazos tocan los bordes) */}
+      <style>{"html,body{background-color:#05080A!important;overscroll-behavior:none}"}</style>
       <JrCard />
     </>
   );

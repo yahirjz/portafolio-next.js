@@ -102,7 +102,7 @@ export default function JrCard() {
           <p className="mt-7 text-[0.7rem] font-semibold tracking-[0.3em] text-white/85 sm:mt-8 sm:text-sm">
             DESARROLLO • IA • INNOVACIÓN
           </p>
-          <span aria-hidden="true" className="mt-3 block h-1 w-28 rounded-full bg-gradient-to-r from-[#00F2EC] to-[#FD9B02] sm:w-40" />
+          <span aria-hidden="true" className="mt-3 block h-1 w-28 rounded-full bg-[linear-gradient(90deg,#00F2EC_0%,#00F2EC_42%,#FD9B02_58%,#FD9B02_100%)] shadow-[-4px_0_9px_0_rgba(0,242,236,0.55),4px_0_9px_0_rgba(253,155,2,0.55)] sm:w-40" />
         </header>
 
         {/* Mensaje principal con marca de agua */}

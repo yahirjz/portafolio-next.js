@@ -136,20 +136,27 @@ export default function JrCard() {
         </section>
 
         {/* Acciones principales */}
-        <section aria-label="Contacto" className="grid gap-4 sm:gap-5 lg:grid-cols-2 lg:gap-8">
+        <section aria-label="Contacto" className="grid gap-4 sm:gap-5">
           <a
             href={`https://wa.me/${contact.whatsapp}`}
             {...externalProps}
-            aria-label="Hablemos por WhatsApp"
-            className="group flex min-h-[5rem] items-center gap-5 rounded-full bg-[#00F2EC] px-7 text-[#05080A] shadow-[0_0_36px_-4px_rgba(0,242,236,0.75)] transition hover:-translate-y-0.5 hover:bg-[#5EF8F3] sm:min-h-24 sm:px-12 xl:min-h-[6.5rem]"
+            aria-label="¿Tienes un proyecto en mente? Hablemos por WhatsApp"
+            className="group block rounded-full bg-gradient-to-r from-[#00F2EC] via-[#00F2EC]/40 to-[#FD9B02] p-[2px] shadow-[-10px_0_32px_-12px_rgba(0,242,236,0.8),10px_0_32px_-12px_rgba(253,155,2,0.8)] transition hover:-translate-y-0.5"
           >
-            <FaWhatsapp aria-hidden="true" className="size-10 shrink-0 sm:size-14" />
-            <span aria-hidden="true" className="h-12 w-px shrink-0 bg-[#05080A]/30" />
-            <span className="flex-1 leading-none">
-              <span className="block text-base font-bold sm:text-xl xl:text-2xl">Hablemos por</span>
-              <span className="mt-1 block text-[1.6rem] font-extrabold sm:text-[2rem] xl:text-[2.3rem]">WhatsApp</span>
+            <span className="flex min-h-[5rem] items-center gap-3 rounded-full bg-[#07090B] px-5 sm:min-h-24 sm:gap-6 sm:px-10 xl:min-h-[6.5rem]">
+              <FaWhatsapp aria-hidden="true" className="size-9 shrink-0 text-white sm:size-14" />
+              <span className="flex-1 leading-tight">
+                <span className="block whitespace-nowrap text-[0.8rem] font-semibold text-white sm:text-xl xl:text-2xl">
+                  ¿Tienes un proyecto en mente?
+                </span>
+                <span className="mt-0.5 block whitespace-nowrap text-[1.02rem] font-bold text-[#FD9B02] sm:text-3xl xl:text-[2.2rem]">
+                  Hablemos por WhatsApp.
+                </span>
+              </span>
+              <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-[#F8F5EF] sm:rounded-2xl text-[#05080A] transition group-hover:translate-x-1 sm:size-14">
+                <LuArrowRight aria-hidden="true" strokeWidth={2.5} className="size-6 sm:size-7" />
+              </span>
             </span>
-            <LuArrowRight aria-hidden="true" strokeWidth={2.5} className="size-8 shrink-0 transition group-hover:translate-x-1 sm:size-10" />
           </a>
           <a
             href="/jr/jair-rodriguez.vcf"

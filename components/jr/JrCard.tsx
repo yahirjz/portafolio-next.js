@@ -55,11 +55,11 @@ function Brush({ src, w, h, className }: { src: string; w: number; h: number; cl
 
 export default function JrCard() {
   return (
-    <main className={`${jrFont.className} relative min-h-screen overflow-hidden bg-[#0D0D0D] text-white`}>
+    <main className={`${jrFont.className} relative min-h-screen overflow-hidden bg-[#05080A] text-white`}>
       {/* Fondo: carbón con formas geométricas sutiles */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_35%_25%,#1C1C1C_0%,transparent_65%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_40%_30%,#0C1114_0%,transparent_70%)]"
       />
       <div
         aria-hidden="true"
@@ -106,7 +106,7 @@ export default function JrCard() {
           >
             Desarrollo soluciones <br className="hidden sm:block" />
             digitales que resuelven <br className="hidden sm:block" />
-            <em className="font-bold text-[#00F2EC]">
+            <em className="font-bold text-[#00F2EC] [text-shadow:0_0_24px_rgba(0,242,236,0.35)]">
               necesidades reales <br className="hidden sm:block" />
               de negocio.
             </em>
@@ -123,13 +123,13 @@ export default function JrCard() {
               return (
                 <li
                   key={s.title}
-                  className="flex flex-col rounded-[1.6rem] border border-white/[0.1] bg-gradient-to-b from-[#242424] to-[#171717] p-4 shadow-[0_18px_34px_-20px_rgba(0,0,0,1)] sm:p-6"
+                  className="flex flex-col rounded-[1.6rem] border border-white/[0.1] bg-gradient-to-b from-[#1E2023] to-[#15171A] p-4 shadow-[0_18px_34px_-20px_rgba(0,0,0,1)] sm:p-6"
                 >
                   <span className={`grid size-14 place-items-center rounded-2xl sm:size-[4.5rem] xl:size-20 ${a.tile} ${a.text}`}>
                     <Icon aria-hidden="true" strokeWidth={2.3} className="size-8 sm:size-11 xl:size-12" />
                   </span>
                   <h3 className="mt-4 text-[1.02rem] font-bold leading-tight sm:text-[1.45rem] lg:text-[1.55rem] xl:text-[1.75rem] tracking-tight">{s.title}</h3>
-                  <p className="mt-2 text-[0.88rem] font-medium leading-snug text-[#D6D6D6] sm:text-[1.05rem] xl:text-[1.15rem]">{s.description}</p>
+                  <p className="mt-2 text-[0.88rem] font-medium leading-snug text-[#E2E2E2] sm:text-[1.05rem] xl:text-[1.15rem]">{s.description}</p>
                 </li>
               );
             })}
@@ -142,10 +142,10 @@ export default function JrCard() {
             href={`https://wa.me/${contact.whatsapp}`}
             {...externalProps}
             aria-label="Hablemos por WhatsApp"
-            className="group flex min-h-[5rem] items-center gap-5 rounded-full bg-[#00F2EC] px-7 text-[#0D0D0D] shadow-[0_0_30px_-6px_rgba(0,242,236,0.6)] transition hover:-translate-y-0.5 hover:bg-[#5EF8F3] sm:min-h-24 sm:px-12 xl:min-h-[6.5rem]"
+            className="group flex min-h-[5rem] items-center gap-5 rounded-full bg-[#00F2EC] px-7 text-[#05080A] shadow-[0_0_36px_-4px_rgba(0,242,236,0.75)] transition hover:-translate-y-0.5 hover:bg-[#5EF8F3] sm:min-h-24 sm:px-12 xl:min-h-[6.5rem]"
           >
             <FaWhatsapp aria-hidden="true" className="size-10 shrink-0 sm:size-14" />
-            <span aria-hidden="true" className="h-12 w-px shrink-0 bg-[#0D0D0D]/30" />
+            <span aria-hidden="true" className="h-12 w-px shrink-0 bg-[#05080A]/30" />
             <span className="flex-1 leading-none">
               <span className="block text-base font-bold sm:text-xl xl:text-2xl">Hablemos por</span>
               <span className="mt-1 block text-[1.6rem] font-extrabold sm:text-[2rem] xl:text-[2.3rem]">WhatsApp</span>

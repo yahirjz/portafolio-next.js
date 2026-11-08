@@ -19,9 +19,9 @@ const es = {
     htmlLang: "es-MX",
     ogLocale: "es_MX",
     meta: {
-        title: "Jaime Jair | Desarrollador Full Stack",
+        title: "Jair Rodríguez | Desarrollador Full Stack",
         description:
-            "Portafolio de Jaime Jair, desarrollador Full Stack en México. Desarrollo aplicaciones web que resuelven problemas reales de negocio con Next.js, TypeScript, Node.js y FastAPI.",
+            "Portafolio de Jair Rodríguez, desarrollador Full Stack en México. Desarrollo aplicaciones web que resuelven problemas reales de negocio con Next.js, TypeScript, Node.js y FastAPI.",
     },
     skipLink: "Saltar al contenido principal",
     ids: { projects: "proyectos", services: "servicios", stack: "stack", contact: "contacto" },
@@ -119,9 +119,9 @@ const en: Dictionary = {
     htmlLang: "en",
     ogLocale: "en_US",
     meta: {
-        title: "Jaime Jair | Full Stack Developer",
+        title: "Jair Rodríguez | Full Stack Developer",
         description:
-            "Portfolio of Jaime Jair, a Full Stack developer based in Mexico. I build web applications that solve real business problems with Next.js, TypeScript, Node.js and FastAPI.",
+            "Portfolio of Jair Rodríguez, a Full Stack developer based in Mexico. I build web applications that solve real business problems with Next.js, TypeScript, Node.js and FastAPI.",
     },
     skipLink: "Skip to main content",
     ids: { projects: "projects", services: "services", stack: "stack", contact: "contact" },

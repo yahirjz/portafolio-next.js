@@ -55,7 +55,7 @@ const Stack = ({ locale }: { locale: Locale }) => {
                     </div>
                     <div className="overflow-x-auto bg-ink py-[18px] font-mono text-sm leading-[1.9] text-code-text">
                         <span className="code-line">{"{"}</span>
-                        <span className="code-line">  <Key>name</Key>: <Str>jaime-jair</Str>,</span>
+                        <span className="code-line">  <Key>name</Key>: <Str>jair-rodriguez</Str>,</span>
                         <span className="code-line">  <Key>{t.stack.experienceKey}</Key>: <Str>{data.experience}</Str>,</span>
                         <span className="code-line">  <Key>dependencies</Key>: {"{"}</span>
                         {data.stack.map((group, i) => (
@@ -70,7 +70,7 @@ const Stack = ({ locale }: { locale: Locale }) => {
                         <span className="code-line">{"}"}</span>
                     </div>
                     <div className="border-t border-ink-line bg-ink-deep px-[22px] py-4 font-mono text-sm leading-[1.8] text-code-text">
-                        <div><span className="text-terra-soft">$</span> npm install jaime-jair</div>
+                        <div><span className="text-terra-soft">$</span> npm install jair-rodriguez</div>
                         <div className="text-code-string">
                             ✔ {t.stack.installed(totalSkills)}<span className="cursor" aria-hidden="true" style={{ height: 15 }} />
                         </div>

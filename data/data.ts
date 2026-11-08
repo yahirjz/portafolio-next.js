@@ -138,7 +138,7 @@ const projects: Project[] = [
 // Contenido en español. La versión en inglés vive en data.en.ts y debe
 // mantener la misma forma (TypeScript avisa si falta algo).
 export const data = {
-    name: "Jaime Jair",
+    name: "Jair Rodríguez",
     role: "Full Stack Developer",
     location: "México",
     experience: "2+ años",

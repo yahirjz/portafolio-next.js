@@ -247,7 +247,7 @@ export function projectMetadata(locale: Locale, slug: string): Metadata {
     openGraph: {
       type: "article",
       locale: t.ogLocale,
-      title: `${project.title} | Jaime Jair`,
+      title: `${project.title} | Jair Rodríguez`,
       description,
       ...(siteUrl ? { url: pathname } : {}),
       // La captura principal del proyecto es la imagen al compartir el caso de estudio.
@@ -255,7 +255,7 @@ export function projectMetadata(locale: Locale, slug: string): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} | Jaime Jair`,
+      title: `${project.title} | Jair Rodríguez`,
       description,
       images: [{ url: project.img, alt: project.imageAlt }],
     },

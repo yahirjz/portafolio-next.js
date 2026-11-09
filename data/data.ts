@@ -13,6 +13,7 @@ export type Project = {
     summary: string;
     description: string;
     featured?: boolean;
+    logo?: string;
     metric?: { value: string; label: string };
     live?: string;
     github?: string;
@@ -44,8 +45,9 @@ const projects: Project[] = [
         result: "Reúne forma reciente, estadísticas y contexto de un partido en un solo lugar, con análisis trazable.",
         technical: "Modelo de Poisson + Claude API para el análisis, y un filtro determinista que solo muestra mercados con probabilidad ≥ 65%.",
         featured: true,
+        logo: "/projects/inphera/logo.png",
         live: "https://www.inphera.com.mx",
-        summary: "Beta privada para revisar probabilidades matemáticas y contexto de partidos de fútbol con guardrails visibles.",
+        summary: "Plataforma de análisis deportivo con IA que combina modelos estadísticos y LLMs para generar probabilidades, análisis y seguimiento de resultados.",
         description: `
             **El problema**
 
@@ -138,7 +140,7 @@ const projects: Project[] = [
 // Contenido en español. La versión en inglés vive en data.en.ts y debe
 // mantener la misma forma (TypeScript avisa si falta algo).
 export const data = {
-    name: "Jaime Jair",
+    name: "Jair Rodríguez",
     role: "Full Stack Developer",
     location: "México",
     experience: "2+ años",
@@ -149,58 +151,64 @@ export const data = {
         linkedin: "https://www.linkedin.com/in/jaime-jair-rodr%C3%ADguez-ju%C3%A1rez-82494b317/",
     },
 
-    // <-- STACK (se muestra como un package.json)
-    stack: [
-        { key: "frontend", label: "Frontend", detail: "interfaces rápidas y tipadas", color: "#93C5FD", items: ["next", "react", "typescript", "tailwind"] },
-        { key: "backend", label: "Backend", detail: "APIs y lógica de negocio, mi fuerte", color: "#FDBA74", items: ["node", "express", "fastapi", "python", "java", "claude-api"] },
-        { key: "datos", label: "Datos", detail: "modelado relacional y documental", color: "#86EFAC", items: ["postgresql", "supabase", "mongodb"] },
-        { key: "deploy", label: "Deploy", detail: "proyectos en línea, no solo en local", color: "#F9A8D4", items: ["vercel", "railway", "docker", "git"] },
-    ],
-    learning: ["aws", "ia"],
+    /** WhatsApp para el botón de contacto (formato internacional, sin "+"). */
+    whatsapp: "522221602811",
 
-    // <-- SERVICIOS (cada uno apunta a un proyecto que sirve de referencia)
-    services: [
-        {
-            icon: "app",
-            title: "Aplicaciones web a medida",
-            description: "Plataformas, paneles y sistemas internos, desde la base de datos hasta el deploy.",
-            referenceLabel: "Lo he hecho en",
-            reference: "Inphera",
-            slug: "inphera",
-        },
-        {
-            icon: "automation",
-            title: "Automatización de procesos",
-            description: "Convierto tareas manuales y repetitivas, como pasar datos de Excel a reportes, en flujos automáticos.",
-            referenceLabel: "Lo he hecho en",
-            reference: "Reportes TISAX",
-            slug: "reportes-tisax",
-        },
-        {
-            icon: "calendar",
-            title: "Reservas y citas para negocios",
-            description: "Agenda en línea que administras desde el celular, con confirmación por WhatsApp para tus clientes.",
-            referenceLabel: "Lo estoy construyendo en",
-            reference: "Sistema de citas",
-            slug: null,
-        },
-    ],
+    // <-- SOBRE MÍ
+    about: {
+        intro: "desarrollador Full Stack en México. Me interesa construir soluciones que automaticen procesos, aprovechen los datos y generen valor real. Estudio Ingeniería en Sistemas Computacionales y estudié la carrera de Ingeniería en Electrónica.",
+        focus: [
+            { icon: "code", label: "Desarrollo Full Stack" },
+            { icon: "automation", label: "Automatización de procesos" },
+            { icon: "data", label: "Aplicaciones con datos e IA" },
+            { icon: "product", label: "Enfoque en producto" },
+        ],
+    },
+
+    // <-- EXPERIENCIA
+    career: {
+        work: [
+            {
+                date: "jun 2026 — actual",
+                title: "Inphera",
+                org: "Fundador y desarrollador · Proyecto propio",
+                detail: "Diseño y desarrollo de la plataforma completa: interfaz en Next.js, motor estadístico en FastAPI e integración con IA.",
+                current: true,
+            },
+            {
+                date: "feb 2026 — jun 2026",
+                title: "MBQ Group Business Solutions",
+                org: "Practicante de Desarrollo Full Stack · Remoto",
+                detail: "Automaticé los reportes de cumplimiento TISAX y eliminé la transcripción manual entre Excel y Word.",
+                current: false,
+            },
+        ],
+        education: [
+            { date: "en curso", title: "Ingeniería en Sistemas Computacionales", org: "Universidad UK" },
+            { date: "2024", title: "Ingeniería en Electrónica", org: "ITSX" },
+        ],
+    },
+
+    // <-- STACK (íconos: ver components/Stack.tsx)
+    tech: {
+        build: ["Next.js", "React", "TypeScript", "Tailwind", "Node.js", "FastAPI", "Python", "PostgreSQL", "Supabase", "Vercel", "Docker", "Git"],
+    },
 
     process: [
-        { hash: "e1a2f03", title: "Platicamos", detail: "Me cuentas tu problema y qué quieres lograr." },
-        { hash: "9b4c7d1", title: "Propuesta", detail: "Te entrego alcance, tiempos y costo por escrito." },
-        { hash: "4f8e2a6", title: "Desarrollo", detail: "Avances que puedes probar, no solo promesas." },
-        { hash: "HEAD", title: "Entrega y soporte", detail: "Lo dejo funcionando en línea y te acompaño después." },
+        { icon: "search", title: "Análisis y planificación" },
+        { icon: "layers", title: "Diseño y arquitectura" },
+        { icon: "code", title: "Desarrollo y validación" },
+        { icon: "rocket", title: "Despliegue y evolución" },
     ],
 
-    // Proyectos en construcción: se muestran en la portada sin página de detalle.
+    // Proyectos en construcción: se muestran sin página de detalle.
     // Si alguno todavía no arranca, bórralo de esta lista.
     upcoming: [
         {
-            title: "Sistema de reservas de citas",
-            tag: "En desarrollo · Java",
-            result: "Cualquier negocio administra servicios y horarios desde el celular; sus clientes reservan por WhatsApp sin instalar nada.",
-            technical: "Buffer time por servicio y magic link por WhatsApp para confirmar o reagendar.",
+            title: "JR ClientFlow",
+            tag: "En desarrollo",
+            summary: "Gestión de prospectos y seguimiento de clientes para pequeños negocios.",
+            stack: ["Java", "Spring Boot", "Next.js"],
         },
     ],
 

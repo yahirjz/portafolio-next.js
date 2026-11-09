@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { getContent } from "@/data/content";
 import { getDictionary, type Locale } from "@/lib/i18n";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
+import { LuArrowRight, LuArrowUpRight, LuDownload } from "react-icons/lu";
 
 type Feedback =
     | { status: "idle" }
@@ -16,10 +17,10 @@ const motivos = ["proyecto", "vacante", "saludo"] as const;
 type Motivo = (typeof motivos)[number];
 
 const fieldClass =
-    "w-full rounded-xl border-2 border-sand-line bg-cream px-3.5 py-3 text-base font-normal text-ink transition-[border-color,box-shadow] placeholder:text-ink-muted focus:border-terra focus:shadow-[0_0_0_4px_rgba(194,65,12,0.18)] focus:outline-none";
+    "w-full rounded-xl border-2 border-sand-line bg-cream px-3.5 py-3 text-base font-normal text-ink transition-[border-color,box-shadow] placeholder:text-ink-muted focus:border-[#FD9B02] focus:shadow-[0_0_0_4px_rgba(253,155,2,0.2)] focus:outline-none";
 
 const linkClass =
-    "lift flex items-center gap-3 rounded-[14px] bg-white/[0.14] px-4 py-3 font-bold text-white hover:bg-white/20";
+    "flex items-center gap-3 rounded-[14px] border border-sand-line bg-white px-4 py-3 font-bold text-ink transition hover:-translate-y-0.5 hover:border-[#FD9B02]/60";
 
 const Contact = ({ locale }: { locale: Locale }) => {
     const t = getDictionary(locale).contact;
@@ -66,38 +67,45 @@ const Contact = ({ locale }: { locale: Locale }) => {
     };
 
     return (
-        <section id={ids.contact} className="mx-auto max-w-[1200px] px-4 pb-24 pt-[72px] sm:px-6">
-            <div className="relative flex flex-wrap items-start gap-12 overflow-hidden rounded-[32px] bg-terra p-[clamp(24px,5vw,64px)] text-white">
-                <div aria-hidden="true" className="spin-slow absolute -bottom-40 -left-36 h-80 w-80 rounded-full border-[48px] border-dashed border-white opacity-[0.08]" />
-
-                <div className="relative flex min-w-0 flex-[1_1_360px] flex-col gap-5">
-                    <p className="m-0 font-mono text-sm text-terra-tint">{t.eyebrow}</p>
-                    <h2 className="m-0 font-heading text-[clamp(36px,5vw,56px)] font-extrabold leading-[1.05]">{t.title}</h2>
-                    <p className="m-0 max-w-[440px] text-lg text-terra-tint">
-                        {t.intro}
+        <section className="px-4 pb-16 pt-14 sm:px-6">
+            <div className="mx-auto flex max-w-[1200px] flex-col gap-12">
+            <div id={ids.contact} className="grid scroll-mt-24 items-start gap-10 lg:grid-cols-[0.9fr_1.3fr]">
+                <div data-reveal className="flex min-w-0 flex-col gap-4">
+                    <p className="m-0 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-ink-soft">
+                        <span aria-hidden="true" className="inline-block h-0.5 w-7 bg-[#FD9B02]" />
+                        {t.eyebrow}
                     </p>
+                    <h2 className="m-0 font-heading text-[clamp(30px,4vw,44px)] font-bold leading-[1.1] text-ink">{t.title}</h2>
+                    <p className="m-0 max-w-[440px] text-lg text-ink-soft">{t.intro}</p>
                     <div className="flex flex-col gap-2.5 pt-2">
-                        <a href={data.social.linkedin} target="_blank" rel="noreferrer" className={linkClass}>
-                            <FaLinkedin aria-hidden="true" size={20} />
-                            <span className="flex-1">LinkedIn</span>
-                            <span aria-hidden="true">↗</span>
+                        <a href={`https://wa.me/${data.whatsapp}`} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                            <FaWhatsapp aria-hidden="true" size={20} className="text-[#25D366]" />
+                            <span className="flex-1">{t.whatsapp}</span>
+                            <LuArrowUpRight aria-hidden="true" className="size-4" />
                         </a>
-                        <a href={data.social.github} target="_blank" rel="noreferrer" className={linkClass}>
+                        <a href={data.social.linkedin} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                            <FaLinkedin aria-hidden="true" size={20} className="text-[#0A66C2]" />
+                            <span className="flex-1">LinkedIn</span>
+                            <LuArrowUpRight aria-hidden="true" className="size-4" />
+                        </a>
+                        <a href={data.social.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
                             <FaGithub aria-hidden="true" size={20} />
                             <span className="flex-1">GitHub</span>
-                            <span aria-hidden="true">↗</span>
+                            <LuArrowUpRight aria-hidden="true" className="size-4" />
                         </a>
-                        <a href={data.cv} target="_blank" rel="noreferrer" className="lift flex items-center gap-3 rounded-[14px] bg-white px-4 py-3 font-bold text-ink">
-                            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12" /><path d="m7 10 5 5 5-5" /><path d="M5 21h14" /></svg>
+                        <a href={data.cv} download className="flex items-center gap-3 rounded-[14px] bg-ink-deep px-4 py-3 font-bold text-white transition hover:-translate-y-0.5">
+                            <LuDownload aria-hidden="true" className="size-5" />
                             <span className="flex-1">{t.cv}</span>
-                            <span className="font-mono text-xs text-ink-soft">PDF</span>
+                            <span className="font-mono text-xs text-white/60">PDF</span>
                         </a>
                     </div>
                 </div>
 
                 <form
+                    data-reveal
+                    data-reveal-delay="150"
                     onSubmit={sendForm}
-                    className="relative flex min-w-0 flex-[999_1_420px] flex-col gap-[18px] rounded-3xl bg-white p-[clamp(20px,3vw,36px)] text-ink shadow-[0_30px_60px_-24px_rgba(41,37,36,0.45)]"
+                    className="flex min-w-0 flex-col gap-[18px] rounded-3xl border border-sand-line bg-white p-[clamp(20px,3vw,36px)] text-ink"
                 >
                     <fieldset className="m-0 flex flex-col gap-2.5 border-0 p-0">
                         <legend className="mb-2.5 p-0 text-[15px] font-bold">{t.reasonLegend}</legend>
@@ -112,7 +120,7 @@ const Contact = ({ locale }: { locale: Locale }) => {
                                         onChange={() => setMotivo(m)}
                                         className="peer absolute h-px w-px opacity-0"
                                     />
-                                    <span className="inline-block rounded-full border-2 border-sand-line bg-cream px-4 py-2.5 text-[15px] font-medium transition-colors hover:border-code-key peer-checked:border-ink peer-checked:bg-ink peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-[3px] peer-focus-visible:outline-offset-2 peer-focus-visible:outline-terra-soft">
+                                    <span className="inline-block rounded-full border-2 border-sand-line bg-cream px-4 py-2.5 text-[15px] font-medium transition-colors hover:border-code-key peer-checked:border-ink peer-checked:bg-ink peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-[3px] peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#FD9B02]">
                                         {t.reasons[m]}
                                     </span>
                                 </label>
@@ -141,17 +149,17 @@ const Contact = ({ locale }: { locale: Locale }) => {
                         )}
                     </div>
 
-                    <div className="flex flex-wrap items-center justify-between gap-3.5">
-                        <span className="font-mono text-[13px] text-ink-soft">{t.commitHint}</span>
+                    <div className="flex justify-end">
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="inline-flex cursor-pointer items-center gap-2.5 rounded-xl border-0 bg-ink px-[26px] py-3.5 text-base font-bold text-white transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60"
+                            className="inline-flex cursor-pointer items-center gap-2.5 rounded-xl border-0 bg-[#FD9B02] px-[26px] py-3.5 text-base font-bold text-[#0B0D0F] transition hover:-translate-y-0.5 hover:bg-[#FFAE2E] disabled:cursor-wait disabled:opacity-60"
                         >
-                            {isSubmitting ? t.sending : t.send} <span aria-hidden="true">→</span>
+                            {isSubmitting ? t.sending : t.send} <LuArrowRight aria-hidden="true" className="size-5" />
                         </button>
                     </div>
                 </form>
+            </div>
             </div>
         </section>
     );

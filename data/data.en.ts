@@ -8,54 +8,52 @@ export const dataEn: typeof es = {
     cv: "/cv/Jaime_Jair_Rodriguez_CV_EN.pdf",
     experience: "2+ years",
 
-    stack: [
-        { key: "frontend", label: "Frontend", detail: "fast, type-safe interfaces", color: "#93C5FD", items: ["next", "react", "typescript", "tailwind"] },
-        { key: "backend", label: "Backend", detail: "APIs and business logic, my strong suit", color: "#FDBA74", items: ["node", "express", "fastapi", "python", "java", "claude-api"] },
-        { key: "data", label: "Data", detail: "relational and document modeling", color: "#86EFAC", items: ["postgresql", "supabase", "mongodb"] },
-        { key: "deploy", label: "Deploy", detail: "projects live online, not just on localhost", color: "#F9A8D4", items: ["vercel", "railway", "docker", "git"] },
-    ],
-    learning: ["aws", "ai"],
+    about: {
+        intro: "a Full Stack developer based in Mexico. I like building solutions that automate processes, make the most of data and create real value. I'm studying Computer Systems Engineering and previously studied Electronics Engineering.",
+        focus: [
+            { icon: "code", label: "Full Stack development" },
+            { icon: "automation", label: "Process automation" },
+            { icon: "data", label: "Data and AI applications" },
+            { icon: "product", label: "Product mindset" },
+        ],
+    },
 
-    services: [
-        {
-            icon: "app",
-            title: "Custom web applications",
-            description: "Platforms, dashboards and internal tools, from the database to the deploy.",
-            referenceLabel: "Built it in",
-            reference: "Inphera",
-            slug: "inphera",
-        },
-        {
-            icon: "automation",
-            title: "Process automation",
-            description: "I turn manual, repetitive tasks, like copying data from Excel into reports, into automated workflows.",
-            referenceLabel: "Built it in",
-            reference: "TISAX Reports",
-            slug: "reportes-tisax",
-        },
-        {
-            icon: "calendar",
-            title: "Booking systems for businesses",
-            description: "An online schedule you manage from your phone, with WhatsApp confirmations for your customers.",
-            referenceLabel: "Building it in",
-            reference: "Booking system",
-            slug: null,
-        },
-    ],
+    career: {
+        work: [
+            {
+                date: "Jun 2026 — present",
+                title: "Inphera",
+                org: "Founder and developer · Own project",
+                detail: "Designed and built the whole platform: a Next.js interface, a FastAPI statistical engine and AI integration.",
+                current: true,
+            },
+            {
+                date: "Feb 2026 — Jun 2026",
+                title: "MBQ Group Business Solutions",
+                org: "Full Stack Development Intern · Remote",
+                detail: "Automated TISAX compliance reports and eliminated manual transcription between Excel and Word.",
+                current: false,
+            },
+        ],
+        education: [
+            { date: "in progress", title: "Computer Systems Engineering", org: "Universidad UK" },
+            { date: "2024", title: "Electronics Engineering", org: "ITSX" },
+        ],
+    },
 
     process: [
-        { hash: "e1a2f03", title: "We talk", detail: "You tell me about your problem and what you want to achieve." },
-        { hash: "9b4c7d1", title: "Proposal", detail: "You get scope, timeline and cost in writing." },
-        { hash: "4f8e2a6", title: "Development", detail: "Progress you can actually test, not just promises." },
-        { hash: "HEAD", title: "Launch and support", detail: "I leave it running online and stay around afterwards." },
+        { icon: "search", title: "Analysis and planning" },
+        { icon: "layers", title: "Design and architecture" },
+        { icon: "code", title: "Development and testing" },
+        { icon: "rocket", title: "Deployment and growth" },
     ],
 
     upcoming: [
         {
-            title: "Appointment booking system",
-            tag: "In development · Java",
-            result: "Any business manages its services and hours from a phone; customers book through WhatsApp without installing anything.",
-            technical: "Per-service buffer time and a WhatsApp magic link to confirm or reschedule.",
+            title: "JR ClientFlow",
+            tag: "In development",
+            summary: "Lead management and customer follow-up for small businesses.",
+            stack: ["Java", "Spring Boot", "Next.js"],
         },
     ],
 
@@ -71,7 +69,7 @@ export const dataEn: typeof es = {
             tag: "Main project · Private beta",
             result: "Brings a match's recent form, stats and context together in one place, with traceable analysis.",
             technical: "Poisson model + Claude API for the analysis, plus a deterministic filter that only shows markets with probability ≥ 65%.",
-            summary: "Private beta for reviewing mathematical probabilities and football match context, with visible guardrails.",
+            summary: "AI-powered sports analytics platform that combines statistical models and LLMs to generate probabilities, analysis and result tracking.",
             description: `
                 **The problem**
 

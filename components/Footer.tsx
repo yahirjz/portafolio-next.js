@@ -4,8 +4,11 @@ import type { Locale } from "@/lib/i18n";
 const Footer = ({ locale }: { locale: Locale }) => {
     const data = getContent(locale);
     return (
-        <footer className="border-t border-sand-line px-6 py-6 text-center text-sm text-ink-muted">
-            © {new Date().getFullYear()} {data.name} · {data.location}
+        <footer className="border-t border-sand-line px-4 py-6 sm:px-6">
+            <div className="mx-auto flex max-w-[1200px] flex-wrap justify-between gap-2 text-sm text-ink-muted">
+                <span>© {new Date().getFullYear()} {data.name} · {data.location}</span>
+                <span>jaimejair.dev</span>
+            </div>
         </footer>
     );
 };

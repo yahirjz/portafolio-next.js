@@ -1,58 +1,67 @@
-import Link from "next/link";
+import Image from "next/image";
+import { LuArrowRight, LuDownload } from "react-icons/lu";
 import { getContent } from "@/data/content";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 const Hero = ({ locale }: { locale: Locale }) => {
     const t = getDictionary(locale);
     const data = getContent(locale);
-    const c = t.hero.code;
 
     return (
-        <section id="inicio" className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-12 px-4 pb-24 pt-32 sm:px-6 sm:pt-40">
-            <div className="flex min-w-0 flex-[999_1_560px] flex-col gap-6">
-                <p className="m-0 inline-flex items-center gap-2 self-start rounded-full bg-sand px-3.5 py-1.5 text-sm font-medium text-ink-soft">
-                    <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-green-700" aria-hidden="true" />
-                    {t.hero.badge}
-                </p>
-                <h1 className="rise m-0 font-heading text-[clamp(40px,6vw,76px)] font-extrabold leading-[1.02] tracking-[-0.02em]">
-                    {t.hero.titleStart} <span className="text-terra">{t.hero.titleHighlight}</span> {t.hero.titleEnd}
-                </h1>
-                <p className="rise rise-2 m-0 max-w-[620px] text-xl text-ink-soft">{t.hero.intro(data.name)}</p>
-                <div className="rise rise-3 flex flex-wrap gap-3 pt-2">
-                    <Link href={`#${t.ids.projects}`} className="rounded-xl bg-terra px-6 py-3.5 font-bold text-white transition-transform hover:-translate-y-0.5 hover:bg-terra-dark">
-                        {t.hero.ctaProjects}
-                    </Link>
-                    <Link href={`#${t.ids.contact}`} className="rounded-xl border-2 border-ink px-[22px] py-3 font-bold text-ink transition-transform hover:-translate-y-0.5">
-                        {t.hero.ctaContact}
-                    </Link>
-                </div>
-            </div>
+        <section id={t.ids.home} className="relative overflow-hidden rounded-b-[40px] bg-[#0B0D0F] text-white sm:rounded-b-[64px]">
+            {/* Fondo con rayos ámbar (imagen) */}
+            <Image
+                src="/hero-fondo.webp"
+                alt=""
+                aria-hidden="true"
+                fill
+                priority
+                sizes="100vw"
+                className="pointer-events-none select-none object-cover object-[70%_center] opacity-90"
+            />
+            {/* En celular los rayos quedan detrás del texto: se oscurecen un poco para que se lea bien */}
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[#0B0D0F]/45 lg:hidden" />
 
-            <div className="relative flex min-w-0 flex-[1_1_380px] justify-center py-8">
-                <div aria-hidden="true" className="absolute -right-5 -top-2.5 h-[340px] w-[340px] rounded-full bg-terra opacity-[0.14]" />
-                <div aria-hidden="true" className="absolute bottom-0 left-0 h-[120px] w-[120px] rotate-12 rounded-[28px] bg-terra-soft opacity-50" />
-
-                <div className="float-a relative w-full max-w-[440px] overflow-hidden rounded-[20px] bg-ink shadow-[0_30px_60px_-20px_rgba(41,37,36,0.45)]">
-                    <div className="flex items-center gap-2 border-b border-ink-line px-[18px] py-3.5" aria-hidden="true">
-                        <span className="h-3 w-3 rounded-full bg-[#F87171]" />
-                        <span className="h-3 w-3 rounded-full bg-[#FBBF24]" />
-                        <span className="h-3 w-3 rounded-full bg-[#4ADE80]" />
-                        <span className="ml-2 font-mono text-[13px] text-code-key">jaime-jair.ts</span>
+            <div className="relative mx-auto max-w-[1200px] px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-36">
+                <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_1fr]">
+                <div className="flex max-w-[760px] flex-col gap-6">
+                    <p className="m-0 inline-flex items-center gap-2 self-start rounded-full border border-white/25 px-3.5 py-1.5 text-sm font-medium text-white/90">
+                        <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-[#22C55E]" aria-hidden="true" />
+                        {t.hero.badge}
+                    </p>
+                    <h1 className="rise m-0 font-heading text-[clamp(40px,5vw,64px)] font-extrabold leading-[1.02] tracking-[-0.02em]">
+                        {t.hero.titleStart} <span className="text-[#FD9B02]">{t.hero.titleHighlight}</span>
+                    </h1>
+                    <p className="rise rise-2 m-0 max-w-[600px] text-xl text-white/80">{t.hero.subtitle}</p>
+                    <div className="rise rise-3 flex flex-col gap-3 pt-2 sm:flex-row">
+                        <a
+                            href={`#${t.ids.projects}`}
+                            className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#FD9B02] px-6 py-3.5 font-bold text-[#0B0D0F] transition hover:-translate-y-0.5 hover:bg-[#FFAE2E]"
+                        >
+                            {t.hero.ctaProjects}
+                            <LuArrowRight aria-hidden="true" className="size-5" />
+                        </a>
+                        <a
+                            href={data.cv}
+                            download
+                            className="inline-flex items-center justify-center gap-2.5 rounded-xl border border-white/40 px-6 py-3.5 font-bold text-white transition hover:-translate-y-0.5 hover:border-white/70"
+                        >
+                            <LuDownload aria-hidden="true" className="size-5" />
+                            {t.hero.ctaCv}
+                        </a>
                     </div>
-                    <pre className="m-0 overflow-x-auto whitespace-pre-wrap p-[22px] font-mono text-sm leading-[1.75] text-code-text">
-<span className="text-terra-soft">const</span> jaimeJair = {"{"}{"\n"}
-{"  "}{c.role}: <span className="text-code-string">&quot;{c.roleValue}&quot;</span>,{"\n"}
-{"  "}{c.base}: <span className="text-code-string">&quot;{data.location}&quot;</span>,{"\n"}
-{"  "}{c.experience}: <span className="text-code-number">&quot;{data.experience}&quot;</span>,{"\n"}
-{"  "}{c.building}: <span className="text-code-string">&quot;Inphera&quot;</span>,{"\n"}
-{"  "}{c.open}: <span className="text-terra-soft">true</span>,{"\n"}
-{"}"};<span className="cursor" aria-hidden="true" />
-                    </pre>
                 </div>
 
-                <div className="float-b absolute bottom-2 right-0 flex items-center gap-2.5 rounded-[14px] bg-white px-4 py-3 shadow-[0_12px_30px_-10px_rgba(41,37,36,0.3)]">
-                    <span className="pulse-dot inline-block h-2.5 w-2.5 rounded-full bg-green-700" aria-hidden="true" />
-                    <span className="text-sm font-bold">{t.hero.badgeBeta}</span>
+                {/* Arquitectura: áreas en las que trabajo */}
+                <Image
+                    src="/arquitectura.webp"
+                    alt={`${t.hero.diagram.label}: ${t.hero.diagram.frontend}, ${t.hero.diagram.backend}, ${t.hero.diagram.api}, ${t.hero.diagram.data}`}
+                    width={1528}
+                    height={1008}
+                    priority
+                    sizes="(min-width: 1024px) 560px, 100vw"
+                    className="mx-auto h-auto w-full max-w-[580px] lg:mx-0 lg:justify-self-end"
+                />
                 </div>
             </div>
         </section>

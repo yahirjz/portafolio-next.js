@@ -12,7 +12,7 @@ export function siteMetadata(locale: Locale): Metadata {
     ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
     title: {
       default: t.meta.title,
-      template: "%s | Jaime Jair",
+      template: "%s | Jair Rodríguez",
     },
     description: t.meta.description,
     ...(siteUrl

@@ -1,20 +1,17 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import CommitDivider from "@/components/CommitDivider";
+import About from "@/components/About";
 import Projects from "@/components/Projects";
-import Services from "@/components/Services";
+import Experience from "@/components/Experience";
 import Stack from "@/components/Stack";
+import Process from "@/components/Process";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { getDictionary, type Locale } from "@/lib/i18n";
-
-// Fondos de cada sección: los separadores se colocan justo en la costura.
-const CREAM = "#FAF7F2";
-const SAND = "#F3EDE4";
 
 export default function HomePage({ locale }: { locale: Locale }) {
     const t = getDictionary(locale);
-    const d = t.dividers;
 
     return (
         <>
@@ -22,15 +19,15 @@ export default function HomePage({ locale }: { locale: Locale }) {
             <Header locale={locale} />
             <main id="contenido-principal" className="w-full overflow-hidden">
                 <Hero locale={locale} />
-                <CommitDivider from={CREAM} to={SAND} hash="a3f9c21" command="git checkout" target={d.projects.target} label={d.projects.label} showCursor />
+                <About locale={locale} />
                 <Projects locale={locale} />
-                <CommitDivider from={SAND} to={CREAM} hash="7c0e4b8" command="git merge" target={d.services.target} label={d.services.label} />
-                <Services locale={locale} />
+                <Experience locale={locale} />
                 <Stack locale={locale} />
-                <CommitDivider from={SAND} to={CREAM} hash="HEAD" command="git push origin" target={d.contact.target} label={d.contact.label} highlight showCursor />
+                <Process locale={locale} />
                 <Contact locale={locale} />
             </main>
             <Footer locale={locale} />
+            <ScrollReveal />
         </>
     );
 }

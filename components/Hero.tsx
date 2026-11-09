@@ -46,15 +46,15 @@ const Hero = ({ locale }: { locale: Locale }) => {
                     </div>
                 </div>
 
-                {/* Arquitectura: áreas en las que trabajo (solo escritorio) */}
+                {/* Arquitectura: áreas en las que trabajo */}
                 <Image
                     src="/arquitectura.png"
                     alt={`${t.hero.diagram.label}: ${t.hero.diagram.frontend} (Next.js, React, Tailwind), ${t.hero.diagram.backend} (Node.js, FastAPI), ${t.hero.diagram.data} (PostgreSQL, Supabase), ${t.hero.diagram.ai} (Claude API, Python)`}
                     width={1480}
                     height={880}
                     priority
-                    sizes="(min-width: 1024px) 560px, 0px"
-                    className="hidden h-auto w-full max-w-[580px] justify-self-end lg:block"
+                    sizes="(min-width: 1024px) 560px, 100vw"
+                    className="mx-auto h-auto w-full max-w-[580px] lg:mx-0 lg:justify-self-end"
                 />
                 </div>
             </div>

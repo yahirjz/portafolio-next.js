@@ -5,7 +5,7 @@ import Process from "@/components/Process";
 import { getContent } from "@/data/content";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
-import { LuArrowRight, LuArrowUpRight, LuDownload, LuMail } from "react-icons/lu";
+import { LuArrowRight, LuArrowUpRight, LuDownload } from "react-icons/lu";
 
 type Feedback =
     | { status: "idle" }
@@ -73,20 +73,12 @@ const Contact = ({ locale }: { locale: Locale }) => {
                 {/* Franja final */}
                 <div className="rounded-[28px] bg-ink-deep p-7 text-white sm:p-9">
                 <Process locale={locale} />
-                <div className="mt-8 grid items-center gap-5 border-t border-white/15 pt-8 lg:grid-cols-[1fr_1px_1.2fr_auto] lg:gap-8">
+                <div className="mt-8 grid items-center gap-5 border-t border-white/15 pt-8 lg:grid-cols-[1fr_1px_1.2fr] lg:gap-8">
                     <p className="m-0 font-heading text-[clamp(28px,3.4vw,38px)] font-bold leading-[1.1]">
                         {t.ctaTitleStart} <span className="text-[#FD9B02]">{t.ctaTitleHighlight}</span> {t.ctaTitleEnd}
                     </p>
                     <span aria-hidden="true" className="hidden h-16 bg-white/20 lg:block" />
                     <p className="m-0 text-white/75">{t.ctaText}</p>
-                    <a
-                        href={`#${ids.contact}`}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#FD9B02] px-6 py-3.5 font-bold text-[#0B0D0F] transition hover:-translate-y-0.5 hover:bg-[#FFAE2E]"
-                    >
-                        <LuMail aria-hidden="true" className="size-5" />
-                        {t.ctaButton}
-                        <LuArrowUpRight aria-hidden="true" className="size-4" />
-                    </a>
                 </div>
                 </div>
 

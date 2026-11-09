@@ -154,7 +154,7 @@ export const data = {
 
     // <-- SOBRE MÍ
     about: {
-        intro: "desarrollador Full Stack en México. Me interesa construir soluciones que automaticen procesos, aprovechen los datos y generen valor real. Estudio Ingeniería en Sistemas Computacionales y soy Ingeniero en Electrónica (titulado).",
+        intro: "desarrollador Full Stack en México. Me interesa construir soluciones que automaticen procesos, aprovechen los datos y generen valor real. Estudio Ingeniería en Sistemas Computacionales y estudié la carrera de Ingeniería en Electrónica.",
         focus: [
             { icon: "code", label: "Desarrollo Full Stack" },
             { icon: "automation", label: "Automatización de procesos" },
@@ -183,7 +183,7 @@ export const data = {
         ],
         education: [
             { date: "en curso", title: "Ingeniería en Sistemas Computacionales", org: "Universidad UK" },
-            { date: "2024 · titulado", title: "Ingeniería en Electrónica", org: "ITSX" },
+            { date: "2024", title: "Ingeniería en Electrónica", org: "ITSX" },
         ],
     },
 

@@ -9,7 +9,7 @@ export const dataEn: typeof es = {
     experience: "2+ years",
 
     about: {
-        intro: "a Full Stack developer based in Mexico. I like building solutions that automate processes, make the most of data and create real value. I'm studying Computer Systems Engineering and hold a degree in Electronics Engineering.",
+        intro: "a Full Stack developer based in Mexico. I like building solutions that automate processes, make the most of data and create real value. I'm studying Computer Systems Engineering and previously studied Electronics Engineering.",
         focus: [
             { icon: "code", label: "Full Stack development" },
             { icon: "automation", label: "Process automation" },
@@ -37,7 +37,7 @@ export const dataEn: typeof es = {
         ],
         education: [
             { date: "in progress", title: "Computer Systems Engineering", org: "Universidad UK" },
-            { date: "2024 · graduated", title: "Electronics Engineering", org: "ITSX" },
+            { date: "2024", title: "Electronics Engineering", org: "ITSX" },
         ],
     },
 

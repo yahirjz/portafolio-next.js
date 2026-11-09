@@ -9,11 +9,13 @@ const Hero = ({ locale }: { locale: Locale }) => {
 
     return (
         <section id={t.ids.home} className="relative overflow-hidden rounded-b-[40px] bg-[#0B0D0F] text-white sm:rounded-b-[64px]">
-            {/* Rayos diagonales tenues (decorativos) */}
+            {/* Rayos diagonales ámbar (decorativos): se desvanecen en los extremos */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-                <span className="absolute -top-20 right-[22%] h-[140%] w-16 rotate-[35deg] bg-[#FD9B02] opacity-[0.07] sm:w-24" />
-                <span className="absolute -top-20 right-[10%] h-[140%] w-10 rotate-[35deg] bg-[#FD9B02] opacity-[0.05] sm:w-16" />
-                <span className="absolute -top-20 right-0 h-[140%] w-8 rotate-[35deg] bg-[#FD9B02] opacity-[0.035] sm:w-12" />
+                <span className="absolute -top-1/4 left-[8%] h-[150%] w-24 rotate-[40deg] bg-gradient-to-b from-transparent via-[#FD9B02]/[0.10] to-transparent blur-[2px] sm:w-32" />
+                <span className="absolute -top-1/4 left-[30%] h-[150%] w-10 rotate-[40deg] bg-gradient-to-b from-transparent via-[#FD9B02]/[0.07] to-transparent blur-[1px]" />
+                <span className="absolute -top-1/4 right-[30%] h-[150%] w-20 rotate-[40deg] bg-gradient-to-b from-transparent via-[#FD9B02]/[0.16] to-transparent blur-[2px] sm:w-28" />
+                <span className="absolute -top-1/4 right-[14%] h-[150%] w-12 rotate-[40deg] bg-gradient-to-b from-transparent via-[#FD9B02]/[0.22] to-transparent blur-[1px] sm:w-16" />
+                <span className="absolute -top-1/4 right-[-2%] h-[150%] w-24 rotate-[40deg] bg-gradient-to-b from-transparent via-[#FD9B02]/[0.14] to-transparent blur-[2px] sm:w-32" />
             </div>
 
             <div className="relative mx-auto max-w-[1200px] px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-36">

@@ -31,8 +31,8 @@ const Experience = ({ locale }: { locale: Locale }) => {
     const data = getContent(locale);
 
     return (
-        <section id={t.ids.experience} className="bg-[#0B0D0F] px-4 py-14 sm:px-6">
-            <div className="mx-auto flex max-w-[1200px] flex-col gap-8">
+        <section id={t.ids.experience} className="px-4 py-6 sm:px-6">
+            <div className="mx-auto flex max-w-[1200px] flex-col gap-8 rounded-[28px] bg-[#0B0D0F] p-7 sm:p-10">
                 <SectionHeading eyebrow={t.experience.eyebrow} title={t.experience.title} dark />
                 <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
                     <Timeline label={t.experience.work} items={data.career.work} />

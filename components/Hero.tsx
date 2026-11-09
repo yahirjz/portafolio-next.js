@@ -9,24 +9,18 @@ const Hero = ({ locale }: { locale: Locale }) => {
 
     return (
         <section id={t.ids.home} className="relative overflow-hidden rounded-b-[40px] bg-[#0B0D0F] text-white sm:rounded-b-[64px]">
-            {/* Rayos diagonales ámbar (decorativos): cada uno tiene un tramo más intenso y se degrada hacia los extremos */}
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-                <span className="absolute -top-1/4 left-[6%] flex h-[150%] w-28 sm:w-36 rotate-[40deg] justify-center blur-[2px] [background:linear-gradient(to_bottom,transparent_0%,rgba(253,155,2,0.18)_35%,transparent_70%)]">
-                    <span className="h-full w-[2px] blur-[1px] [background:linear-gradient(to_bottom,transparent_20%,rgba(255,190,90,0.35)_35%,transparent_50%)]" />
-                </span>
-                <span className="absolute -top-1/4 left-[30%] flex h-[150%] w-10 rotate-[40deg] justify-center blur-[2px] [background:linear-gradient(to_bottom,transparent_25%,rgba(253,155,2,0.13)_60%,transparent_95%)]">
-                    <span className="h-full w-[2px] blur-[1px] [background:linear-gradient(to_bottom,transparent_45%,rgba(255,190,90,0.25)_60%,transparent_75%)]" />
-                </span>
-                <span className="absolute -top-1/4 right-[32%] flex h-[150%] w-20 sm:w-28 rotate-[40deg] justify-center blur-[2px] [background:linear-gradient(to_bottom,transparent_10%,rgba(253,155,2,0.25)_45%,transparent_80%)]">
-                    <span className="h-full w-[2px] blur-[1px] [background:linear-gradient(to_bottom,transparent_30%,rgba(255,190,90,0.55)_45%,transparent_60%)]" />
-                </span>
-                <span className="absolute -top-1/4 right-[15%] flex h-[150%] w-12 sm:w-16 rotate-[40deg] justify-center blur-[2px] [background:linear-gradient(to_bottom,transparent_0%,rgba(253,155,2,0.36)_30%,transparent_65%)]">
-                    <span className="h-full w-[2px] blur-[1px] [background:linear-gradient(to_bottom,transparent_15%,rgba(255,190,90,0.75)_30%,transparent_45%)]" />
-                </span>
-                <span className="absolute -top-1/4 right-[-3%] flex h-[150%] w-24 sm:w-32 rotate-[40deg] justify-center blur-[2px] [background:linear-gradient(to_bottom,transparent_30%,rgba(253,155,2,0.25)_65%,transparent_100%)]">
-                    <span className="h-full w-[2px] blur-[1px] [background:linear-gradient(to_bottom,transparent_50%,rgba(255,190,90,0.5)_65%,transparent_80%)]" />
-                </span>
-            </div>
+            {/* Fondo con rayos ámbar (imagen) */}
+            <Image
+                src="/hero-fondo.webp"
+                alt=""
+                aria-hidden="true"
+                fill
+                priority
+                sizes="100vw"
+                className="pointer-events-none select-none object-cover object-[70%_center] opacity-90"
+            />
+            {/* En celular los rayos quedan detrás del texto: se oscurecen un poco para que se lea bien */}
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[#0B0D0F]/45 lg:hidden" />
 
             <div className="relative mx-auto max-w-[1200px] px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-36">
                 <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_1fr]">

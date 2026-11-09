@@ -193,39 +193,11 @@ export const data = {
         learning: ["Java", "Spring Boot", "AWS"],
     },
 
-    // <-- SERVICIOS (cada uno apunta a un proyecto que sirve de referencia)
-    services: [
-        {
-            icon: "app",
-            title: "Aplicaciones web a medida",
-            description: "Plataformas, paneles y sistemas internos, desde la base de datos hasta el deploy.",
-            referenceLabel: "Lo he hecho en",
-            reference: "Inphera",
-            slug: "inphera",
-        },
-        {
-            icon: "automation",
-            title: "Automatización de procesos",
-            description: "Convierto tareas manuales y repetitivas, como pasar datos de Excel a reportes, en flujos automáticos.",
-            referenceLabel: "Lo he hecho en",
-            reference: "Reportes TISAX",
-            slug: "reportes-tisax",
-        },
-        {
-            icon: "clients",
-            title: "Gestión de clientes para negocios",
-            description: "Un solo lugar para tus prospectos de WhatsApp, formularios y correo, con seguimiento y recordatorios.",
-            referenceLabel: "Lo estoy construyendo en",
-            reference: "JR ClientFlow",
-            slug: null,
-        },
-    ],
-
     process: [
-        { hash: "e1a2f03", title: "Platicamos", detail: "Me cuentas tu problema y qué quieres lograr." },
-        { hash: "9b4c7d1", title: "Propuesta", detail: "Te entrego alcance, tiempos y costo por escrito." },
-        { hash: "4f8e2a6", title: "Desarrollo", detail: "Avances que puedes probar, no solo promesas." },
-        { hash: "HEAD", title: "Entrega y soporte", detail: "Lo dejo funcionando en línea y te acompaño después." },
+        { title: "Platicamos", detail: "Me cuentas tu problema y qué quieres lograr." },
+        { title: "Propuesta", detail: "Te entrego alcance, tiempos y costo por escrito." },
+        { title: "Desarrollo", detail: "Avances que puedes probar, no solo promesas." },
+        { title: "Entrega y soporte", detail: "Lo dejo funcionando en línea y te acompaño después." },
     ],
 
     // Proyectos en construcción: se muestran sin página de detalle.

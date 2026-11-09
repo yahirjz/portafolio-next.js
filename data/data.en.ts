@@ -41,38 +41,11 @@ export const dataEn: typeof es = {
         ],
     },
 
-    services: [
-        {
-            icon: "app",
-            title: "Custom web applications",
-            description: "Platforms, dashboards and internal tools, from the database to the deploy.",
-            referenceLabel: "Built it in",
-            reference: "Inphera",
-            slug: "inphera",
-        },
-        {
-            icon: "automation",
-            title: "Process automation",
-            description: "I turn manual, repetitive tasks, like copying data from Excel into reports, into automated workflows.",
-            referenceLabel: "Built it in",
-            reference: "TISAX Reports",
-            slug: "reportes-tisax",
-        },
-        {
-            icon: "clients",
-            title: "Customer management for businesses",
-            description: "One place for your leads from WhatsApp, forms and email, with follow-ups and reminders.",
-            referenceLabel: "Building it in",
-            reference: "JR ClientFlow",
-            slug: null,
-        },
-    ],
-
     process: [
-        { hash: "e1a2f03", title: "We talk", detail: "You tell me about your problem and what you want to achieve." },
-        { hash: "9b4c7d1", title: "Proposal", detail: "You get scope, timeline and cost in writing." },
-        { hash: "4f8e2a6", title: "Development", detail: "Progress you can actually test, not just promises." },
-        { hash: "HEAD", title: "Launch and support", detail: "I leave it running online and stay around afterwards." },
+        { title: "We talk", detail: "You tell me about your problem and what you want to achieve." },
+        { title: "Proposal", detail: "You get scope, timeline and cost in writing." },
+        { title: "Development", detail: "Progress you can actually test, not just promises." },
+        { title: "Launch and support", detail: "I leave it running online and stay around afterwards." },
     ],
 
     upcoming: [

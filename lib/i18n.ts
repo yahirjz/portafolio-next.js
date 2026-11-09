@@ -24,7 +24,7 @@ const es = {
             "Portafolio de Jair Rodríguez, desarrollador Full Stack en México. Desarrollo aplicaciones web que resuelven problemas reales de negocio con Next.js, TypeScript, Node.js y FastAPI.",
     },
     skipLink: "Saltar al contenido principal",
-    ids: { home: "inicio", about: "sobre-mi", projects: "proyectos", experience: "experiencia", services: "servicios", stack: "stack", contact: "contacto" },
+    ids: { home: "inicio", about: "sobre-mi", projects: "proyectos", experience: "experiencia", process: "como-trabajamos", stack: "stack", contact: "contacto" },
     nav: { label: "Principal", home: "Inicio", projects: "Proyectos", experience: "Experiencia", about: "Sobre mí", contact: "Contacto", menu: "Abrir menú", close: "Cerrar menú" },
     switchLabel: "Cambiar idioma",
     hero: {
@@ -52,10 +52,8 @@ const es = {
         work: "Trabajo",
         education: "Formación",
     },
-    services: {
-        eyebrow: "Servicios",
-        title: "Cómo puedo ayudarte",
-        processTitle: "Así trabajamos juntos",
+    process: {
+        title: "Así trabajamos juntos",
     },
     stack: {
         eyebrow: "Stack y herramientas",
@@ -127,7 +125,7 @@ const en: Dictionary = {
             "Portfolio of Jair Rodríguez, a Full Stack developer based in Mexico. I build web applications that solve real business problems with Next.js, TypeScript, Node.js and FastAPI.",
     },
     skipLink: "Skip to main content",
-    ids: { home: "home", about: "about", projects: "projects", experience: "experience", services: "services", stack: "stack", contact: "contact" },
+    ids: { home: "home", about: "about", projects: "projects", experience: "experience", process: "how-we-work", stack: "stack", contact: "contact" },
     nav: { label: "Main", home: "Home", projects: "Projects", experience: "Experience", about: "About", contact: "Contact", menu: "Open menu", close: "Close menu" },
     switchLabel: "Change language",
     hero: {
@@ -155,10 +153,8 @@ const en: Dictionary = {
         work: "Work",
         education: "Education",
     },
-    services: {
-        eyebrow: "Services",
-        title: "How I can help",
-        processTitle: "How we'll work together",
+    process: {
+        title: "How we'll work together",
     },
     stack: {
         eyebrow: "Stack and tools",

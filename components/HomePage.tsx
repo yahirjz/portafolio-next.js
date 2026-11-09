@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
-import Services from "@/components/Services";
 import Stack from "@/components/Stack";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -21,7 +20,6 @@ export default function HomePage({ locale }: { locale: Locale }) {
                 <About locale={locale} />
                 <Projects locale={locale} />
                 <Experience locale={locale} />
-                <Services locale={locale} />
                 <Stack locale={locale} />
                 <Contact locale={locale} />
             </main>

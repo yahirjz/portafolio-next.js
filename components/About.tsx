@@ -11,7 +11,7 @@ const About = ({ locale }: { locale: Locale }) => {
     const data = getContent(locale);
 
     return (
-        <section id={t.ids.about} className="px-4 py-20 sm:px-6">
+        <section id={t.ids.about} className="px-4 py-14 sm:px-6">
             <div className="mx-auto max-w-[1200px]">
                 <div className="grid gap-8 lg:grid-cols-[1fr_1px_1.3fr] lg:gap-12">
                     <SectionHeading eyebrow={t.about.eyebrow} title={t.about.title} />
@@ -20,7 +20,7 @@ const About = ({ locale }: { locale: Locale }) => {
                         {t.about.intro} <strong className="font-bold text-ink">{data.name}</strong>, {data.about.intro}
                     </p>
                 </div>
-                <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-sand-line pt-8 lg:grid-cols-4 lg:gap-0">
+                <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-sand-line pt-6 lg:grid-cols-4 lg:gap-0">
                     {data.about.focus.map((item, i) => {
                         const Icon = icons[item.icon];
                         return (

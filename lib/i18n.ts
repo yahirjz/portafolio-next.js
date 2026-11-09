@@ -34,6 +34,13 @@ const es = {
         subtitle: "Ingeniería de software, automatización y aplicaciones con datos e IA.",
         ctaProjects: "Ver proyectos",
         ctaCv: "Descargar CV",
+        diagram: {
+            label: "Áreas en las que trabajo",
+            frontend: "Frontend",
+            backend: "Backend",
+            data: "Base de datos",
+            ai: "IA y datos",
+        },
     },
     about: {
         eyebrow: "Sobre mí",
@@ -53,7 +60,9 @@ const es = {
         education: "Formación",
     },
     process: {
-        title: "Así trabajamos juntos",
+        eyebrow: "Mi forma de trabajar",
+        title: "De la idea al producto.",
+        intro: "Un proceso estructurado para desarrollar soluciones tecnológicas con enfoque en calidad y resultados.",
     },
     stack: {
         eyebrow: "Stack y herramientas",
@@ -62,10 +71,6 @@ const es = {
         learning: "Aprendiendo ahora",
     },
     contact: {
-        ctaTitleStart: "¿Tienes un",
-        ctaTitleHighlight: "proyecto",
-        ctaTitleEnd: "en mente?",
-        ctaText: "Hablemos sobre cómo puedo ayudarte a construirlo, desde la idea hasta su despliegue.",
         eyebrow: "Contacto",
         title: "Platiquemos",
         intro: "Te respondo con una propuesta clara. Trabajo remoto desde México (UTC-6).",
@@ -134,6 +139,13 @@ const en: Dictionary = {
         subtitle: "Software engineering, automation and applications powered by data and AI.",
         ctaProjects: "See projects",
         ctaCv: "Download résumé",
+        diagram: {
+            label: "Areas I work in",
+            frontend: "Frontend",
+            backend: "Backend",
+            data: "Database",
+            ai: "AI and data",
+        },
     },
     about: {
         eyebrow: "About me",
@@ -153,7 +165,9 @@ const en: Dictionary = {
         education: "Education",
     },
     process: {
-        title: "How we'll work together",
+        eyebrow: "How I work",
+        title: "From idea to product.",
+        intro: "A structured process to build technology solutions focused on quality and results.",
     },
     stack: {
         eyebrow: "Stack and tools",
@@ -162,10 +176,6 @@ const en: Dictionary = {
         learning: "Learning now",
     },
     contact: {
-        ctaTitleStart: "Have a",
-        ctaTitleHighlight: "project",
-        ctaTitleEnd: "in mind?",
-        ctaText: "Let's talk about how I can help you build it, from the idea to deployment.",
         eyebrow: "Contact",
         title: "Let's talk",
         intro: "I'll get back to you with a clear proposal. Working remotely from Mexico (UTC-6).",

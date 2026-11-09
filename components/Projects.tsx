@@ -27,7 +27,7 @@ const Projects = ({ locale }: { locale: Locale }) => {
     const rest = data.projects.filter((p) => !p.featured);
 
     return (
-        <section id={t.ids.projects} className="px-4 pb-24 pt-8 sm:px-6">
+        <section id={t.ids.projects} className="px-4 pb-16 pt-4 sm:px-6">
             <div className="mx-auto flex max-w-[1200px] flex-col gap-8">
                 <SectionHeading eyebrow={t.projects.eyebrow} title={t.projects.title} />
 

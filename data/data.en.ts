@@ -42,10 +42,10 @@ export const dataEn: typeof es = {
     },
 
     process: [
-        { title: "We talk", detail: "You tell me about your problem and what you want to achieve." },
-        { title: "Proposal", detail: "You get scope, timeline and cost in writing." },
-        { title: "Development", detail: "Progress you can actually test, not just promises." },
-        { title: "Launch and support", detail: "I leave it running online and stay around afterwards." },
+        { icon: "search", title: "Analysis and planning" },
+        { icon: "layers", title: "Design and architecture" },
+        { icon: "code", title: "Development and testing" },
+        { icon: "rocket", title: "Deployment and growth" },
     ],
 
     upcoming: [

@@ -58,7 +58,7 @@ const Stack = ({ locale }: { locale: Locale }) => {
     const data = getContent(locale);
 
     return (
-        <section id={t.ids.stack} className="bg-sand px-4 py-20 sm:px-6">
+        <section id={t.ids.stack} className="px-4 py-14 sm:px-6">
             <div className="mx-auto flex max-w-[1200px] flex-col gap-8">
                 <SectionHeading eyebrow={t.stack.eyebrow} title={t.stack.title} />
                 <div>

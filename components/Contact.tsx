@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react";
-import Process from "@/components/Process";
 import { getContent } from "@/data/content";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
@@ -68,20 +67,8 @@ const Contact = ({ locale }: { locale: Locale }) => {
     };
 
     return (
-        <section id={getDictionary(locale).ids.process} className="px-4 pb-20 pt-20 sm:px-6">
+        <section className="px-4 pb-16 pt-14 sm:px-6">
             <div className="mx-auto flex max-w-[1200px] flex-col gap-12">
-                {/* Franja final */}
-                <div className="rounded-[28px] bg-ink-deep p-7 text-white sm:p-9">
-                <Process locale={locale} />
-                <div className="mt-8 grid items-center gap-5 border-t border-white/15 pt-8 lg:grid-cols-[1fr_1px_1.2fr] lg:gap-8">
-                    <p className="m-0 font-heading text-[clamp(28px,3.4vw,38px)] font-bold leading-[1.1]">
-                        {t.ctaTitleStart} <span className="text-[#FD9B02]">{t.ctaTitleHighlight}</span> {t.ctaTitleEnd}
-                    </p>
-                    <span aria-hidden="true" className="hidden h-16 bg-white/20 lg:block" />
-                    <p className="m-0 text-white/75">{t.ctaText}</p>
-                </div>
-                </div>
-
             <div id={ids.contact} className="grid scroll-mt-24 items-start gap-10 lg:grid-cols-[0.9fr_1.3fr]">
                 <div className="flex min-w-0 flex-col gap-4">
                     <p className="m-0 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-ink-soft">

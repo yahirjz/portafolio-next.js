@@ -194,10 +194,10 @@ export const data = {
     },
 
     process: [
-        { title: "Platicamos", detail: "Me cuentas tu problema y qué quieres lograr." },
-        { title: "Propuesta", detail: "Te entrego alcance, tiempos y costo por escrito." },
-        { title: "Desarrollo", detail: "Avances que puedes probar, no solo promesas." },
-        { title: "Entrega y soporte", detail: "Lo dejo funcionando en línea y te acompaño después." },
+        { icon: "search", title: "Análisis y planificación" },
+        { icon: "layers", title: "Diseño y arquitectura" },
+        { icon: "code", title: "Desarrollo y validación" },
+        { icon: "rocket", title: "Despliegue y evolución" },
     ],
 
     // Proyectos en construcción: se muestran sin página de detalle.

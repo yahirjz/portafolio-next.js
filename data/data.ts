@@ -149,14 +149,49 @@ export const data = {
         linkedin: "https://www.linkedin.com/in/jaime-jair-rodr%C3%ADguez-ju%C3%A1rez-82494b317/",
     },
 
-    // <-- STACK (se muestra como un package.json)
-    stack: [
-        { key: "frontend", label: "Frontend", detail: "interfaces rápidas y tipadas", color: "#93C5FD", items: ["next", "react", "typescript", "tailwind"] },
-        { key: "backend", label: "Backend", detail: "APIs y lógica de negocio, mi fuerte", color: "#FDBA74", items: ["node", "express", "fastapi", "python", "java", "claude-api"] },
-        { key: "datos", label: "Datos", detail: "modelado relacional y documental", color: "#86EFAC", items: ["postgresql", "supabase", "mongodb"] },
-        { key: "deploy", label: "Deploy", detail: "proyectos en línea, no solo en local", color: "#F9A8D4", items: ["vercel", "railway", "docker", "git"] },
-    ],
-    learning: ["aws", "ia"],
+    /** WhatsApp para el botón de contacto (formato internacional, sin "+"). */
+    whatsapp: "522221602811",
+
+    // <-- SOBRE MÍ
+    about: {
+        intro: "desarrollador Full Stack en México. Me interesa construir soluciones que automaticen procesos, aprovechen los datos y generen valor real. Estudio Ingeniería en Sistemas Computacionales y soy Ingeniero en Electrónica (titulado).",
+        focus: [
+            { icon: "code", label: "Desarrollo Full Stack" },
+            { icon: "automation", label: "Automatización de procesos" },
+            { icon: "data", label: "Aplicaciones con datos e IA" },
+            { icon: "product", label: "Enfoque en producto" },
+        ],
+    },
+
+    // <-- EXPERIENCIA
+    career: {
+        work: [
+            {
+                date: "jun 2026 — actual",
+                title: "Inphera",
+                org: "Fundador y desarrollador · Proyecto propio",
+                detail: "Diseño y desarrollo de la plataforma completa: interfaz en Next.js, motor estadístico en FastAPI e integración con IA.",
+                current: true,
+            },
+            {
+                date: "feb 2026 — jun 2026",
+                title: "MBQ Group Business Solutions",
+                org: "Practicante de Desarrollo Full Stack · Remoto",
+                detail: "Automaticé los reportes de cumplimiento TISAX y eliminé la transcripción manual entre Excel y Word.",
+                current: false,
+            },
+        ],
+        education: [
+            { date: "en curso", title: "Ingeniería en Sistemas Computacionales", org: "Universidad UK" },
+            { date: "2024 · titulado", title: "Ingeniería en Electrónica", org: "ITSX" },
+        ],
+    },
+
+    // <-- STACK (íconos: ver components/Stack.tsx)
+    tech: {
+        build: ["Next.js", "React", "TypeScript", "Tailwind", "Node.js", "FastAPI", "Python", "PostgreSQL", "Supabase", "Vercel", "Docker", "Git"],
+        learning: ["Java", "Spring Boot", "AWS"],
+    },
 
     // <-- SERVICIOS (cada uno apunta a un proyecto que sirve de referencia)
     services: [
@@ -177,11 +212,11 @@ export const data = {
             slug: "reportes-tisax",
         },
         {
-            icon: "calendar",
-            title: "Reservas y citas para negocios",
-            description: "Agenda en línea que administras desde el celular, con confirmación por WhatsApp para tus clientes.",
+            icon: "clients",
+            title: "Gestión de clientes para negocios",
+            description: "Un solo lugar para tus prospectos de WhatsApp, formularios y correo, con seguimiento y recordatorios.",
             referenceLabel: "Lo estoy construyendo en",
-            reference: "Sistema de citas",
+            reference: "JR ClientFlow",
             slug: null,
         },
     ],
@@ -193,14 +228,14 @@ export const data = {
         { hash: "HEAD", title: "Entrega y soporte", detail: "Lo dejo funcionando en línea y te acompaño después." },
     ],
 
-    // Proyectos en construcción: se muestran en la portada sin página de detalle.
+    // Proyectos en construcción: se muestran sin página de detalle.
     // Si alguno todavía no arranca, bórralo de esta lista.
     upcoming: [
         {
-            title: "Sistema de reservas de citas",
-            tag: "En desarrollo · Java",
-            result: "Cualquier negocio administra servicios y horarios desde el celular; sus clientes reservan por WhatsApp sin instalar nada.",
-            technical: "Buffer time por servicio y magic link por WhatsApp para confirmar o reagendar.",
+            title: "JR ClientFlow",
+            tag: "En desarrollo",
+            summary: "Gestión de prospectos y seguimiento de clientes para pequeños negocios.",
+            stack: ["Java", "Spring Boot", "Next.js"],
         },
     ],
 

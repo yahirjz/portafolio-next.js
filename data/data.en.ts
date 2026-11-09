@@ -8,13 +8,38 @@ export const dataEn: typeof es = {
     cv: "/cv/Jaime_Jair_Rodriguez_CV_EN.pdf",
     experience: "2+ years",
 
-    stack: [
-        { key: "frontend", label: "Frontend", detail: "fast, type-safe interfaces", color: "#93C5FD", items: ["next", "react", "typescript", "tailwind"] },
-        { key: "backend", label: "Backend", detail: "APIs and business logic, my strong suit", color: "#FDBA74", items: ["node", "express", "fastapi", "python", "java", "claude-api"] },
-        { key: "data", label: "Data", detail: "relational and document modeling", color: "#86EFAC", items: ["postgresql", "supabase", "mongodb"] },
-        { key: "deploy", label: "Deploy", detail: "projects live online, not just on localhost", color: "#F9A8D4", items: ["vercel", "railway", "docker", "git"] },
-    ],
-    learning: ["aws", "ai"],
+    about: {
+        intro: "a Full Stack developer based in Mexico. I like building solutions that automate processes, make the most of data and create real value. I'm studying Computer Systems Engineering and hold a degree in Electronics Engineering.",
+        focus: [
+            { icon: "code", label: "Full Stack development" },
+            { icon: "automation", label: "Process automation" },
+            { icon: "data", label: "Data and AI applications" },
+            { icon: "product", label: "Product mindset" },
+        ],
+    },
+
+    career: {
+        work: [
+            {
+                date: "Jun 2026 — present",
+                title: "Inphera",
+                org: "Founder and developer · Own project",
+                detail: "Designed and built the whole platform: a Next.js interface, a FastAPI statistical engine and AI integration.",
+                current: true,
+            },
+            {
+                date: "Feb 2026 — Jun 2026",
+                title: "MBQ Group Business Solutions",
+                org: "Full Stack Development Intern · Remote",
+                detail: "Automated TISAX compliance reports and eliminated manual transcription between Excel and Word.",
+                current: false,
+            },
+        ],
+        education: [
+            { date: "in progress", title: "Computer Systems Engineering", org: "Universidad UK" },
+            { date: "2024 · graduated", title: "Electronics Engineering", org: "ITSX" },
+        ],
+    },
 
     services: [
         {
@@ -34,11 +59,11 @@ export const dataEn: typeof es = {
             slug: "reportes-tisax",
         },
         {
-            icon: "calendar",
-            title: "Booking systems for businesses",
-            description: "An online schedule you manage from your phone, with WhatsApp confirmations for your customers.",
+            icon: "clients",
+            title: "Customer management for businesses",
+            description: "One place for your leads from WhatsApp, forms and email, with follow-ups and reminders.",
             referenceLabel: "Building it in",
-            reference: "Booking system",
+            reference: "JR ClientFlow",
             slug: null,
         },
     ],
@@ -52,10 +77,10 @@ export const dataEn: typeof es = {
 
     upcoming: [
         {
-            title: "Appointment booking system",
-            tag: "In development · Java",
-            result: "Any business manages its services and hours from a phone; customers book through WhatsApp without installing anything.",
-            technical: "Per-service buffer time and a WhatsApp magic link to confirm or reschedule.",
+            title: "JR ClientFlow",
+            tag: "In development",
+            summary: "Lead management and customer follow-up for small businesses.",
+            stack: ["Java", "Spring Boot", "Next.js"],
         },
     ],
 

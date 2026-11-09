@@ -46,21 +46,16 @@ function SectionTitle({ id, children }: { id: string; children: string }) {
 
 export default function JrCard() {
   return (
-    <main className={`${jrFont.className} relative min-h-screen overflow-hidden bg-[#0B0D0F] text-white`}>
-      {/* Fondo: rayos ámbar y resplandores en las esquinas (decorativos) */}
-      <Image
-        src="/hero-fondo.webp"
-        alt=""
-        aria-hidden="true"
-        fill
-        priority
-        sizes="100vw"
-        className="pointer-events-none select-none object-cover object-[80%_top] opacity-35"
-      />
-      <span aria-hidden="true" className="pointer-events-none absolute -left-32 -top-32 h-80 w-80 rounded-full bg-[#FD9B02] opacity-20 blur-[100px]" />
-      <span aria-hidden="true" className="pointer-events-none absolute -bottom-32 -right-24 h-96 w-96 rounded-full bg-[#FD9B02] opacity-20 blur-[110px]" />
+    <main className={`${jrFont.className} relative min-h-screen overflow-hidden bg-[#060709] text-white`}>
+      {/* Fondo: formas de luz ámbar en las esquinas (arriba y abajo; el centro queda oscuro) */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 select-none">
+        <Image src="/jr/fondo-movil-arriba.webp" alt="" width={1200} height={1258} priority sizes="100vw" className="absolute inset-x-0 top-0 h-auto w-full [mask-image:linear-gradient(to_bottom,black_70%,transparent)] lg:hidden" />
+        <Image src="/jr/fondo-movil-abajo.webp" alt="" width={1200} height={1258} sizes="100vw" className="absolute inset-x-0 bottom-0 h-auto w-full [mask-image:linear-gradient(to_top,black_70%,transparent)] lg:hidden" />
+        <Image src="/jr/fondo-escritorio-arriba.webp" alt="" width={2400} height={741} priority sizes="100vw" className="absolute inset-x-0 top-0 hidden h-auto w-full [mask-image:linear-gradient(to_bottom,black_70%,transparent)] lg:block" />
+        <Image src="/jr/fondo-escritorio-abajo.webp" alt="" width={2400} height={741} sizes="100vw" className="absolute inset-x-0 bottom-0 hidden h-auto w-full [mask-image:linear-gradient(to_top,black_70%,transparent)] lg:block" />
+      </div>
 
-      <div className="relative mx-auto flex w-full max-w-[880px] flex-col gap-9 px-5 pb-12 pt-10 sm:gap-11 sm:px-10 sm:pt-14">
+      <div className="relative mx-auto flex w-full max-w-[880px] flex-col gap-9 px-5 pb-32 pt-12 sm:gap-11 sm:px-10 sm:pb-28 sm:pt-14">
         {/* Encabezado + personaje */}
         <header className="grid grid-cols-[1.35fr_1fr] items-center gap-3 sm:gap-8">
           <div className="min-w-0">
@@ -71,7 +66,12 @@ export default function JrCard() {
             <p className="mt-3 text-[0.82rem] leading-snug text-white/85 sm:mt-5 sm:text-xl sm:leading-relaxed">{intro}</p>
           </div>
           <div className="relative flex justify-center">
-            <span aria-hidden="true" className="absolute left-1/2 top-[55%] size-[85%] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[28%] bg-gradient-to-br from-[#FD9B02]/45 to-[#FD9B02]/5 blur-[2px]" />
+            {/* Rombo ámbar detrás de la mascota y destellos junto a la mano */}
+            <span aria-hidden="true" className="absolute left-1/2 top-[56%] size-[88%] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[22%] border-2 border-[#FFB13D]/80 bg-gradient-to-br from-[#FD9B02]/85 via-[#B86A00]/60 to-[#3A2507]/50 shadow-[0_0_40px_-4px_rgba(253,155,2,0.75)]" />
+            <span aria-hidden="true" className="absolute right-[2%] top-[6%] flex rotate-[20deg] flex-col gap-1.5 sm:gap-2.5">
+              <span className="h-1.5 w-7 rounded-full bg-[#FFB13D] sm:h-2 sm:w-11" />
+              <span className="ml-2 h-1.5 w-5 rounded-full bg-[#FFB13D] sm:ml-3 sm:h-2 sm:w-8" />
+            </span>
             <Image
               src="/jr/mascota.webp"
               alt="Mascota JR: un robot con sudadera de capucha haciendo un pulgar arriba"

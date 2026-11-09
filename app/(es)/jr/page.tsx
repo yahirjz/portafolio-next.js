@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description },
 };
 
-export const viewport: Viewport = { themeColor: "#0B0D0F" };
+export const viewport: Viewport = { themeColor: "#060709" };
 
 export default function JrPage() {
   return (
     <>
       {/* Solo en /jr: fondo negro y sin rebote al estirar la página (los brochazos tocan los bordes) */}
-      <style>{"html,body{background-color:#0B0D0F!important;overscroll-behavior:none}"}</style>
+      <style>{"html,body{background-color:#060709!important;overscroll-behavior:none}"}</style>
       <JrCard />
     </>
   );

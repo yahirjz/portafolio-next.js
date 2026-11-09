@@ -39,7 +39,7 @@ const es = {
             frontend: "Frontend",
             backend: "Backend",
             data: "Base de datos",
-            ai: "IA y datos",
+            api: "API",
         },
     },
     about: {
@@ -144,7 +144,7 @@ const en: Dictionary = {
             frontend: "Frontend",
             backend: "Backend",
             data: "Database",
-            ai: "AI and data",
+            api: "API",
         },
     },
     about: {

@@ -13,6 +13,7 @@ export type Project = {
     summary: string;
     description: string;
     featured?: boolean;
+    logo?: string;
     metric?: { value: string; label: string };
     live?: string;
     github?: string;
@@ -44,6 +45,7 @@ const projects: Project[] = [
         result: "Reúne forma reciente, estadísticas y contexto de un partido en un solo lugar, con análisis trazable.",
         technical: "Modelo de Poisson + Claude API para el análisis, y un filtro determinista que solo muestra mercados con probabilidad ≥ 65%.",
         featured: true,
+        logo: "/projects/inphera/logo.png",
         live: "https://www.inphera.com.mx",
         summary: "Beta privada para revisar probabilidades matemáticas y contexto de partidos de fútbol con guardrails visibles.",
         description: `

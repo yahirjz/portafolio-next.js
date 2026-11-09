@@ -55,7 +55,12 @@ const Projects = ({ locale }: { locale: Locale }) => {
                                 <LuStar aria-hidden="true" className="size-4" />
                                 {featured.tag}
                             </p>
-                            <h3 className="m-0 font-heading text-[clamp(36px,4vw,48px)] font-extrabold leading-none">{featured.title}</h3>
+                            <div className="flex items-center gap-3.5">
+                                {featured.logo && (
+                                    <Image src={featured.logo} alt="" aria-hidden="true" width={256} height={256} className="size-12 shrink-0 sm:size-14" />
+                                )}
+                                <h3 className="m-0 font-heading text-[clamp(36px,4vw,48px)] font-extrabold leading-none">{featured.title}</h3>
+                            </div>
                             <p className="m-0 text-lg text-white/80">{featured.summary}</p>
                             <div className="flex flex-wrap gap-2">
                                 {getStack(featured.description).map((tech) => <Tag key={tech} dark>{tech}</Tag>)}

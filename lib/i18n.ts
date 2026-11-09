@@ -67,8 +67,6 @@ const es = {
     stack: {
         eyebrow: "Stack y herramientas",
         title: "Tecnologías que utilizo",
-        build: "Con las que construyo",
-        learning: "Aprendiendo ahora",
     },
     contact: {
         eyebrow: "Contacto",
@@ -172,8 +170,6 @@ const en: Dictionary = {
     stack: {
         eyebrow: "Stack and tools",
         title: "Technologies I use",
-        build: "What I build with",
-        learning: "Learning now",
     },
     contact: {
         eyebrow: "Contact",

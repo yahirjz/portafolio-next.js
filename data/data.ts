@@ -47,7 +47,7 @@ const projects: Project[] = [
         featured: true,
         logo: "/projects/inphera/logo.png",
         live: "https://www.inphera.com.mx",
-        summary: "Beta privada para revisar probabilidades matemáticas y contexto de partidos de fútbol con guardrails visibles.",
+        summary: "Plataforma de análisis deportivo con IA que combina modelos estadísticos y LLMs para generar probabilidades, análisis y seguimiento de resultados.",
         description: `
             **El problema**
 

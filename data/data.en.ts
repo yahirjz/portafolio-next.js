@@ -69,7 +69,7 @@ export const dataEn: typeof es = {
             tag: "Main project · Private beta",
             result: "Brings a match's recent form, stats and context together in one place, with traceable analysis.",
             technical: "Poisson model + Claude API for the analysis, plus a deterministic filter that only shows markets with probability ≥ 65%.",
-            summary: "Private beta for reviewing mathematical probabilities and football match context, with visible guardrails.",
+            summary: "AI-powered sports analytics platform that combines statistical models and LLMs to generate probabilities, analysis and result tracking.",
             description: `
                 **The problem**
 

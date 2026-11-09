@@ -32,25 +32,27 @@ const Projects = ({ locale }: { locale: Locale }) => {
                 <SectionHeading eyebrow={t.projects.eyebrow} title={t.projects.title} />
 
                 {featured && (
-                    <article className="grid items-center gap-8 rounded-[28px] bg-[#16132A] p-5 text-white sm:p-8 lg:grid-cols-[1.15fr_1fr]">
-                        <div className="overflow-hidden rounded-2xl border border-white/15 bg-[#0F0D1E]">
+                    <article className="relative grid items-center gap-8 overflow-hidden rounded-[28px] bg-[#0E0D14] p-5 text-white sm:p-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+                        {/* Resplandor morado detrás de la captura (decorativo) */}
+                        <span aria-hidden="true" className="pointer-events-none absolute -left-16 -top-28 h-[120%] w-[55%] rounded-full bg-[radial-gradient(closest-side,rgba(139,92,246,0.75),rgba(139,92,246,0.25)_55%,transparent)] blur-2xl" />
+                        <div className="relative overflow-hidden rounded-2xl border border-[#8B5CF6]/80 bg-[#0F0D1E] shadow-[0_0_60px_-6px_rgba(139,92,246,0.85)]">
                             <div aria-hidden="true" className="flex items-center gap-2 border-b border-white/[0.08] px-4 py-2.5 font-mono text-xs text-white/50">
                                 <span className="h-2.5 w-2.5 rounded-full bg-[#F87171]" />
                                 <span className="h-2.5 w-2.5 rounded-full bg-[#FBBF24]" />
                                 <span className="h-2.5 w-2.5 rounded-full bg-[#4ADE80]" />
                                 <span className="ml-2">inphera.com.mx</span>
                             </div>
-                            <div className="relative aspect-[16/10]">
+                            <div className="relative aspect-[16/9]">
                                 <Image
                                     src={featured.img}
                                     alt={featured.imageAlt}
                                     fill
                                     sizes="(max-width: 1024px) 100vw, 600px"
-                                    className={featured.imageContain ? "object-contain" : "object-cover"}
+                                    className={featured.imageContain ? "object-contain object-top" : "object-cover object-top"}
                                 />
                             </div>
                         </div>
-                        <div className="flex flex-col gap-4">
+                        <div className="relative flex flex-col gap-4">
                             <p className="m-0 inline-flex items-center gap-1.5 self-start rounded-full bg-[#FD9B02] px-3 py-1 text-sm font-bold text-[#0B0D0F]">
                                 <LuStar aria-hidden="true" className="size-4" />
                                 {featured.tag}

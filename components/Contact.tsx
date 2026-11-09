@@ -70,7 +70,7 @@ const Contact = ({ locale }: { locale: Locale }) => {
         <section className="px-4 pb-16 pt-14 sm:px-6">
             <div className="mx-auto flex max-w-[1200px] flex-col gap-12">
             <div id={ids.contact} className="grid scroll-mt-24 items-start gap-10 lg:grid-cols-[0.9fr_1.3fr]">
-                <div className="flex min-w-0 flex-col gap-4">
+                <div data-reveal className="flex min-w-0 flex-col gap-4">
                     <p className="m-0 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-ink-soft">
                         <span aria-hidden="true" className="inline-block h-0.5 w-7 bg-[#FD9B02]" />
                         {t.eyebrow}
@@ -102,6 +102,8 @@ const Contact = ({ locale }: { locale: Locale }) => {
                 </div>
 
                 <form
+                    data-reveal
+                    data-reveal-delay="150"
                     onSubmit={sendForm}
                     className="flex min-w-0 flex-col gap-[18px] rounded-3xl border border-sand-line bg-white p-[clamp(20px,3vw,36px)] text-ink"
                 >

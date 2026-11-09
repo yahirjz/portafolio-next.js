@@ -7,6 +7,7 @@ import Stack from "@/components/Stack";
 import Process from "@/components/Process";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 export default function HomePage({ locale }: { locale: Locale }) {
@@ -26,6 +27,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
                 <Contact locale={locale} />
             </main>
             <Footer locale={locale} />
+            <ScrollReveal />
         </>
     );
 }

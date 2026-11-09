@@ -12,7 +12,7 @@ const Process = ({ locale }: { locale: Locale }) => {
 
     return (
         <section id={t.ids.process} className="px-4 pt-14 sm:px-6">
-            <div className="relative mx-auto grid max-w-[1200px] items-center gap-8 overflow-hidden rounded-[28px] bg-ink-deep p-7 text-white sm:p-9 lg:grid-cols-[0.9fr_1px_2fr] lg:gap-10">
+            <div data-reveal className="relative mx-auto grid max-w-[1200px] items-center gap-8 overflow-hidden rounded-[28px] bg-ink-deep p-7 text-white sm:p-9 lg:grid-cols-[0.9fr_1px_2fr] lg:gap-10">
                 <span aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#FD9B02] opacity-[0.12] blur-3xl" />
                 <div>
                     <p className="m-0 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">
@@ -28,7 +28,7 @@ const Process = ({ locale }: { locale: Locale }) => {
                         const Icon = icons[step.icon];
                         return (
                             <li key={step.title} className="flex lg:contents">
-                                <div className="flex h-full flex-1 flex-col items-center justify-center gap-3 rounded-2xl border border-[#FD9B02]/60 bg-gradient-to-b from-[#2A1D0B] to-[#16130F] px-3 py-5 text-center shadow-[0_0_24px_-6px_rgba(253,155,2,0.45),inset_0_1px_0_rgba(255,255,255,0.06)]">
+                                <div data-reveal data-reveal-delay={String(200 + index * 130)} className="flex h-full flex-1 flex-col items-center justify-center gap-3 rounded-2xl border border-[#FD9B02]/60 bg-gradient-to-b from-[#2A1D0B] to-[#16130F] px-3 py-5 text-center shadow-[0_0_24px_-6px_rgba(253,155,2,0.45),inset_0_1px_0_rgba(255,255,255,0.06)]">
                                     {Icon && <Icon aria-hidden="true" className="size-9 text-[#FD9B02] drop-shadow-[0_0_8px_rgba(253,155,2,0.6)]" />}
                                     <p className="m-0 text-[15px] font-bold leading-tight">
                                         <span className="text-[#FD9B02]">{String(index + 1).padStart(2, "0")}.</span> {step.title}

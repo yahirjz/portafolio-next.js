@@ -33,11 +33,13 @@ const logos: Record<string, { icon: IconType; color: string }> = {
     Git: { icon: SiGit, color: "#F05032" },
 };
 
-const Tile = ({ name }: { name: string }) => {
+const Tile = ({ name, index }: { name: string; index: number }) => {
     const logo = logos[name];
     const Icon = logo?.icon;
     return (
         <li
+            data-reveal
+            data-reveal-delay={String(index * 50)}
             className="flex flex-col items-center justify-center gap-2.5 rounded-2xl border border-sand-line bg-white px-2 py-4 text-sm font-medium text-ink"
         >
             {Icon && <Icon aria-hidden="true" className="size-8" style={{ color: logo.color }} />}
@@ -56,7 +58,7 @@ const Stack = ({ locale }: { locale: Locale }) => {
                 <SectionHeading eyebrow={t.stack.eyebrow} title={t.stack.title} />
                 <div>
                     <ul className="m-0 grid list-none grid-cols-3 gap-3 p-0 sm:grid-cols-4 lg:grid-cols-6">
-                        {data.tech.build.map((name) => <Tile key={name} name={name} />)}
+                        {data.tech.build.map((name, i) => <Tile key={name} name={name} index={i} />)}
                     </ul>
                 </div>
             </div>

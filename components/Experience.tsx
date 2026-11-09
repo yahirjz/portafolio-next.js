@@ -8,8 +8,8 @@ const Timeline = ({ label, items }: { label: string; items: Item[] }) => (
     <div>
         <h3 className="m-0 mb-5 text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60">{label}</h3>
         <ol className="m-0 list-none p-0">
-            {items.map((item) => (
-                <li key={item.title} className="relative ml-1.5 border-l-2 border-white/15 pb-7 pl-6 last:pb-0">
+            {items.map((item, i) => (
+                <li data-reveal data-reveal-delay={String(150 + i * 120)} key={item.title} className="relative ml-1.5 border-l-2 border-white/15 pb-7 pl-6 last:pb-0">
                     <span
                         aria-hidden="true"
                         className={`absolute -left-[7px] top-1 h-3 w-3 rounded-full border-2 ${
@@ -32,7 +32,7 @@ const Experience = ({ locale }: { locale: Locale }) => {
 
     return (
         <section id={t.ids.experience} className="px-4 py-6 sm:px-6">
-            <div className="mx-auto flex max-w-[1200px] flex-col gap-8 rounded-[28px] bg-[#0B0D0F] p-7 sm:p-10">
+            <div data-reveal className="mx-auto flex max-w-[1200px] flex-col gap-8 rounded-[28px] bg-[#0B0D0F] p-7 sm:p-10">
                 <SectionHeading eyebrow={t.experience.eyebrow} title={t.experience.title} dark />
                 <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
                     <Timeline label={t.experience.work} items={data.career.work} />

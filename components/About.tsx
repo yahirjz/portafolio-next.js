@@ -16,7 +16,7 @@ const About = ({ locale }: { locale: Locale }) => {
                 <div className="grid gap-8 lg:grid-cols-[1fr_1px_1.3fr] lg:gap-12">
                     <SectionHeading eyebrow={t.about.eyebrow} title={t.about.title} />
                     <span aria-hidden="true" className="hidden bg-sand-line lg:block" />
-                    <p className="m-0 self-center text-lg leading-relaxed text-ink-soft">
+                    <p data-reveal data-reveal-delay="120" className="m-0 self-center text-lg leading-relaxed text-ink-soft">
                         {t.about.intro} <strong className="font-bold text-ink">{data.name}</strong>, {data.about.intro}
                     </p>
                 </div>
@@ -25,6 +25,8 @@ const About = ({ locale }: { locale: Locale }) => {
                         const Icon = icons[item.icon];
                         return (
                             <li
+                                data-reveal
+                                data-reveal-delay={String(i * 90)}
                                 key={item.label}
                                 className={`flex items-center gap-3 font-semibold text-ink lg:px-6 ${i > 0 ? "lg:border-l lg:border-sand-line" : "lg:pl-0"}`}
                             >

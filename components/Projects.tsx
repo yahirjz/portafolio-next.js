@@ -32,7 +32,7 @@ const Projects = ({ locale }: { locale: Locale }) => {
                 <SectionHeading eyebrow={t.projects.eyebrow} title={t.projects.title} />
 
                 {featured && (
-                    <article className="relative grid items-center gap-8 overflow-hidden rounded-[28px] bg-[#0E0D14] p-5 text-white sm:p-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+                    <article data-reveal className="relative grid items-center gap-8 overflow-hidden rounded-[28px] bg-[#0E0D14] p-5 text-white sm:p-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
                         {/* Resplandor morado detrás de la captura (decorativo) */}
                         <span aria-hidden="true" className="pointer-events-none absolute -left-16 -top-28 h-[120%] w-[55%] rounded-full bg-[radial-gradient(closest-side,rgba(139,92,246,0.75),rgba(139,92,246,0.25)_55%,transparent)] blur-2xl" />
                         <div className="relative overflow-hidden rounded-2xl border border-[#8B5CF6]/80 bg-[#0F0D1E] shadow-[0_0_60px_-6px_rgba(139,92,246,0.85)]">
@@ -81,6 +81,7 @@ const Projects = ({ locale }: { locale: Locale }) => {
                 <div className="grid gap-5 md:grid-cols-2">
                     {rest.map((project) => (
                         <Link
+                            data-reveal
                             key={project.slug}
                             href={paths.project(locale, project.slug)}
                             className="group flex flex-col gap-3 rounded-[22px] border border-sand-line bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#FD9B02]/60"
@@ -103,7 +104,7 @@ const Projects = ({ locale }: { locale: Locale }) => {
                     ))}
 
                     {data.upcoming.map((project) => (
-                        <article key={project.title} className="flex flex-col gap-3 rounded-[22px] border-2 border-dashed border-sand-dashed p-6">
+                        <article data-reveal data-reveal-delay="120" key={project.title} className="flex flex-col gap-3 rounded-[22px] border-2 border-dashed border-sand-dashed p-6">
                             <LuUsers aria-hidden="true" className="size-8 text-terra" />
                             <div className="flex flex-wrap items-center gap-2">
                                 <h3 className="m-0 font-heading text-2xl font-bold text-ink">{project.title}</h3>

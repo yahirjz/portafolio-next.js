@@ -2,30 +2,25 @@ import Image from "next/image";
 import type { IconType } from "react-icons";
 import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import {
-  LuArrowRight,
-  LuCloudUpload,
+  LuArrowUpRight,
+  LuBrain,
   LuCodeXml,
-  LuCpu,
   LuDownload,
-  LuGlobe,
-  LuMail,
+  LuIdCard,
+  LuLaptop,
   LuLayers,
-  LuSettings,
-  LuUserPlus,
+  LuMail,
+  LuWorkflow,
 } from "react-icons/lu";
 import { jrFont } from "./font";
-import { contact, services, type Accent } from "./jr-data";
+import { contact, intro, services } from "./jr-data";
 
-const TUR = "#00F2EC";
-const AMB = "#FD9B02";
-
-/** Cuadro de ícono por acento (sin brillo). */
-const tile: Record<Accent, string> = {
-  turquesa: "bg-[#00F2EC]/15 text-[#00F2EC]",
-  ambar: "bg-[#FD9B02]/20 text-[#FD9B02]",
+const serviceIcons: Record<(typeof services)[number]["icon"], IconType> = {
+  code: LuCodeXml,
+  ai: LuBrain,
+  automation: LuLayers,
+  integrations: LuWorkflow,
 };
-
-const serviceIcons: IconType[] = [LuCodeXml, LuCpu, LuLayers, LuSettings, LuCloudUpload];
 
 const links: { label: string; href: string; icon: IconType; external: boolean }[] = [
   { label: "GitHub", href: contact.github, icon: FaGithub, external: true },
@@ -35,146 +30,95 @@ const links: { label: string; href: string; icon: IconType; external: boolean }[
 
 const externalProps = { target: "_blank", rel: "noopener noreferrer" } as const;
 
-/** Brochazos de la marca (PNG transparentes en /public/jr). Puramente decorativos. */
-function Brush({ src, w, h, className }: { src: string; w: number; h: number; className: string }) {
-  return (
-    <Image
-      src={`/jr/${src}.png`}
-      alt=""
-      aria-hidden="true"
-      width={w}
-      height={h}
-      sizes="(min-width: 1024px) 40vw, 70vw"
-      className={`pointer-events-none absolute h-auto select-none ${className}`}
-    />
-  );
-}
+/** Borde ámbar delgado con brillo leve (sin neón). */
+const card = "border border-[#FD9B02]/35 bg-[#14110D]/85 shadow-[0_0_22px_-12px_rgba(253,155,2,0.6)]";
 
-/** Título de sección con barra inclinada y línea. */
 function SectionTitle({ id, children }: { id: string; children: string }) {
   return (
-    <div className="mb-4 flex items-center gap-3 sm:mb-5 sm:gap-4">
-      <span aria-hidden="true" className="h-6 w-1.5 -skew-x-[20deg] bg-[#00F2EC] sm:h-8 sm:w-2" />
-      <h2 id={id} className="shrink-0 text-xl font-bold sm:text-3xl">
+    <div className="mb-4 flex items-center gap-4">
+      <h2 id={id} className="shrink-0 text-xl font-bold sm:text-[1.7rem]">
         {children}
       </h2>
-      <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-[#00F2EC]/60 to-transparent" />
+      <span aria-hidden="true" className="h-1 w-16 rounded-full bg-[#FD9B02] sm:w-24" />
     </div>
   );
 }
 
 export default function JrCard() {
   return (
-    <main className={`${jrFont.className} relative min-h-screen overflow-hidden bg-[#05080A] text-white`}>
-      {/* Fondo */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_40%_25%,#0C1215_0%,transparent_70%)]"
-      />
+    <main className={`${jrFont.className} relative min-h-screen overflow-hidden bg-[#060709] text-white`}>
+      {/* Fondo: formas de luz ámbar en las esquinas (arriba y abajo; el centro queda oscuro) */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 select-none">
+        <Image src="/jr/fondo-movil-arriba.webp" alt="" width={1200} height={1258} priority sizes="100vw" className="absolute inset-x-0 top-0 h-auto w-full [mask-image:linear-gradient(to_bottom,black_70%,transparent)] lg:hidden" />
+        <Image src="/jr/fondo-movil-abajo.webp" alt="" width={1200} height={1258} sizes="100vw" className="absolute inset-x-0 bottom-0 h-auto w-full [mask-image:linear-gradient(to_top,black_70%,transparent)] lg:hidden" />
+        <Image src="/jr/fondo-escritorio-arriba.webp" alt="" width={2400} height={741} priority sizes="100vw" className="absolute inset-x-0 top-0 hidden h-auto w-full [mask-image:linear-gradient(to_bottom,black_70%,transparent)] lg:block" />
+        <Image src="/jr/fondo-escritorio-abajo.webp" alt="" width={2400} height={741} sizes="100vw" className="absolute inset-x-0 bottom-0 hidden h-auto w-full [mask-image:linear-gradient(to_top,black_70%,transparent)] lg:block" />
+      </div>
 
-      {/* Brochazos */}
-      <Brush src="brochazo-ambar-sup" w={1270} h={883} className="left-0 top-0 w-[40%] sm:w-[28%] lg:w-[22%]" />
-      <Brush src="brochazo-turquesa-sup" w={1270} h={883} className="right-0 top-0 w-[48%] -scale-x-100 opacity-80 sm:w-[34%] lg:w-[28%]" />
-      <Brush src="brochazo-turquesa-der" w={595} h={722} className="right-0 top-[26%] hidden w-[14%] lg:block" />
-      <Brush src="brochazo-turquesa-inf" w={715} h={541} className="bottom-0 left-0 w-[40%] sm:w-[26%] lg:w-[18%]" />
-      <Brush src="brochazo-ambar-inf" w={1093} h={712} className="bottom-0 right-0 w-[48%] sm:w-[32%] lg:w-[24%]" />
-
-      <div className="relative mx-auto flex w-full max-w-[1000px] flex-col gap-9 px-5 pb-10 pt-12 sm:gap-11 sm:px-10 sm:pt-16">
-        {/* Encabezado */}
-        <header>
-          <div className="flex items-center gap-4 sm:gap-7">
-            <Image
-              src="/jr/monograma.png"
-              alt="Monograma JR"
-              width={1120}
-              height={528}
-              priority
-              className="h-auto w-28 shrink-0 sm:w-44"
-            />
-            <span aria-hidden="true" className="h-14 w-px shrink-0 bg-white/80 sm:h-20" />
-            <div className="min-w-0">
-              <h1 className="text-[1.6rem] font-bold leading-none tracking-tight sm:text-[2.6rem]">Jair Rodríguez</h1>
-              <p className="mt-2 text-[0.95rem] font-semibold tracking-[0.08em] text-[#00F2EC] sm:text-[1.6rem]">
-                Software Engineer
-              </p>
-            </div>
+      <div className="relative mx-auto flex w-full max-w-[880px] flex-col gap-9 px-5 pb-32 pt-12 sm:gap-11 sm:px-10 sm:pb-28 sm:pt-14">
+        {/* Encabezado + personaje */}
+        <header className="grid grid-cols-[1.35fr_1fr] items-center gap-3 sm:gap-8">
+          <div className="min-w-0">
+            <Image src="/jr/monograma.png" alt="Monograma JR" width={1120} height={528} priority className="h-auto w-24 sm:w-36" />
+            <h1 className="mt-5 text-[1.75rem] font-bold leading-none tracking-tight sm:mt-7 sm:text-6xl">{contact.name}</h1>
+            <p className="mt-2 text-base font-bold text-[#FD9B02] sm:text-3xl">{contact.role}</p>
+            <span aria-hidden="true" className="mt-3 block h-1 w-14 rounded-full bg-[#FD9B02] sm:mt-4 sm:w-20" />
+            <p className="mt-3 text-[0.82rem] leading-snug text-white/85 sm:mt-5 sm:text-xl sm:leading-relaxed">{intro}</p>
           </div>
-          <p className="mt-7 text-[0.7rem] font-semibold tracking-[0.3em] text-white/85 sm:mt-8 sm:text-sm">
-            DESARROLLO • IA • INNOVACIÓN
-          </p>
-          <span aria-hidden="true" className="mt-3 block h-1 w-28 rounded-full bg-[linear-gradient(90deg,#00F2EC_0%,#00F2EC_42%,#FD9B02_58%,#FD9B02_100%)] shadow-[-4px_0_9px_0_rgba(0,242,236,0.55),4px_0_9px_0_rgba(253,155,2,0.55)] sm:w-40" />
+          <div className="relative flex justify-center">
+            {/* Rombo ámbar detrás de la mascota y destellos junto a la mano */}
+            <span aria-hidden="true" className="absolute left-1/2 top-[56%] size-[88%] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[22%] border-2 border-[#FFB13D]/80 bg-gradient-to-br from-[#FD9B02]/85 via-[#B86A00]/60 to-[#3A2507]/50 shadow-[0_0_40px_-4px_rgba(253,155,2,0.75)]" />
+            <span aria-hidden="true" className="absolute right-[2%] top-[6%] flex rotate-[20deg] flex-col gap-1.5 sm:gap-2.5">
+              <span className="h-1.5 w-7 rounded-full bg-[#FFB13D] sm:h-2 sm:w-11" />
+              <span className="ml-2 h-1.5 w-5 rounded-full bg-[#FFB13D] sm:ml-3 sm:h-2 sm:w-8" />
+            </span>
+            <Image
+              src="/jr/mascota.webp"
+              alt="Mascota JR: un robot con sudadera de capucha haciendo un pulgar arriba"
+              width={474}
+              height={900}
+              priority
+              className="relative h-auto w-full max-w-[260px]"
+            />
+          </div>
         </header>
 
-        {/* Mensaje principal con marca de agua */}
-        <section aria-labelledby="jr-mensaje" className="relative -mt-3">
-          <Image
-            src="/jr/monograma-marca-agua.png"
-            alt=""
-            aria-hidden="true"
-            width={1120}
-            height={528}
-            className="pointer-events-none absolute -right-24 top-[-10%] h-auto w-[85%] max-w-none select-none opacity-60 sm:-right-10 sm:top-[-20%] sm:w-[48%] sm:opacity-80"
-          />
-          <h2 id="jr-mensaje" className="relative max-w-[16ch] text-[2rem] font-bold leading-[1.1] tracking-tight sm:text-[3.1rem]">
-            Desarrollo software con <span className="text-[#00F2EC]">tecnología e IA</span> para crear soluciones reales.
-          </h2>
-          <p className="relative mt-4 max-w-[34ch] text-base font-medium leading-snug text-white/85 sm:text-xl">
-            Construyo productos web con enfoque en rendimiento, diseño y valor real.
-          </p>
-        </section>
-
         {/* Acciones principales */}
-        <section aria-label="Contacto" className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+        <section aria-label="Contacto" className="grid gap-3 sm:grid-cols-[1.15fr_1fr] sm:gap-5">
           <a
             href={`https://wa.me/${contact.whatsapp}`}
             {...externalProps}
-            aria-label="Contactar por WhatsApp"
-            className="group flex min-h-[4.75rem] items-center gap-4 rounded-[1.4rem] border-2 border-[#00F2EC] bg-[#05080A]/70 px-6 transition hover:-translate-y-0.5 hover:bg-[#00F2EC]/10 sm:min-h-24 sm:px-8"
+            className="group flex min-h-[4.25rem] items-center gap-3 rounded-2xl bg-[#FD9B02] px-5 text-[#0B0D0F] shadow-[0_0_28px_-10px_rgba(253,155,2,0.9)] transition hover:-translate-y-0.5 hover:bg-[#FFAE2E] sm:min-h-20 sm:px-7"
           >
-            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#25D366] sm:size-14">
-              <FaWhatsapp aria-hidden="true" className="size-7 text-white sm:size-9" />
-            </span>
-            <span className="flex-1 leading-tight">
-              <span className="block text-sm font-semibold sm:text-lg">Contactar por</span>
-              <span className="block text-xl font-bold text-[#00F2EC] sm:text-[1.7rem]">WhatsApp</span>
-            </span>
-            <LuArrowRight aria-hidden="true" strokeWidth={2.5} className="size-7 shrink-0 transition group-hover:translate-x-1" />
+            <FaWhatsapp aria-hidden="true" className="size-8 shrink-0" />
+            <span className="flex-1 text-lg font-bold sm:text-xl">Hablemos por WhatsApp</span>
+            <LuArrowUpRight aria-hidden="true" strokeWidth={2.5} className="size-6 shrink-0 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
           <a
             href="/jr/jair-rodriguez.vcf"
             download="Jair-Rodriguez.vcf"
-            className="group flex min-h-[4.75rem] items-center gap-4 rounded-[1.4rem] border-2 border-[#FD9B02] bg-[#05080A]/70 px-6 transition hover:-translate-y-0.5 hover:bg-[#FD9B02]/10 sm:min-h-24 sm:px-8"
+            className={`group flex min-h-[4.25rem] items-center gap-3 rounded-2xl px-5 transition hover:-translate-y-0.5 hover:border-[#FD9B02]/70 sm:min-h-20 sm:px-7 ${card}`}
           >
-            <LuUserPlus aria-hidden="true" className="size-9 shrink-0 sm:size-10" />
-            <span className="flex-1 text-lg font-bold sm:text-[1.45rem]">Guardar contacto</span>
-            <LuDownload aria-hidden="true" className="size-7 shrink-0 transition group-hover:translate-y-0.5" />
+            <LuIdCard aria-hidden="true" className="size-8 shrink-0" />
+            <span className="flex-1 text-lg font-bold sm:text-xl">Guardar contacto</span>
+            <LuDownload aria-hidden="true" className="size-6 shrink-0 transition group-hover:translate-y-0.5" />
           </a>
         </section>
 
-        {/* Especialidades */}
-        <section aria-labelledby="jr-especialidades">
-          <SectionTitle id="jr-especialidades">Especialidades</SectionTitle>
-          <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-6">
-            {services.map((s, i) => {
-              const Icon = serviceIcons[i];
-              // Escritorio: 3 tarjetas verticales arriba y 2 horizontales abajo; en móvil la última ocupa todo el ancho.
-              const wide = i >= 3;
-              const last = i === services.length - 1;
+        {/* Servicios */}
+        <section aria-labelledby="jr-ayuda">
+          <SectionTitle id="jr-ayuda">¿En qué puedo ayudarte?</SectionTitle>
+          <ul className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+            {services.map((s) => {
+              const Icon = serviceIcons[s.icon];
               return (
-                <li
-                  key={s.title}
-                  className={`rounded-[1.4rem] border border-white/[0.12] bg-[#121518]/90 p-4 sm:p-5 ${
-                    wide ? "lg:col-span-3 lg:flex lg:items-center lg:gap-5" : "lg:col-span-2"
-                  } ${last ? "col-span-2 flex items-center gap-4 lg:col-span-3" : ""}`}
-                >
-                  <span className={`grid size-12 shrink-0 place-items-center rounded-xl sm:size-16 ${tile[s.accent]}`}>
-                    <Icon aria-hidden="true" strokeWidth={2.2} className="size-7 sm:size-9" />
+                <li key={s.title} className={`flex items-center gap-4 rounded-2xl p-4 sm:p-5 ${card}`}>
+                  <span className="grid size-14 shrink-0 place-items-center rounded-full border border-[#FD9B02]/30 bg-[#FD9B02]/10 text-[#FD9B02]">
+                    <Icon aria-hidden="true" className="size-7" />
                   </span>
-                  <span className={`block ${last ? "" : "mt-3"} ${wide ? "lg:mt-0" : ""}`}>
-                    <span className="block text-base font-bold leading-tight sm:text-[1.35rem]">{s.title}</span>
-                    <span className="mt-1.5 block text-[0.85rem] font-medium leading-snug text-white/80 sm:text-base">
-                      {s.description}
-                    </span>
+                  <span>
+                    <span className="block font-bold leading-tight sm:text-lg">{s.title}</span>
+                    <span className="mt-1 block text-sm leading-snug text-white/70">{s.description}</span>
                   </span>
                 </li>
               );
@@ -182,66 +126,55 @@ export default function JrCard() {
           </ul>
         </section>
 
-        {/* Conecta conmigo */}
-        <section aria-labelledby="jr-conecta">
-          <SectionTitle id="jr-conecta">Conecta conmigo</SectionTitle>
+        {/* Portafolio y enlaces */}
+        <section aria-labelledby="jr-trabajo">
+          <SectionTitle id="jr-trabajo">Conoce más de mi trabajo</SectionTitle>
           <a
             href={contact.site}
-            className="group mb-6 flex items-center gap-4 rounded-[1.6rem] border border-white/[0.12] bg-[#121518]/90 px-5 py-5 transition hover:-translate-y-0.5 hover:border-[#00F2EC]/50 sm:mb-8 sm:gap-6 sm:px-8 sm:py-6"
+            className="group flex items-center gap-4 rounded-2xl border border-[#FD9B02]/55 bg-gradient-to-r from-[#14110D] to-[#3A2507] p-4 shadow-[0_0_26px_-12px_rgba(253,155,2,0.8)] transition hover:-translate-y-0.5 sm:gap-6 sm:p-6"
           >
-            <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-[#00F2EC]/15 text-[#00F2EC] sm:size-16">
-              <LuGlobe aria-hidden="true" className="size-7 sm:size-9" />
+            <span className="grid size-14 shrink-0 place-items-center rounded-xl bg-white/5 text-[#FD9B02] sm:size-20">
+              <LuLaptop aria-hidden="true" className="size-8 sm:size-11" />
             </span>
             <span className="flex-1">
-              <span className="block text-lg font-bold leading-tight sm:text-2xl">¿Quieres conocer más sobre mí?</span>
-              <span className="mt-1 block text-sm font-medium leading-snug text-white/75 sm:text-lg">
-                Conoce mi trayectoria, proyectos y experiencia.
+              <span className="block text-lg font-bold leading-tight sm:text-2xl">Mi portafolio profesional</span>
+              <span className="mt-1 block text-sm leading-snug text-white/75 sm:text-base">
+                Conoce mi trayectoria, proyectos y experiencia en desarrollo de software.
               </span>
             </span>
-            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#FD9B02] text-[#05080A] transition group-hover:translate-x-1 sm:size-14">
-              <LuArrowRight aria-hidden="true" strokeWidth={2.5} className="size-6 sm:size-7" />
+            <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-[#FD9B02]/90 text-[#0B0D0F] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:size-14">
+              <LuArrowUpRight aria-hidden="true" strokeWidth={2.5} className="size-6 sm:size-7" />
             </span>
           </a>
-          <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
-            <ul className="grid grid-cols-3 gap-3 sm:flex sm:gap-4">
-              {links.map(({ label, href, icon: Icon, external }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    {...(external ? externalProps : {})}
-                    className="flex h-full flex-col items-center justify-center gap-1.5 rounded-[1.2rem] border border-[#00F2EC]/60 bg-[#05080A]/70 px-3 py-3.5 text-sm font-semibold transition hover:border-[#00F2EC] hover:bg-[#00F2EC]/10 sm:min-w-36 sm:text-lg"
-                  >
-                    <Icon aria-hidden="true" className="size-8 sm:size-10" />
+
+          <ul className="mt-4 grid grid-cols-3 gap-2 sm:gap-4">
+            {links.map(({ label, href, icon: Icon, external }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  {...(external ? externalProps : {})}
+                  className={`flex h-full items-center justify-center gap-2 rounded-2xl px-2 py-3.5 text-sm font-bold transition hover:-translate-y-0.5 hover:border-[#FD9B02]/70 sm:justify-between sm:px-5 sm:text-base ${card}`}
+                >
+                  <span className="flex items-center gap-2">
+                    <Icon aria-hidden="true" className="size-6 shrink-0" />
                     {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p className="relative mx-auto -rotate-6 text-center text-xl font-semibold italic leading-tight sm:mx-0 sm:text-2xl">
-              Construyamos
-              <br />
-              algo <span className="font-extrabold text-[#00F2EC]">increíble</span> juntos.
-              <svg aria-hidden="true" viewBox="0 0 220 24" className="absolute -bottom-5 left-1/2 h-5 w-[110%] -translate-x-1/2" fill="none">
-                <path d="M4 20 C 70 6, 150 2, 216 6" stroke={TUR} strokeWidth="4" strokeLinecap="round" />
-              </svg>
-            </p>
-          </div>
+                  </span>
+                  <LuArrowUpRight aria-hidden="true" className="hidden size-5 sm:block" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* Pie */}
-        <footer aria-hidden="true" className="relative mt-4 h-20 sm:h-24">
-          <svg viewBox="0 0 1000 90" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" fill="none">
-            <path d="M0 18 H330 L350 34 H650 L670 18 H1000" stroke={TUR} strokeOpacity="0.55" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-            <path d="M30 80 H150 L185 52 H400" stroke={AMB} strokeWidth="2.5" vectorEffect="non-scaling-stroke" />
-            <path d="M970 80 H850 L815 52 H600" stroke={AMB} strokeWidth="2.5" vectorEffect="non-scaling-stroke" />
-          </svg>
-          <Image
-            src="/jr/monograma.png"
-            alt=""
-            width={1120}
-            height={528}
-            className="absolute left-1/2 top-[42%] h-auto w-24 -translate-x-1/2 sm:w-32"
-          />
+        <footer className="flex flex-col items-center gap-2 pt-2 text-center">
+          <Image src="/jr/monograma.png" alt="" aria-hidden="true" width={1120} height={528} className="h-auto w-20 sm:w-24" />
+          <p className="m-0 text-lg font-bold">{contact.name}</p>
+          <p className="m-0 text-sm text-white/75">
+            Software Engineer <span className="text-[#FD9B02]">•</span> Desarrollo <span className="text-[#FD9B02]">•</span> IA
+          </p>
+          <span aria-hidden="true" className="h-1 w-10 rounded-full bg-[#FD9B02]" />
+          <p className="m-0 mt-1 text-lg font-bold italic text-[#FD9B02]">Construyamos algo increíble juntos.</p>
         </footer>
       </div>
     </main>

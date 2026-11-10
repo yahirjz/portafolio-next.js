@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import JrCard from "@/components/jr/JrCard";
 
 const title = "Jair Rodríguez · Software Engineer";
-const description = "Desarrollo software con tecnología e IA para crear soluciones reales.";
+const description = "Transformo ideas en soluciones digitales, combinando desarrollo, IA y tecnología para resolver problemas reales.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description },
 };
 
-export const viewport: Viewport = { themeColor: "#05080A" };
+export const viewport: Viewport = { themeColor: "#060709" };
 
 export default function JrPage() {
   return (
     <>
       {/* Solo en /jr: fondo negro y sin rebote al estirar la página (los brochazos tocan los bordes) */}
-      <style>{"html,body{background-color:#05080A!important;overscroll-behavior:none}"}</style>
+      <style>{"html,body{background-color:#060709!important;overscroll-behavior:none}"}</style>
       <JrCard />
     </>
   );

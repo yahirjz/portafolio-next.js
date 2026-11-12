@@ -43,6 +43,12 @@
     overflow-x: hidden;
   }
 
+  /* Al estirar la página en el iPhone (rebote), arriba se ve el color oscuro de la barra y la portada */
+  html,
+  body {
+    background-color: #0b0d0f;
+  }
+
   :focus-visible {
     outline: 3px solid var(--color-terra-soft);
     outline-offset: 3px;

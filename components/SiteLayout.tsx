@@ -39,15 +39,16 @@ export function siteMetadata(locale: Locale): Metadata {
 }
 
 export const siteViewport: Viewport = {
-  themeColor: "#faf7f2",
+  themeColor: "#0b0d0f",
 };
 
 /** Estructura <html> compartida: cada idioma tiene su propio layout raíz con el lang correcto. */
 export default function SiteLayout({ locale, children }: { locale: Locale; children: React.ReactNode }) {
   return (
     <html lang={getDictionary(locale).htmlLang} className="scroll-smooth">
-      <body className={`${fontVariables} bg-cream font-sans text-ink antialiased selection:bg-terra-soft/60 selection:text-ink`}>
-        {children}
+      <body className={`${fontVariables} bg-[#0b0d0f] font-sans text-ink antialiased selection:bg-terra-soft/60 selection:text-ink`}>
+        {/* El fondo de afuera es oscuro (lo que se ve al estirar en iPhone); el contenido va en crema */}
+        <div className="min-h-screen bg-cream">{children}</div>
       </body>
     </html>
   );

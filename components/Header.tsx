@@ -41,7 +41,7 @@ const Header = ({ locale }: { locale: Locale }) => {
         }`;
 
     return (
-        <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#0B0D0F]/95 backdrop-blur-md">
+        <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#0B0D0F]">
             <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-3 sm:px-6">
                 <Link href={paths.home(locale)} aria-label="Jair Rodríguez" className="shrink-0">
                     <Image src="/jr/monograma.png" alt="" aria-hidden="true" width={1120} height={528} priority className="h-auto w-16 sm:w-[76px]" />

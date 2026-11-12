@@ -39,7 +39,7 @@ export function siteMetadata(locale: Locale): Metadata {
 }
 
 export const siteViewport: Viewport = {
-  themeColor: "#faf7f2",
+  themeColor: "#0b0d0f",
 };
 
 /** Estructura <html> compartida: cada idioma tiene su propio layout raíz con el lang correcto. */

@@ -44,7 +44,8 @@
   }
 
   /* Al estirar la página en el iPhone (rebote), arriba se ve el color oscuro de la barra y la portada */
-  html {
+  html,
+  body {
     background-color: #0b0d0f;
   }
 

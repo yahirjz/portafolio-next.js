@@ -9,7 +9,7 @@ const LanguageSwitch = ({ locale }: { locale: Locale }) => {
     const t = getDictionary(locale);
 
     return (
-        <div role="group" aria-label={t.switchLabel} className="flex items-center rounded-full border border-sand-line bg-white p-1 font-mono text-[13px]">
+        <div role="group" aria-label={t.switchLabel} className="flex items-center rounded-full border border-white/25 bg-night/60 p-1 text-[13px] backdrop-blur">
             {locales.map((target) => {
                 const active = target === locale;
                 return (
@@ -19,8 +19,8 @@ const LanguageSwitch = ({ locale }: { locale: Locale }) => {
                         hrefLang={target}
                         lang={target}
                         aria-current={active ? "true" : undefined}
-                        className={`rounded-full px-2.5 py-1.5 font-bold uppercase transition-colors ${
-                            active ? "bg-ink text-cream" : "text-ink-soft hover:text-ink"
+                        className={`rounded-full px-3 py-1.5 font-bold uppercase transition-colors duration-300 ${
+                            active ? "bg-gold text-night" : "text-white/70 hover:text-white"
                         }`}
                     >
                         {target}

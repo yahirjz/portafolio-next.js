@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
-  --font-heading: var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
+  --font-heading: var(--font-sora), "Sora", system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+
+  /* Paleta v4: blanco, gris claro, naranja dorado, azul marino y negro */
+  --color-gold: #fca311;
+  --color-gold-hover: #ffb43a;
+  --color-navy: #14213d;
+  --color-navy-deep: #0a1124;
+  --color-mist: #e5e5e5;
+  --color-night: #000000;
 
   /* Paleta cálida: crema, café y ámbar de la marca JR */
   --color-cream: #faf7f2;
@@ -56,7 +64,14 @@
 
   section[id],
   main[id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 5rem;
+  }
+
+  @media (min-width: 1024px) {
+    section[id],
+    main[id] {
+      scroll-margin-top: 0;
+    }
   }
 }
 
@@ -172,6 +187,36 @@
   transform: none;
 }
 
+/* ---------- v4: portada ---------- */
+@keyframes cube-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes ring-glow {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+@keyframes line-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+.cube-float { animation: cube-float 7s ease-in-out infinite; }
+.ring-glow { animation: ring-glow 3.5s ease-in-out infinite; }
+.line-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: line-draw 2.4s cubic-bezier(0.6, 0, 0.2, 1) 0.3s forwards;
+}
+
+/* Etiqueta pequeña con letras separadas */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -179,4 +224,5 @@
     animation: none !important;
     transition: none !important;
   }
+  .line-draw { stroke-dashoffset: 0; }
 }

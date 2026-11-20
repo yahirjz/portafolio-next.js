@@ -64,6 +64,10 @@ const es = {
                 status: "Proyecto principal · Beta privada",
                 tags: ["Next.js", "FastAPI", "Supabase", "Claude API"],
             },
+            clientflow: {
+                label: "Producto propio",
+                note: "Vista previa próximamente",
+            },
             collector: {
                 label: "Proyecto técnico",
                 status: "v0.1 · En desarrollo",
@@ -195,6 +199,10 @@ const en: Dictionary = {
                 label: "Featured project",
                 status: "Main project · Private beta",
                 tags: ["Next.js", "FastAPI", "Supabase", "Claude API"],
+            },
+            clientflow: {
+                label: "Own product",
+                note: "Preview coming soon",
             },
             collector: {
                 label: "Technical project",

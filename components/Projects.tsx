@@ -32,6 +32,18 @@ const Projects = ({ locale }: { locale: Locale }) => {
         tags: sc.collector.tags,
         flow: sc.collector.flow,
     });
+    const clientflow = data.upcoming[0];
+    if (clientflow) {
+        slides.push({
+            id: "jr-clientflow",
+            label: sc.clientflow.label,
+            status: clientflow.tag,
+            title: clientflow.title,
+            summary: clientflow.summary,
+            tags: clientflow.stack,
+            placeholder: sc.clientflow.note,
+        });
+    }
 
     return (
         <section id={t.ids.projects} className="relative isolate overflow-hidden bg-night py-24 text-white sm:py-28">

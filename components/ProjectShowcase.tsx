@@ -24,6 +24,7 @@ export type Slide = {
     tags: string[];
     image?: { src: string; alt: string; width: number; height: number };
     flow?: Flow;
+    placeholder?: string;
     caseStudy?: { href: string; label: string };
     live?: { href: string; label: string };
 };
@@ -80,6 +81,15 @@ const FlowDiagram = ({ flow }: { flow: Flow }) => {
     );
 };
 
+/** Pantalla para un producto que todavía no tiene capturas. */
+const Placeholder = ({ title, note, status }: { title: string; note: string; status: string }) => (
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-navy-deep bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px] p-4 text-center">
+        <span className="rounded-full border border-dashed border-gold/60 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-gold sm:text-[11px]">{status}</span>
+        <span className="font-heading text-[22px] font-bold tracking-[-0.02em] text-white sm:text-[34px]">{title}</span>
+        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 sm:text-[11px]">{note}</span>
+    </div>
+);
+
 const ProjectShowcase = ({ slides, labels }: { slides: Slide[]; labels: Labels }) => {
     const [index, setIndex] = useState(0);
     const slide = slides[index];
@@ -134,6 +144,8 @@ const ProjectShowcase = ({ slides, labels }: { slides: Slide[]; labels: Labels }
                                 />
                             ) : slide.flow ? (
                                 <FlowDiagram flow={slide.flow} />
+                            ) : slide.placeholder ? (
+                                <Placeholder title={slide.title} note={slide.placeholder} status={slide.status} />
                             ) : null}
                         </Laptop>
                     </div>

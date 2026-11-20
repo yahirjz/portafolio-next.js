@@ -1,5 +1,5 @@
+import Image from "next/image";
 import { LuArrowRight, LuChevronDown, LuDownload } from "react-icons/lu";
-import HeroCube from "@/components/HeroCube";
 import { getContent } from "@/data/content";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
@@ -56,8 +56,25 @@ const Hero = ({ locale }: { locale: Locale }) => {
                 </div>
 
                 {/* Pieza protagonista */}
-                <div className="relative mx-auto w-full max-w-[380px] sm:max-w-[480px] lg:max-w-[620px]">
-                    <HeroCube className="h-auto w-full" />
+                <div className="relative mx-auto w-full max-w-[360px] sm:max-w-[460px] lg:max-w-[600px]">
+                    {/* Resplandor detrás del cubo */}
+                    <div aria-hidden="true" className="absolute inset-[12%] rounded-full bg-gold/15 blur-[80px]" />
+                    {/* Marcas técnicas en las esquinas */}
+                    <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" className="pointer-events-none absolute -inset-[4%] h-[108%] w-[108%]">
+                        <g stroke="#fff" strokeOpacity="0.25" strokeWidth="0.3" fill="none" vectorEffect="non-scaling-stroke">
+                            <path d="M0 0 h5 M0 0 v5 M100 0 h-5 M100 0 v5 M0 100 h5 M0 100 v-5 M100 100 h-5 M100 100 v-5" vectorEffect="non-scaling-stroke" />
+                        </g>
+                    </svg>
+                    <Image
+                        src="/cubo-jr.webp"
+                        alt=""
+                        aria-hidden="true"
+                        width={1112}
+                        height={1022}
+                        priority
+                        sizes="(min-width: 1024px) 600px, (min-width: 640px) 460px, 360px"
+                        className="cube-float relative h-auto w-full drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
+                    />
                 </div>
             </div>
 

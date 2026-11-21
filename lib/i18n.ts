@@ -70,6 +70,23 @@ const es = {
                 label: "Producto propio",
                 note: "Vista previa próximamente",
             },
+            citas: {
+                label: "Proyecto propio",
+                status: "En desarrollo",
+                title: "Citas por WhatsApp",
+                summary: "Bot de citas por WhatsApp para negocios pequeños. El cliente escribe al negocio, el bot le muestra los horarios libres, agenda la cita en Google Calendar y le avisa al dueño.",
+                tags: ["n8n", "WhatsApp Cloud API", "Google Calendar", "JavaScript"],
+                flow: {
+                    header: "citas-por-whatsapp · n8n",
+                    nodes: [
+                        { icon: "message", title: "Cliente", detail: "Escribe por WhatsApp" },
+                        { icon: "workflow", title: "n8n", detail: "Busca horarios libres" },
+                        { icon: "calendar", title: "Google Calendar", detail: "Agenda la cita" },
+                        { icon: "bell", title: "Dueño", detail: "Recibe el aviso" },
+                    ],
+                    note: "Representación técnica del flujo",
+                },
+            },
             loyalty: {
                 label: "Producto propio",
                 status: "MVP",
@@ -233,6 +250,23 @@ const en: Dictionary = {
             clientflow: {
                 label: "Own product",
                 note: "Preview coming soon",
+            },
+            citas: {
+                label: "Own project",
+                status: "In development",
+                title: "WhatsApp Appointments",
+                summary: "WhatsApp appointment bot for small businesses. Customers message the business, the bot shows the available times, books the appointment in Google Calendar and notifies the owner.",
+                tags: ["n8n", "WhatsApp Cloud API", "Google Calendar", "JavaScript"],
+                flow: {
+                    header: "whatsapp-appointments · n8n",
+                    nodes: [
+                        { icon: "message", title: "Customer", detail: "Messages on WhatsApp" },
+                        { icon: "workflow", title: "n8n", detail: "Finds free slots" },
+                        { icon: "calendar", title: "Google Calendar", detail: "Books the slot" },
+                        { icon: "bell", title: "Owner", detail: "Gets notified" },
+                    ],
+                    note: "Technical representation of the flow",
+                },
             },
             loyalty: {
                 label: "Own product",

@@ -1,4 +1,4 @@
-import ProjectShowcase, { type Slide } from "@/components/ProjectShowcase";
+import ProjectShowcase, { type FlowNode, type Slide } from "@/components/ProjectShowcase";
 import { getContent } from "@/data/content";
 import { getDictionary, paths, type Locale } from "@/lib/i18n";
 
@@ -31,6 +31,16 @@ const Projects = ({ locale }: { locale: Locale }) => {
         summary: sc.loyalty.summary,
         tags: sc.loyalty.tags,
         image: { src: "/projects/lealtad/panel-negocio.webp", alt: sc.loyalty.imageAlt, width: 1246, height: 779 },
+    });
+
+    slides.push({
+        id: "citas-por-whatsapp",
+        label: sc.citas.label,
+        status: sc.citas.status,
+        title: sc.citas.title,
+        summary: sc.citas.summary,
+        tags: sc.citas.tags,
+        flow: { ...sc.citas.flow, nodes: sc.citas.flow.nodes.map((n) => ({ ...n, icon: n.icon as FlowNode["icon"] })) },
     });
 
     return (

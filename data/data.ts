@@ -191,7 +191,7 @@ export const data = {
 
     // <-- STACK (íconos: ver components/Stack.tsx)
     tech: {
-        build: ["Next.js", "React", "TypeScript", "Tailwind", "Node.js", "FastAPI", "Python", "PostgreSQL", "Supabase", "Vercel", "Docker", "Git"],
+        build: ["Next.js", "React", "TypeScript", "Tailwind", "Node.js", "FastAPI", "Python", "PostgreSQL", "Supabase", "Vercel", "Docker", "Git", "n8n"],
     },
 
     process: [

@@ -17,6 +17,13 @@ import {
 import { getContent } from "@/data/content";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
+/** Logo de n8n (Simple Icons, CC0): react-icons todavía no lo incluye. */
+const N8nIcon: IconType = ({ className, style }) => (
+    <svg viewBox="0 3 24 18" fill="currentColor" aria-hidden="true" className={className} style={style}>
+        <path d="M4.8 16.8c.45 0 .6-.15.6-.6V15c0-1.8.6-2.4 2.4-2.4H9c1.8 0 2.4.6 2.4 2.4v1.2c0 .45.15.6.6.6s.6-.15.6-.6V15c0-1.8.6-2.4 2.4-2.4h1.2c1.8 0 2.4.6 2.4 2.4v1.2c0 .45.15.6.6.6s.6-.15.6-.6V15c0-1.8.6-2.4 2.4-2.4h1.2c.45 0 .6-.15.6-.6s-.15-.6-.6-.6h-1.2c-1.8 0-2.4-.6-2.4-2.4V7.8c0-.45-.15-.6-.6-.6s-.6.15-.6.6V9c0 1.8-.6 2.4-2.4 2.4H15c-1.8 0-2.4-.6-2.4-2.4V7.8c0-.45-.15-.6-.6-.6s-.6.15-.6.6V9c0 1.8-.6 2.4-2.4 2.4H7.8c-1.8 0-2.4-.6-2.4-2.4V7.8c0-.45-.15-.6-.6-.6s-.6.15-.6.6V9c0 1.8-.6 2.4-2.4 2.4H.6c-.45 0-.6.15-.6.6s.15.6.6.6h1.2c1.8 0 2.4.6 2.4 2.4v1.2c0 .45.15.6.6.6" />
+    </svg>
+);
+
 /** Logo y color de cada tecnología (por nombre, como aparece en data.tech). */
 const logos: Record<string, { icon: IconType; color: string }> = {
     "Next.js": { icon: SiNextdotjs, color: "#ffffff" },
@@ -31,6 +38,7 @@ const logos: Record<string, { icon: IconType; color: string }> = {
     Vercel: { icon: SiVercel, color: "#ffffff" },
     Docker: { icon: SiDocker, color: "#2496ED" },
     Git: { icon: SiGit, color: "#F05032" },
+    n8n: { icon: N8nIcon, color: "#FF91AC" },
 };
 
 /** Órbita: el código al centro y cada tecnología conectada alrededor. */

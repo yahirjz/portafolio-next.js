@@ -116,7 +116,6 @@ const Contact = ({ locale }: { locale: Locale }) => {
                                     {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : { download: true })}
                                     className="group flex items-center gap-5 py-6 transition-colors duration-300 hover:text-gold"
                                 >
-                                    <span className="font-mono text-[12px] text-white/35 transition-colors group-hover:text-gold/70">{String(i + 1).padStart(2, "0")}</span>
                                     <span className="text-white/70 transition-colors group-hover:text-gold">{link.icon}</span>
                                     <span className="flex-1 font-heading text-[clamp(22px,2.4vw,32px)] font-semibold tracking-[-0.02em] transition-transform duration-300 group-hover:translate-x-1.5">
                                         {link.label}

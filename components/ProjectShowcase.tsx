@@ -2,15 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { LuArrowLeft, LuArrowRight, LuArrowUpRight, LuDatabase, LuServer, LuTimer } from "react-icons/lu";
+import type { IconType } from "react-icons";
+import { LuArrowLeft, LuArrowRight, LuArrowUpRight, LuBell, LuCalendarCheck, LuDatabase, LuMessageCircle, LuServer, LuTimer, LuWorkflow } from "react-icons/lu";
+
+export type FlowNode = { icon: "server" | "timer" | "database" | "message" | "workflow" | "calendar" | "bell"; title: string; detail: string };
 
 export type Flow = {
-    source: string;
-    sourceDetail: string;
-    collector: string;
-    collectorDetail: string;
-    db: string;
-    dbDetail: string;
+    header: string;
+    nodes: FlowNode[];
     note: string;
 };
 
@@ -46,23 +45,29 @@ const Laptop = ({ children }: { children: React.ReactNode }) => (
 
 /** Representación del flujo del Market Data Collector (no es una captura). */
 const FlowDiagram = ({ flow }: { flow: Flow }) => {
-    const nodes = [
-        { icon: LuServer, title: flow.source, detail: flow.sourceDetail },
-        { icon: LuTimer, title: flow.collector, detail: flow.collectorDetail },
-        { icon: LuDatabase, title: flow.db, detail: flow.dbDetail },
-    ];
+    const icons: Record<FlowNode["icon"], IconType> = {
+        server: LuServer,
+        timer: LuTimer,
+        database: LuDatabase,
+        message: LuMessageCircle,
+        workflow: LuWorkflow,
+        calendar: LuCalendarCheck,
+        bell: LuBell,
+    };
+    const nodes = flow.nodes.map((n) => ({ ...n, icon: icons[n.icon] }));
+    const nodeWidth = nodes.length > 3 ? "w-[19%]" : "w-[24%]";
     return (
         <div className="absolute inset-0 flex flex-col bg-[radial-gradient(ellipse_at_50%_40%,#1b2a4d_0%,#0a1124_70%)] p-3 sm:p-5">
             <p className="m-0 flex items-center gap-2 font-mono text-[9px] text-white/45 sm:text-[11px]">
                 <span className="size-1.5 rounded-full bg-gold sm:size-2" aria-hidden="true" />
-                market-data-collector · v0.1
+                {flow.header}
             </p>
             <div className="flex flex-1 items-center justify-between gap-0">
                 {nodes.map((node, i) => {
                     const Icon = node.icon;
                     return (
                         <div key={node.title} className="contents">
-                            <div className="flex w-[24%] shrink-0 flex-col items-center gap-1.5 text-center sm:gap-2.5">
+                            <div className={`flex ${nodeWidth} shrink-0 flex-col items-center gap-1.5 text-center sm:gap-2.5`}>
                                 <span className="grid size-9 place-items-center rounded-xl border border-gold/50 bg-navy text-gold shadow-[0_0_24px_-6px_rgba(252,163,17,0.7)] sm:size-14 sm:rounded-2xl">
                                     <Icon aria-hidden="true" className="size-4 sm:size-6" />
                                 </span>

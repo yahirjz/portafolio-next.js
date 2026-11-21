@@ -134,7 +134,7 @@ const SideNav = ({ locale }: { locale: Locale }) => {
             >
                 <nav aria-label={t.nav.label}>
                     <ul className="flex flex-col">
-                        {links.map((link, i) => {
+                        {links.map((link) => {
                             const isActive = active === link.id;
                             return (
                                 <li key={link.id} className="border-b border-white/[0.08]">
@@ -142,11 +142,14 @@ const SideNav = ({ locale }: { locale: Locale }) => {
                                         href={`#${link.id}`}
                                         tabIndex={open ? undefined : -1}
                                         onClick={() => setOpen(false)}
-                                        className={`flex items-baseline gap-4 py-4 font-heading text-[28px] font-semibold transition-colors ${
+                                        className={`group flex items-center gap-4 py-4 font-heading text-[28px] font-semibold transition-colors ${
                                             isActive ? "text-gold" : "text-white hover:text-gold"
                                         }`}
                                     >
-                                        <span className="font-mono text-[13px] text-white/40">{String(i + 1).padStart(2, "0")}</span>
+                                        {/* Triángulo: blanco y dorado cuando está seleccionado, igual que el texto */}
+                                        <svg aria-hidden="true" viewBox="0 0 10 12" className="h-3.5 w-3 shrink-0 fill-current transition-transform duration-300 group-hover:translate-x-0.5">
+                                            <path d="M0 0 L10 6 L0 12 Z" />
+                                        </svg>
                                         {link.label}
                                     </a>
                                 </li>

@@ -110,7 +110,7 @@ const es = {
             { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
             { title: "Backend y APIs", items: ["Node.js", "Python", "FastAPI"] },
             { title: "Datos", items: ["PostgreSQL", "Supabase"] },
-            { title: "Despliegue y herramientas", items: ["Vercel", "Docker", "Git"] },
+            { title: "Despliegue y herramientas", items: ["Vercel", "Docker", "Git", "n8n"] },
         ],
     },
     contact: {
@@ -266,7 +266,7 @@ const en: Dictionary = {
             { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
             { title: "Backend & APIs", items: ["Node.js", "Python", "FastAPI"] },
             { title: "Data", items: ["PostgreSQL", "Supabase"] },
-            { title: "Deployment & tools", items: ["Vercel", "Docker", "Git"] },
+            { title: "Deployment & tools", items: ["Vercel", "Docker", "Git", "n8n"] },
         ],
     },
     contact: {

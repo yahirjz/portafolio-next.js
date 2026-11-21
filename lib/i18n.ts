@@ -48,6 +48,8 @@ const es = {
         eyebrow: "Sobre mí",
         title: "Ingeniería, producto y tecnología",
         intro: "Soy",
+        focusLabel: "Áreas de enfoque",
+        cta: "Ver experiencia",
     },
     projects: {
         eyebrow: "Proyectos",
@@ -191,6 +193,8 @@ const en: Dictionary = {
         eyebrow: "About me",
         title: "Engineering, product and technology",
         intro: "I'm",
+        focusLabel: "Focus areas",
+        cta: "See experience",
     },
     projects: {
         eyebrow: "Projects",

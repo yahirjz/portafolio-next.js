@@ -58,7 +58,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-terra-soft);
+    outline: 3px solid var(--color-gold);
     outline-offset: 3px;
   }
 
@@ -82,8 +82,8 @@
   z-index: 60;
   padding: 0.75rem 1rem;
   border-radius: 9999px;
-  background: var(--color-ink);
-  color: var(--color-cream);
+  background: var(--color-gold);
+  color: var(--color-night);
   font-weight: 700;
   transform: translateY(-200%);
   transition: transform 150ms ease-out;

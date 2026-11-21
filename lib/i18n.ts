@@ -141,6 +141,7 @@ const es = {
         errorNetwork: "No fue posible enviar el mensaje. Inténtalo de nuevo más tarde.",
     },
     detail: {
+        caseStudy: "Caso de estudio",
         back: "Volver al portafolio",
         privateBadge: "Beta privada · En desarrollo",
         viewProject: "Ver proyecto",
@@ -296,6 +297,7 @@ const en: Dictionary = {
         errorNetwork: "Your message couldn't be sent. Please try again later.",
     },
     detail: {
+        caseStudy: "Case study",
         back: "Back to portfolio",
         privateBadge: "Private beta · In development",
         viewProject: "View project",

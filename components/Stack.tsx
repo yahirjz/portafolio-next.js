@@ -113,7 +113,7 @@ const Stack = ({ locale }: { locale: Locale }) => {
                             <span aria-hidden="true" className="h-px w-8 bg-navy/40" />
                             {t.stack.eyebrow}
                         </p>
-                        <h2 className="m-0 mt-5 max-w-[340px] font-heading text-[clamp(30px,3vw,40px)] font-bold leading-[1.08] tracking-[-0.03em] text-night">
+                        <h2 className="m-0 mt-5 max-w-[270px] font-heading text-[clamp(30px,3vw,40px)] font-bold leading-[1.08] tracking-[-0.03em] text-night">
                             {t.stack.title}
                         </h2>
                         <span aria-hidden="true" className="mt-6 block h-[3px] w-14 rounded-full bg-gold" />

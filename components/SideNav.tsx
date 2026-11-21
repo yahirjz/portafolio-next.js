@@ -134,20 +134,26 @@ const SideNav = ({ locale }: { locale: Locale }) => {
             >
                 <nav aria-label={t.nav.label}>
                     <ul className="flex flex-col">
-                        {links.map((link, i) => {
+                        {links.map((link) => {
                             const isActive = active === link.id;
                             return (
-                                <li key={link.id} className="border-b border-white/[0.08]">
+                                <li key={link.id} className="relative border-b border-white/[0.08]">
                                     <a
                                         href={`#${link.id}`}
                                         tabIndex={open ? undefined : -1}
                                         onClick={() => setOpen(false)}
-                                        className={`flex items-baseline gap-4 py-4 font-heading text-[28px] font-semibold transition-colors ${
+                                        className={`group flex items-center gap-4 py-4 font-heading text-[28px] font-semibold transition-colors ${
                                             isActive ? "text-gold" : "text-white hover:text-gold"
                                         }`}
                                     >
-                                        <span className="font-mono text-[13px] text-white/40">{String(i + 1).padStart(2, "0")}</span>
                                         {link.label}
+                                        {/* Línea dorada: crece en la sección activa al abrir el menú y al tocar otra */}
+                                        <span
+                                            aria-hidden="true"
+                                            className={`absolute -bottom-px left-0 h-[2px] w-full origin-left rounded-full bg-gold shadow-[0_0_10px_rgba(252,163,17,0.7)] transition-transform duration-500 ease-out ${
+                                                open && isActive ? "scale-x-100 delay-200" : "scale-x-0 group-hover:scale-x-100"
+                                            }`}
+                                        />
                                     </a>
                                 </li>
                             );

@@ -70,6 +70,14 @@ const es = {
                 label: "Producto propio",
                 note: "Vista previa próximamente",
             },
+            loyalty: {
+                label: "Producto propio",
+                status: "MVP",
+                title: "Tarjetas de lealtad",
+                summary: "Tarjetas de sellos digitales para negocios. El cliente se registra con un enlace o el QR del mostrador, el negocio suma sellos en cada compra y, al completarlos, el cliente canjea su regalo. Con promociones por WhatsApp y tarjeta en Google y Apple Wallet.",
+                tags: ["Next.js", "Supabase", "Vercel", "WhatsApp API", "Google Wallet", "Apple Wallet"],
+                imageAlt: "Panel del negocio en Tarjetas de lealtad: clientes, sellos del día, actividad reciente y programa de lealtad",
+            },
             collector: {
                 label: "Proyecto técnico",
                 status: "v0.1 · En desarrollo",
@@ -225,6 +233,14 @@ const en: Dictionary = {
             clientflow: {
                 label: "Own product",
                 note: "Preview coming soon",
+            },
+            loyalty: {
+                label: "Own product",
+                status: "MVP",
+                title: "Loyalty Cards",
+                summary: "Digital stamp cards for businesses. Customers sign up with a link or the counter QR code, the business adds a stamp with every purchase and, once complete, the customer redeems their reward. With WhatsApp promotions and Google and Apple Wallet cards.",
+                tags: ["Next.js", "Supabase", "Vercel", "WhatsApp API", "Google Wallet", "Apple Wallet"],
+                imageAlt: "Business dashboard in Loyalty Cards: customers, today's stamps, recent activity and loyalty program",
             },
             collector: {
                 label: "Technical project",

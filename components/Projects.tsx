@@ -24,26 +24,14 @@ const Projects = ({ locale }: { locale: Locale }) => {
         });
     }
     slides.push({
-        id: "market-data-collector",
-        label: sc.collector.label,
-        status: sc.collector.status,
-        title: sc.collector.title,
-        summary: sc.collector.summary,
-        tags: sc.collector.tags,
-        flow: sc.collector.flow,
+        id: "tarjetas-lealtad",
+        label: sc.loyalty.label,
+        status: sc.loyalty.status,
+        title: sc.loyalty.title,
+        summary: sc.loyalty.summary,
+        tags: sc.loyalty.tags,
+        image: { src: "/projects/lealtad/panel.webp", alt: sc.loyalty.imageAlt, width: 1437, height: 779 },
     });
-    const clientflow = data.upcoming[0];
-    if (clientflow) {
-        slides.push({
-            id: "jr-clientflow",
-            label: sc.clientflow.label,
-            status: clientflow.tag,
-            title: clientflow.title,
-            summary: clientflow.summary,
-            tags: clientflow.stack,
-            placeholder: sc.clientflow.note,
-        });
-    }
 
     return (
         <section id={t.ids.projects} className="relative isolate overflow-hidden bg-night py-24 text-white sm:py-28">

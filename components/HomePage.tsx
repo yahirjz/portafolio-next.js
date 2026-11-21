@@ -16,7 +16,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
         <>
             <a className="skip-link" href="#contenido-principal">{t.skipLink}</a>
             <SideNav locale={locale} />
-            <div className="lg:pl-[112px]">
+            <div className="bg-night lg:pl-[112px]">
                 <main id="contenido-principal" className="w-full overflow-hidden">
                     <Hero locale={locale} />
                     <Projects locale={locale} />

@@ -12,14 +12,12 @@ const Timeline = ({
     icon: Icon,
     entries,
     currentLabel,
-    startIndex,
     extra,
 }: {
     label: string;
     icon: IconType;
     entries: Entry[];
     currentLabel: string;
-    startIndex: number;
     extra?: Record<number, React.ReactNode>;
 }) => (
     <div>
@@ -47,7 +45,6 @@ const Timeline = ({
                         }`}
                     />
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                        <span className="font-mono text-[12px] text-white/35">{String(startIndex + i).padStart(2, "0")}</span>
                         <span className="font-heading text-[clamp(20px,2vw,26px)] font-bold tracking-[-0.02em] text-white">{entry.date}</span>
                     </div>
                     <h3 className="m-0 mt-3 font-heading text-[19px] font-semibold text-white">{entry.title}</h3>
@@ -105,7 +102,6 @@ const Experience = ({ locale }: { locale: Locale }) => {
                         icon={LuBriefcaseBusiness}
                         entries={data.career.work}
                         currentLabel={t.experience.current}
-                        startIndex={1}
                         extra={mbqIndex >= 0 ? { [mbqIndex]: tisaxLink } : undefined}
                     />
                     <Timeline
@@ -113,7 +109,6 @@ const Experience = ({ locale }: { locale: Locale }) => {
                         icon={LuGraduationCap}
                         entries={data.career.education}
                         currentLabel={t.experience.current}
-                        startIndex={data.career.work.length + 1}
                     />
                 </div>
             </div>

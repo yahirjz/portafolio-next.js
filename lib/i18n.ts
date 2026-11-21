@@ -98,8 +98,15 @@ const es = {
         intro: "Un proceso estructurado para desarrollar soluciones tecnológicas con enfoque en calidad y resultados.",
     },
     stack: {
-        eyebrow: "Stack y herramientas",
-        title: "Tecnologías que utilizo",
+        eyebrow: "Mi stack",
+        title: "Herramientas que uso para construir",
+        orbitLabel: "Tecnologías",
+        groups: [
+            { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
+            { title: "Backend y APIs", items: ["Node.js", "Python", "FastAPI"] },
+            { title: "Datos", items: ["PostgreSQL", "Supabase"] },
+            { title: "Despliegue y herramientas", items: ["Vercel", "Docker", "Git"] },
+        ],
     },
     contact: {
         eyebrow: "Contacto",
@@ -234,8 +241,15 @@ const en: Dictionary = {
         intro: "A structured process to build technology solutions focused on quality and results.",
     },
     stack: {
-        eyebrow: "Stack and tools",
-        title: "Technologies I use",
+        eyebrow: "My stack",
+        title: "Tools I build with",
+        orbitLabel: "Technologies",
+        groups: [
+            { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
+            { title: "Backend & APIs", items: ["Node.js", "Python", "FastAPI"] },
+            { title: "Data", items: ["PostgreSQL", "Supabase"] },
+            { title: "Deployment & tools", items: ["Vercel", "Docker", "Git"] },
+        ],
     },
     contact: {
         eyebrow: "Contact",

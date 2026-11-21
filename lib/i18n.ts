@@ -93,6 +93,9 @@ const es = {
         title: "Trayectoria",
         work: "Trabajo",
         education: "Formación",
+        heading: "Experiencia y formación",
+        current: "Actual",
+        tisax: "Ver caso TISAX",
     },
     process: {
         eyebrow: "Mi forma de trabajar",
@@ -238,6 +241,9 @@ const en: Dictionary = {
         title: "Background",
         work: "Work",
         education: "Education",
+        heading: "Experience and education",
+        current: "Current",
+        tisax: "See the TISAX case",
     },
     process: {
         eyebrow: "How I work",

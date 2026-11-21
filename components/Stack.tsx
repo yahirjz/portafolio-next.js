@@ -76,12 +76,12 @@ const Orbit = ({ names, label }: { names: string[]; label: string }) => {
                             key={p.name}
                             data-reveal
                             data-reveal-delay={String(i * 40)}
-                            className="group absolute -translate-x-1/2 -translate-y-1/2"
+                            className="group absolute -translate-x-1/2 -translate-y-1/2 hover:z-10 focus-within:z-10"
                             style={{ left: `${p.x}%`, top: `${p.y}%` }}
                         >
                             <span
                                 tabIndex={0}
-                                className="grid size-11 place-items-center rounded-full border border-white/15 bg-[#0b1224] shadow-[0_10px_24px_-10px_rgba(0,0,0,0.9)] outline-none transition duration-300 group-hover:scale-110 group-hover:border-gold/70 focus-visible:scale-110 focus-visible:border-gold sm:size-14"
+                                className="grid size-11 cursor-pointer place-items-center rounded-full border border-white/15 bg-[#0b1224] shadow-[0_10px_24px_-10px_rgba(0,0,0,0.9)] outline-none transition duration-300 ease-out group-hover:-translate-y-2 group-hover:scale-110 group-hover:border-gold group-hover:shadow-[0_16px_30px_-8px_rgba(252,163,17,0.55)] focus:-translate-y-2 focus:scale-110 focus:border-gold focus:shadow-[0_16px_30px_-8px_rgba(252,163,17,0.55)] sm:size-14"
                             >
                                 {Icon && <Icon aria-hidden="true" className="size-5 sm:size-6" style={{ color: logo.color }} />}
                                 <span className="sr-only">{p.name}</span>
@@ -89,7 +89,7 @@ const Orbit = ({ names, label }: { names: string[]; label: string }) => {
                             {/* Nombre al pasar el cursor */}
                             <span
                                 aria-hidden="true"
-                                className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gold px-2 py-0.5 text-[11px] font-bold text-night opacity-0 transition duration-200 group-focus-within:opacity-100 group-hover:opacity-100"
+                                className="pointer-events-none absolute left-1/2 top-full mt-1 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md bg-gold px-2 py-0.5 text-[11px] font-bold text-night opacity-0 shadow-[0_6px_16px_-6px_rgba(252,163,17,0.8)] transition duration-300 ease-out group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100"
                             >
                                 {p.name}
                             </span>

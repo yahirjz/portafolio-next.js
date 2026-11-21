@@ -30,7 +30,7 @@ const Projects = ({ locale }: { locale: Locale }) => {
         title: sc.loyalty.title,
         summary: sc.loyalty.summary,
         tags: sc.loyalty.tags,
-        image: { src: "/projects/lealtad/panel.webp", alt: sc.loyalty.imageAlt, width: 1437, height: 779 },
+        image: { src: "/projects/lealtad/panel-negocio.webp", alt: sc.loyalty.imageAlt, width: 1246, height: 779 },
     });
 
     return (

@@ -137,7 +137,7 @@ const SideNav = ({ locale }: { locale: Locale }) => {
                         {links.map((link) => {
                             const isActive = active === link.id;
                             return (
-                                <li key={link.id} className="border-b border-white/[0.08]">
+                                <li key={link.id} className="relative border-b border-white/[0.08]">
                                     <a
                                         href={`#${link.id}`}
                                         tabIndex={open ? undefined : -1}
@@ -146,11 +146,14 @@ const SideNav = ({ locale }: { locale: Locale }) => {
                                             isActive ? "text-gold" : "text-white hover:text-gold"
                                         }`}
                                     >
-                                        {/* Triángulo: blanco y dorado cuando está seleccionado, igual que el texto */}
-                                        <svg aria-hidden="true" viewBox="0 0 10 12" className="h-3.5 w-3 shrink-0 fill-current transition-transform duration-300 group-hover:translate-x-0.5">
-                                            <path d="M0 0 L10 6 L0 12 Z" />
-                                        </svg>
                                         {link.label}
+                                        {/* Línea dorada: crece en la sección activa al abrir el menú y al tocar otra */}
+                                        <span
+                                            aria-hidden="true"
+                                            className={`absolute -bottom-px left-0 h-[2px] w-full origin-left rounded-full bg-gold shadow-[0_0_10px_rgba(252,163,17,0.7)] transition-transform duration-500 ease-out ${
+                                                open && isActive ? "scale-x-100 delay-200" : "scale-x-0 group-hover:scale-x-100"
+                                            }`}
+                                        />
                                     </a>
                                 </li>
                             );

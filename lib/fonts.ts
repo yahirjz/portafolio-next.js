@@ -1,15 +1,16 @@
-import { Bricolage_Grotesque, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Manrope, Sora } from "next/font/google";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+// Sora: títulos. Manrope: textos e interfaz.
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["500", "700", "800"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const jetbrains = JetBrains_Mono({
@@ -18,4 +19,4 @@ const jetbrains = JetBrains_Mono({
   weight: ["500"],
 });
 
-export const fontVariables = `${bricolage.variable} ${dmSans.variable} ${jetbrains.variable}`;
+export const fontVariables = `${sora.variable} ${manrope.variable} ${jetbrains.variable}`;
